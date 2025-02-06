@@ -1,5 +1,12 @@
+// Fonts
+@import "./fonts";
+// Variables
+@import "./variables";
+// Media queries
+@import "./mediaquery";
+// Mixins
+@import "./mixin";
+@import "./Navbar/navbar.scss";
 // global styles
 @import "./globals.scss";
-@import "./mediaquery";
-@import "./mixin";
-@import "./varaiables";
+

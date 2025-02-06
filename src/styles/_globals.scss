@@ -5,7 +5,8 @@
 body {
   background-color: $background-light;
   color: $text-dark-gray;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: $font-family;
+  font-weight: $font-regular;
 }
 .button {
   &-primary {
@@ -32,4 +33,16 @@ body {
 .footer {
   background-color: $background-dark;
   color: $text-light-gray;
+}
+p {
+  font-weight: 400;
+  font-size: 14px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
 }

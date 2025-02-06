@@ -1,7 +1,26 @@
-@mixin flex {
+@mixin flex-between {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
+@mixin container {
+  margin: auto;
+  width: 100%;
+  @include for-small-phone {
+    padding-inline: 2rem;
+  }
+  @include for-medium-phone {
+    padding-inline: 4rem;
+  }
+  @include for-large-phone {
+    padding-inline: 6rem;
+  }
+  @include for-tablet {
+    padding-inline: 8rem;
+  }
+  @include for-desktop {
+    padding-inline: 10rem;
+  }
 }
 
 // to use it in the other file

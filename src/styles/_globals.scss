@@ -2,20 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  background-color: $background-light;
+  color: $text-dark-gray;
+  font-family: Arial, Helvetica, sans-serif;
 }
+.button {
+  &-primary {
+    background-color: $button-primary-blue;
+    color: $primary-white;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  &-success {
+    background-color: $button-success-green;
+    color: $primary-white;
+  }
+
+  &-danger {
+    background-color: $button-danger-red;
+    color: $primary-white;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.header {
+  background-color: $primary-red;
+  color: $primary-white;
+}
+
+.footer {
+  background-color: $background-dark;
+  color: $text-light-gray;
 }

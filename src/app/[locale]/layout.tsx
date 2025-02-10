@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/main.scss";
 import Navbar from "@/components/common/Navbar";
 import QueryProvider from "@/providers/QueryProvider";
-
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,6 +31,7 @@ export default function RootLayout({
       >
         <Navbar />
         <QueryProvider>
+        <ReactQueryDevtools initialIsOpen={true} />
           <main>{children}</main>
         </QueryProvider>
       </body>

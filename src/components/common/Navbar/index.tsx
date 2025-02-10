@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <>
       <TopHeader />
-      <nav className="navbar">
+      <nav className="navbar border-b-[0.5px] border-black h-24">
         <Logo />
         <NavLinks />
         <div className="right-nav flex gap-5 ">

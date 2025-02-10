@@ -1,7 +1,8 @@
 import React from "react";
-import { CustomLink } from "../ui";
+// import { CustomLink } from "../ui";
+import CustomList from "../ui/CustomList";
 
-const NavArray = [
+const navItems = [
   { href: "/", title: "Home" },
   { href: "/contact", title: "Contact" },
   { href: "/about", title: "About" },
@@ -11,11 +12,7 @@ const NavArray = [
 const NavLinks = () => {
   return (
     <ul className="flex gap-10">
-      {NavArray.map((link) => (
-        <li key={link.title}>
-          <CustomLink href={link.href}>{link.title}</CustomLink>
-        </li>
-      ))}
+      <CustomList items={navItems} />
     </ul>
   );
 };

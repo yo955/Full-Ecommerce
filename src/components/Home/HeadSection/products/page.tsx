@@ -1,6 +1,6 @@
 "use client";
 import useGetProducts from "@/hooks/useGetProducts";
-import Loading from "@/utils/loading/Loading";
+import Loading from "@/loading/Loading";
 import { productType } from "@/types/Product";
 const Products = () => {
   const { isLoading, data: products, error, isError } = useGetProducts();

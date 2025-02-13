@@ -1,6 +1,12 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
 import { Swiper as SwiperCore } from "swiper"; // Import SwiperCore type
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "@/styles/swiper/CustomSwiper.module.scss";
@@ -10,14 +16,16 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import useGetProducts from "@/hooks/useGetProducts";
-import ProductItem from "../products/Product";
 
-const CustomSwiper = () => {
+interface Product<T> {
+  data: T[];
+  Card: React.ElementType;
+}
+const CustomSwiper = <T,>({ data = [], Card }: Product<T>) => {
   const prevRef = useRef<HTMLDivElement | null>(null);
   const nextRef = useRef<HTMLDivElement | null>(null);
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null); // Use SwiperCore type
-  const { data: products } = useGetProducts();
+  // const { data: products } = useGetProducts();
 
   useEffect(() => {
     if (swiperInstance && prevRef.current && nextRef.current) {
@@ -29,10 +37,10 @@ const CustomSwiper = () => {
   }, [swiperInstance]);
 
   useEffect(() => {
-    if (swiperInstance && products) {
+    if (swiperInstance && data) {
       swiperInstance.update();
     }
-  }, [products, swiperInstance]);
+  }, [data, swiperInstance]);
 
   return (
     <div className={styles.swiperContainer}>
@@ -48,7 +56,7 @@ const CustomSwiper = () => {
 
       {/* Swiper Component */}
       <Swiper
-        key={products ? products.length : 0}
+        key={data ? data.length : 0}
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         loop
         spaceBetween={50}
@@ -66,9 +74,9 @@ const CustomSwiper = () => {
         }}
         className={styles.swiper}
       >
-        {products?.map((product) => (
-          <SwiperSlide key={product.ProductId}>
-            <ProductItem {...product} />
+        {data?.map((item, index) => (
+          <SwiperSlide key={index}>
+            <Card {...item} />
           </SwiperSlide>
         ))}
       </Swiper>

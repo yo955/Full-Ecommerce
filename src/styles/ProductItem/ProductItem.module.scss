@@ -23,12 +23,17 @@
   }
 
   .newBadge {
+    position: relative;
     background-color: #ff0000; // Adjust to match your `bg-primary-red`
     padding: 6px 12px;
     font-size: 12px;
     font-weight: 500;
     white-space: nowrap;
     margin-bottom: 16px;
+    color: white;
+    z-index: 20;
+    border-radius: 0 4px ;
+   
   }
 
   .imageContainer {
@@ -36,6 +41,7 @@
     width: 180px;
     height: 190px;
     margin: 0 auto;
+    z-index: 1;
 
     img {
       position: absolute;

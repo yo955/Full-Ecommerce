@@ -1,9 +1,18 @@
 "use client";
 import Button from "@mui/material/Button";
-export default function CustomButton() {
+interface ButtonProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export default function CustomButton({ children, className }: ButtonProps) {
   return (
-    <Button variant="contained" color="success">
-      Success
+    <Button
+      variant="contained"
+      color="success"
+      className={`!bg-button-danger-red ${className}`}
+    >
+      {children}
     </Button>
   );
 }

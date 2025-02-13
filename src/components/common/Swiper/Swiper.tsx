@@ -57,9 +57,7 @@ const CustomSwiper = () => {
         {/* Map over the list of products and wrap each in a SwiperSlide */}
         {products?.map((product) => (
           <SwiperSlide key={product.ProductId}>
-            <ProductItem
-              {...product}
-            />
+            <ProductItem {...product} />
           </SwiperSlide>
         ))}
       </Swiper>

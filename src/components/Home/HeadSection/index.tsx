@@ -1,7 +1,9 @@
 import React from "react";
 import Sidebar from "./sidebar/Sidebar";
 import Advertise from "./advertise/Advertise";
-import ProductsSection from "@/components/common/ProdutsSection";
+import SectionLayout from "@/components/common/ProdutsSection";
+import SwiperButton from "@/components/common/ProdutsSection/SwiperButton";
+
 // import Products from "./products/page";
 
 const HomeSection = () => {
@@ -11,7 +13,9 @@ const HomeSection = () => {
         <Sidebar />
         <Advertise />
       </div>
-      <ProductsSection />
+      <SectionLayout>
+        <SwiperButton />
+      </SectionLayout>
     </article>
   );
 };

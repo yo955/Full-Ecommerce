@@ -1,9 +1,10 @@
-import React from "react";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import TopHeader from "../top-header/TopHeader";
 import SearchInput from "./SearchInput";
 import Icons from "./Icons";
+
+
 
 const Navbar = () => {
   return (
@@ -15,6 +16,7 @@ const Navbar = () => {
         <div className="right-nav flex gap-5 ">
           <SearchInput />
           <Icons />
+          
         </div>
       </nav>
     </>

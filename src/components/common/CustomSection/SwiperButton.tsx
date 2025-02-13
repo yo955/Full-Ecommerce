@@ -5,7 +5,9 @@ const SwiperButton = () => {
   return (
     <div className="">
       <CustomSwiper />
-      <CustomButton>View All Products</CustomButton>
+      <CustomButton className=" !text-base !my-12 !w-[234px]  !h-[56px]  !border !mx-auto !flex !justify-center !items-center">
+        View All Products
+      </CustomButton>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React from "react";
 import Sidebar from "./sidebar/Sidebar";
 import Advertise from "./advertise/Advertise";
-import SectionLayout from "@/components/common/ProdutsSection";
-import SwiperButton from "@/components/common/ProdutsSection/SwiperButton";
+import SectionLayout from "@/components/common/CustomSection";
+import SwiperButton from "@/components/common/CustomSection/SwiperButton";
 
 // import Products from "./products/page";
 

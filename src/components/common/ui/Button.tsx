@@ -10,7 +10,7 @@ export default function CustomButton({ children, className }: ButtonProps) {
     <Button
       variant="contained"
       color="success"
-      className={`!bg-button-danger-red ${className}`}
+      className={`!bg-button-danger-red !mx-auto !${className}`}
     >
       {children}
     </Button>

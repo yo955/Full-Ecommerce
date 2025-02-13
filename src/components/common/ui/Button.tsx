@@ -1,8 +1,9 @@
-import React from 'react'
-
-export const Button = () => {
+"use client";
+import Button from "@mui/material/Button";
+export default function CustomButton() {
   return (
-    <div>Button</div>
-  )
+    <Button variant="contained" color="success">
+      Success
+    </Button>
+  );
 }
-

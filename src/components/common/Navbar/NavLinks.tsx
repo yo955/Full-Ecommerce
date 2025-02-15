@@ -11,7 +11,7 @@ const navItems = [
 
 const NavLinks = () => {
   return (
-    <ul className="flex gap-10">
+    <ul className="inline relative lg:flex gap-10">
       <CustomList items={navItems} />
     </ul>
   );

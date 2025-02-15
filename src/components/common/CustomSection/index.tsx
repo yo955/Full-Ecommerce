@@ -1,6 +1,6 @@
 import SectionBody from "./SectionBody";
-import SectionTitle from "../SectionTitle/SectionTitle";
-import LineSection from "./BottomSection";
+import SectionTitle from "./SectionTitle";
+import LineSection from "../ui/Line";
 interface SectionProps {
   children: React.ReactNode;
   title?: string;

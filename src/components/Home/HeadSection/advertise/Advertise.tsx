@@ -1,15 +1,18 @@
-import CustomImg from "@/components/common/ui/CustomImg";
-import React from "react";
+import ProductItem from "@/components/common/products/Product";
+import CustomSwiper from "@/components/common/Swiper/Swiper";
+import useGetProducts from "@/hooks/useGetProducts";
 
 const Advertise = () => {
+  const { data: products } = useGetProducts();
   return (
-    <div>
-      <CustomImg
-        src="/images/home-frame.png"
-        alt="hero-frame"
-        width={892}
-        height={344}
-      />
+    <div className="w-3/4">
+      {products && (
+        <CustomSwiper
+          data={products}
+          Card={ProductItem}
+          ShowPagination={true}
+        />
+      )}
     </div>
   );
 };

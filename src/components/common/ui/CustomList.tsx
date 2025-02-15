@@ -13,7 +13,7 @@ const CustomList: React.FC<ListProps> = ({ items }) => {
   return (
     <>
       {items.map((item, index: number) => (
-        <li key={index} className="list-none">
+        <li key={index} className="list-none ">
           <CustomLink href={item.href}>{item.title}</CustomLink>
         </li>
       ))}

@@ -20,8 +20,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 interface Product<T> {
   data: T[];
   Card: React.ElementType;
+  ShowPagination: boolean;
 }
-const CustomSwiper = <T,>({ data = [], Card }: Product<T>) => {
+const CustomSwiper = <T,>({
+  data = [],
+  Card,
+  ShowPagination = false,
+}: Product<T>) => {
   const prevRef = useRef<HTMLDivElement | null>(null);
   const nextRef = useRef<HTMLDivElement | null>(null);
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null); // Use SwiperCore type
@@ -45,14 +50,16 @@ const CustomSwiper = <T,>({ data = [], Card }: Product<T>) => {
   return (
     <div className={styles.swiperContainer}>
       {/* Custom Navigation Arrows */}
-      <div className={styles.customNavigation}>
-        <div ref={prevRef} className={styles.customSwiperButton}>
-          <ChevronLeft size={24} />
+      {!ShowPagination && (
+        <div className={styles.customNavigation}>
+          <div ref={prevRef} className={styles.customSwiperButton}>
+            <ChevronLeft size={24} />
+          </div>
+          <div ref={nextRef} className={styles.customSwiperButton}>
+            <ChevronRight size={24} />
+          </div>
         </div>
-        <div ref={nextRef} className={styles.customSwiperButton}>
-          <ChevronRight size={24} />
-        </div>
-      </div>
+      )}
 
       {/* Swiper Component */}
       <Swiper
@@ -61,6 +68,7 @@ const CustomSwiper = <T,>({ data = [], Card }: Product<T>) => {
         loop
         spaceBetween={50}
         slidesPerView={3}
+        pagination={ShowPagination ? { clickable: true } : false}
         autoplay={{ delay: 1500, disableOnInteraction: false }}
         navigation={{
           prevEl: prevRef.current,

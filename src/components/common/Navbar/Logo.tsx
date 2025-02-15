@@ -8,6 +8,7 @@ const Logo = () => {
       alt="nav-logo"
       width={150}
       height={150}
+      className="min-w-48"
     />
   );
 };

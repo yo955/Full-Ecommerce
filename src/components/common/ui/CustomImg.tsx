@@ -5,8 +5,15 @@ interface ImageProps {
   alt: string;
   width: number;
   height: number;
+  className?: string;
 }
-const CustomImg: React.FC<ImageProps> = ({ src, alt, width, height }) => {
+const CustomImg: React.FC<ImageProps> = ({
+  src,
+  alt,
+  width,
+  height,
+  className,
+}) => {
   return (
     <div>
       <Image
@@ -14,7 +21,7 @@ const CustomImg: React.FC<ImageProps> = ({ src, alt, width, height }) => {
         alt={alt}
         width={width}
         height={height}
-        className="w-full h-full"
+        className={className}
       />
     </div>
   );

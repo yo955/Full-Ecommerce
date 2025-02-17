@@ -1,7 +1,7 @@
 import CustomSwiper from "./Swiper";
 import CustomButton from "../ui/Button";
 import useGetProducts from "@/hooks/useGetProducts";
-import ProductItem from "@/components/common/products/Product";
+import ProductItem from "@/components/common/products/ProductCard";
 
 // import Products from "./products/page";
 

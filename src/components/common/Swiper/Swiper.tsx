@@ -20,7 +20,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 interface Product<T> {
   data: T[];
   Card: React.ElementType;
-  ShowPagination: boolean;
+  ShowPagination?: boolean;
 }
 const CustomSwiper = <T,>({
   data = [],

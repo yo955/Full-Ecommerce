@@ -6,12 +6,10 @@ import SwiperButton from "@/components/common/Swiper/SwiperButton";
 import CustomSwiper from "@/components/common/Swiper/Swiper";
 import CategoryCard from "@/components/common/Category/CategoryCard";
 import useGetCategory from "@/hooks/useGetCategories";
-import ProductCard from "@/components/common/products/ProductCard";
-import useGetProducts from "@/hooks/useGetProducts";
+import BestSellingProducts from "@/components/common/BestSelling/BestSellingProducts";
 
 const HomeSection = () => {
   const { data: Categories } = useGetCategory();
-  const { data: products } = useGetProducts();
   return (
     <article>
       <div className="home-section">
@@ -25,7 +23,7 @@ const HomeSection = () => {
         {Categories && <CustomSwiper data={Categories} Card={CategoryCard} />}
       </SectionLayout>
       <SectionLayout title="Best Selling Products" para="This Month">
-        {products && <CustomSwiper data={products} Card={ProductCard} />}
+        <BestSellingProducts />
       </SectionLayout>
     </article>
   );

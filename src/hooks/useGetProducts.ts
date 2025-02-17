@@ -3,10 +3,10 @@ import fetchProducts from "@/services/fetchproducts";
 import { productType } from "@/types/Product";
 import { useQuery } from "@tanstack/react-query";
 
-const useGetProducts = () => {
+const useGetProducts = ({ pageSize = 10 }: { pageSize?: number } = {}) => {
   const query = useQuery<productType>({
     queryKey: ["products"],
-    queryFn: fetchProducts,
+    queryFn: () => fetchProducts({ pageSize: pageSize }),
   });
 
   return query;

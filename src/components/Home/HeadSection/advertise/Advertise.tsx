@@ -5,7 +5,7 @@ import useGetProducts from "@/hooks/useGetProducts";
 const Advertise = () => {
   const { data: products } = useGetProducts();
   return (
-    <div className="w-3/4">
+    <div className="w-4/5">
       {products && (
         <CustomSwiper
           data={products}

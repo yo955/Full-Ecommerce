@@ -1,4 +1,4 @@
-import ProductItem from "@/components/common/products/Product";
+import ProductItem from "@/components/common/products/ProductCard";
 import CustomSwiper from "@/components/common/Swiper/Swiper";
 import useGetProducts from "@/hooks/useGetProducts";
 

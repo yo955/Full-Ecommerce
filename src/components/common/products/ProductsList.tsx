@@ -1,7 +1,7 @@
 "use client";
 import useGetProducts from "@/hooks/useGetProducts";
 import Loading from "@/loading/Loading";
-import ProductItem from "./Product";
+import ProductItem from "./ProductCard";
 
 const ProductsList = () => {
   const { isLoading, data: products, error, isError } = useGetProducts();

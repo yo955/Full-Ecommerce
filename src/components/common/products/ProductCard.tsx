@@ -4,7 +4,7 @@ import Rate from "./Rate";
 import { Product } from "@/types/Product";
 import styles from "@/styles/ProductItem/ProductItem.module.scss"; // Import the SCSS module
 
-const ProductItem = (Product: Product) => {
+const ProductCard = (Product: Product) => {
   return (
     <div className={styles.productItem}>
       <Link href="#">
@@ -47,4 +47,4 @@ const ProductItem = (Product: Product) => {
   );
 };
 
-export default ProductItem;
+export default ProductCard;

@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: $background-light;
+  color: $text-dark-gray;
+  font-family: $font-family;
+  font-weight: $font-regular;
+}
+.button {
+  &-primary {
+    background-color: $button-primary-blue;
+    color: $primary-white;
+  }
+
+  &-success {
+    background-color: $button-success-green;
+    color: $primary-white;
+  }
+
+  &-danger {
+    background-color: $button-danger-red;
+    color: $primary-white;
+  }
+}
+
+.header {
+  background-color: $primary-red;
+  color: $primary-white;
+}
+
+.footer {
+  background-color: $background-dark;
+  color: $text-light-gray;
+}
+p {
+  font-weight: 400;
+  font-size: 14px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}

@@ -1,0 +1,4 @@
+.navbar {
+  @include flex-between;
+  @include container;
+}

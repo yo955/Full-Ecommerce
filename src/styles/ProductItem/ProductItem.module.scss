@@ -1,0 +1,103 @@
+.productItem {
+  background-color: #f5f5f5; // Adjust to match your `bg-secondary-light-gray`
+  width: 300px;
+  position: relative;
+  overflow: hidden;
+  padding: 8px;
+  margin: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .wishlistButton {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    z-index: 10;
+    border-radius: 9999px;
+    background-color: white;
+    padding: 6px;
+    color: #1a1a1a;
+    transition: color 0.7s ease;
+
+    &:hover {
+      color: rgba(26, 26, 26, 0.75);
+    }
+  }
+
+  .newBadge {
+    position: relative;
+    background-color: #ff0000; // Adjust to match your `bg-primary-red`
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-bottom: 16px;
+    color: white;
+    z-index: 20;
+    border-radius: 0 4px;
+  }
+
+  .imageContainer {
+    position: relative;
+    width: 180px;
+    height: 190px;
+    margin: 0 auto;
+    z-index: 1;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .addToCartButton {
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    background-color: black;
+    font-size: 14px;
+    font-weight: 500;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: translateY(10px);
+    visibility: hidden;
+    color: white;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .productDetails {
+    padding: 24px;
+    background-color: #f8f9fa; // Adjust to match your `bg-slate-50`
+    text-align: left;
+    color: white;
+
+    h3 {
+      margin-top: 16px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    p {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #4a4a4a;
+    }
+  }
+
+  &:hover {
+    .addToCartButton {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+  }
+}

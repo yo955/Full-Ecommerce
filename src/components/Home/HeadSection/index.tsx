@@ -7,6 +7,10 @@ import CustomSwiper from "@/components/common/Swiper/Swiper";
 import CategoryCard from "@/components/common/Category/CategoryCard";
 import useGetCategory from "@/hooks/useGetCategories";
 import BestSellingProducts from "@/components/common/BestSelling/BestSellingProducts";
+import Music from "@/components/Home/HeadSection/musicAdvertise/Music";
+import Features from "./Features/Features";
+import Services from "./Services/Services";
+import UpBtn from "@/components/common/upBtn/UpBtn";
 
 const HomeSection = () => {
   const { data: Categories } = useGetCategory();
@@ -25,6 +29,13 @@ const HomeSection = () => {
       <SectionLayout title="Best Selling Products" para="This Month">
         <BestSellingProducts />
       </SectionLayout>
+      <Music />
+      <SectionLayout title="Featured" para="New Arrival">
+        <Features />
+      </SectionLayout>
+      <Services />
+
+      <UpBtn />
     </article>
   );
 };

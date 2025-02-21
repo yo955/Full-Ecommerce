@@ -1,3 +1,4 @@
+"use client";
 import { FaArrowUpLong } from "react-icons/fa6";
 import styles from "@/styles/swiper/CustomSwiper.module.scss";
 const UpBtn = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { CustomLink } from "./CustomLink";
+import { Link } from "@/i18n/routing";
 
 interface NavItem {
   href: string;
@@ -14,7 +14,7 @@ const CustomList: React.FC<ListProps> = ({ items }) => {
     <>
       {items.map((item, index: number) => (
         <li key={index} className="list-none ">
-          <CustomLink href={item.href}>{item.title}</CustomLink>
+          <Link href={item.href}>{item.title}</Link>
         </li>
       ))}
     </>

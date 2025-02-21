@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Card } from "@mui/material";
 import { Category } from "@/types/Category";
 
-const CategoryCard = ({ categoryName }: Category) => {
+const CategoryCard = ({ categoryName, icon }: Category) => {
   return (
     <Card
       sx={{
@@ -21,13 +21,8 @@ const CategoryCard = ({ categoryName }: Category) => {
       }}
     >
       <div className="flex flex-col justify-center items-center ">
-        <Image
-          src="/images/category/cat-1.png"
-          alt="icon"
-          width={50}
-          height={43}
-        />
-        <p>{categoryName}</p>
+        <Image src={icon} alt="icon" width={50} height={43} />
+        <p className="mt-2">{categoryName}</p>
       </div>
     </Card>
   );

@@ -8,7 +8,7 @@ import { RegisterParams } from "@/types/RegisterParams";
 import { Link } from "@/i18n/routing";
 import { validationSchema } from "@/validation/SignUpValidation";
 const SignUpPage = () => {
-  const { mutate } = useGetRegisterUser();
+  const { mutate, isPending } = useGetRegisterUser();
 
   const initialValues = {
     name: "",
@@ -87,9 +87,9 @@ const SignUpPage = () => {
                   <CustomButton
                     type="submit"
                     className="w-full h-14 mt-5"
-                    disabled={isSubmitting}
+                    disabled={isPending || isSubmitting}
                   >
-                    {isSubmitting ? "Creating..." : "Create"}
+                    {isPending || isSubmitting ? "Creating..." : "Create"}
                   </CustomButton>
                 </div>
                 <div>

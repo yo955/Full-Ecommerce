@@ -3,17 +3,32 @@ import Image from "next/image";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import CustomButton from "@/components/common/ui/Button";
 import { FcGoogle } from "react-icons/fc";
-import Link from "next/link";
-
+import useGetRegisterUser from "@/hooks/useGetRegisterUser";
+import * as Yup from "yup";
+import { RegisterParams } from "@/types/RegisterParams";
+import { Link } from "@/i18n/routing";
 const SignUpPage = () => {
+  const { mutate } = useGetRegisterUser();
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .min(3, "Name must be at least 3 characters")
+      .required("Name is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+  });
+
   const initialValues = {
     name: "",
     email: "",
     password: "",
   };
 
-  function submit(values) {
-    console.log(values);
+  function submit(values: RegisterParams) {
+    mutate(values);
   }
 
   return (
@@ -33,41 +48,51 @@ const SignUpPage = () => {
           <p className="text-base font-light">Enter your details below</p>
         </div>
         <div>
-          <Formik onSubmit={submit} initialValues={initialValues}>
-            <Form>
-              <Field
-                className="inputs"
-                type="text"
-                name="name"
-                placeholder="Name"
-              />
-              <ErrorMessage name="name" component="div" />
-              <Field
-                className="inputs"
-                type="email"
-                name="emailorphoneNum"
-                placeholder="Email"
-              />
-              <ErrorMessage name="emailorphoneNum" component="div" />
-              <Field
-                className="inputs"
-                type="password"
-                name="pass"
-                placeholder="Password"
-              />
-              <ErrorMessage name="pass" component="div" />
-              <div>
-                <CustomButton type="submit" className="w-[100%] h-14  mt-5 ">
-                  create
-                </CustomButton>
-              </div>
-              <div>
-                <button className="w-[100%] h-14  text-black border border-black rounded-md mt-5 flex gap-2 items-center justify-center">
-                  <FcGoogle className="text-3xl " />
-                  Sign Up with Google
-                </button>
-              </div>
-            </Form>
+          <Formik
+            onSubmit={submit}
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+          >
+            {({ isSubmitting }) => (
+              <Form>
+                <Field
+                  className="inputs"
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                />
+                <ErrorMessage name="name" component="div" />
+                <Field
+                  className="inputs"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                />
+                <ErrorMessage name="email" component="div" />
+                <Field
+                  className="inputs"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                />
+                <ErrorMessage name="password" component="div" />
+                <div>
+                  <CustomButton
+                    type="submit"
+                    className="w-full h-14 mt-5"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Creating..." : "Create"}
+                  </CustomButton>
+                </div>
+                <div>
+                  <button className="w-[100%] h-14  text-black border border-black rounded-md mt-5 flex gap-2 items-center justify-center">
+                    <FcGoogle className="text-3xl " />
+                    Sign Up with Google
+                  </button>
+                </div>
+              </Form>
+            )}
           </Formik>
         </div>
         <div className="flex gap-2 items-center justify-center mt-3">

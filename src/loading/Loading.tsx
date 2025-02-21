@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import { Loader2 } from "lucide-react";
+import styles from "@/styles/common/Loading/loading.module.scss";
 
 const Loading = () => {
   return (
-    <div>Loading...</div>
-  )
-}
+    <div className={styles.loadingContainer}>
+      <Loader2 className={styles.spinner} size={48} />
+    </div>
+  );
+};
 
-export default Loading
+export default Loading;

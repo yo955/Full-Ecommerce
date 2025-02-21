@@ -2,11 +2,13 @@ import CustomSwiper from "./Swiper";
 import CustomButton from "../ui/Button";
 import useGetProducts from "@/hooks/useGetProducts";
 import ProductItem from "@/components/common/products/ProductCard";
+import Loading from "@/loading/Loading";
 
 // import Products from "./products/page";
 
 const SwiperButton = () => {
-  const { data: products } = useGetProducts();
+  const { data: products, isLoading } = useGetProducts();
+  if (isLoading) return <Loading />;
   return (
     <div>
       {products && <CustomSwiper data={products} Card={ProductItem} />}

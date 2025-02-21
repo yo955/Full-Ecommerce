@@ -9,7 +9,7 @@ import { Link } from "@/i18n/routing";
 import { validationSchema } from "@/validation/SignUpValidation";
 const SignUpPage = () => {
   const { mutate } = useGetRegisterUser();
- 
+
   const initialValues = {
     name: "",
     email: "",
@@ -31,7 +31,7 @@ const SignUpPage = () => {
           className="w-[800px] h-[780px]"
         />
       </div>
-      <div className="h-[780px] py-24 flex flex-col justify-center gap-4">
+      <div className="h-[780px] py-24 flex flex-col justify-center gap-4 w-1/3 mx-auto">
         <div className="flex flex-col gap-6 mb-3">
           <h1 className="text-4xl font-medium">Create an account</h1>
           <p className="text-base font-light">Enter your details below</p>
@@ -44,27 +44,45 @@ const SignUpPage = () => {
           >
             {({ isSubmitting }) => (
               <Form>
-                <Field
-                  className="inputs"
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                />
-                <ErrorMessage name="name" component="div" />
-                <Field
-                  className="inputs"
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                />
-                <ErrorMessage name="email" component="div" />
-                <Field
-                  className="inputs"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                />
-                <ErrorMessage name="password" component="div" />
+                <div className="relative w-[100%]">
+                  <Field
+                    className="inputs"
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                  />
+                  <ErrorMessage
+                    className="absolute bottom-0 left-0 text-red-600"
+                    name="name"
+                    component="div"
+                  />
+                </div>
+                <div className="relative w-[100%]">
+                  <Field
+                    className="inputs"
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                  />
+                  <ErrorMessage
+                    className="absolute bottom-0 left-0 text-red-600"
+                    name="email"
+                    component="div"
+                  />
+                </div>
+                <div className="relative w-[100%]">
+                  <Field
+                    className="inputs"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                  <ErrorMessage
+                    className="absolute bottom-0 left-0 text-red-600"
+                    name="password"
+                    component="div"
+                  />
+                </div>
                 <div>
                   <CustomButton
                     type="submit"
@@ -85,7 +103,7 @@ const SignUpPage = () => {
           </Formik>
         </div>
         <div className="flex gap-2 items-center justify-center mt-3">
-          <p className="text-[14px] ">Already have an acound ? </p>
+          <p className="text-[14px] ">Already have an account ? </p>
           <Link className="text-[14px] border-b border-black " href="/login">
             Login
           </Link>

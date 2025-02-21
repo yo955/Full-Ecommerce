@@ -11,9 +11,10 @@ import Music from "@/components/Home/HeadSection/musicAdvertise/Music";
 import Features from "./Features/Features";
 import Services from "./Services/Services";
 import UpBtn from "@/components/common/upBtn/UpBtn";
+import Loading from "@/loading/Loading";
 
 const HomeSection = () => {
-  const { data: Categories } = useGetCategory();
+  const { data: Categories, isLoading } = useGetCategory();
   return (
     <article>
       <div className="home-section">
@@ -24,7 +25,11 @@ const HomeSection = () => {
         <SwiperButton />
       </SectionLayout>
       <SectionLayout title="Browse By Category" para="Categories">
-        {Categories && <CustomSwiper data={Categories} Card={CategoryCard} />}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          Categories && <CustomSwiper data={Categories} Card={CategoryCard} />
+        )}
       </SectionLayout>
       <SectionLayout title="Best Selling Products" para="This Month">
         <BestSellingProducts />
@@ -34,7 +39,6 @@ const HomeSection = () => {
         <Features />
       </SectionLayout>
       <Services />
-
       <UpBtn />
     </article>
   );

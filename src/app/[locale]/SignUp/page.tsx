@@ -4,23 +4,12 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import CustomButton from "@/components/common/ui/Button";
 import { FcGoogle } from "react-icons/fc";
 import useGetRegisterUser from "@/hooks/useGetRegisterUser";
-import * as Yup from "yup";
 import { RegisterParams } from "@/types/RegisterParams";
 import { Link } from "@/i18n/routing";
+import { validationSchema } from "@/validation/SignUpValidation";
 const SignUpPage = () => {
   const { mutate } = useGetRegisterUser();
-  const validationSchema = Yup.object({
-    name: Yup.string()
-      .min(3, "Name must be at least 3 characters")
-      .required("Name is required"),
-    email: Yup.string()
-      .email("Invalid email address")
-      .required("Email is required"),
-    password: Yup.string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Password is required"),
-  });
-
+ 
   const initialValues = {
     name: "",
     email: "",

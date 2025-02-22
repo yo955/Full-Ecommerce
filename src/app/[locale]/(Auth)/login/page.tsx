@@ -1,6 +1,5 @@
 import { CustomAuthPage } from "@/components/common/CustomAuthPage/CustomAuthPage";
-
-// import CustomAuthPage from "@/components/common/CustomAuthPage/CustomAuthPage";
+import Toastify from "@/components/common/toastify/Toastify";
 import { formDataProp } from "@/types/formData";
 
 const fieldData: formDataProp[] = [
@@ -24,12 +23,15 @@ const initialValues = {
 };
 const LoginPage = () => {
   return (
-    <CustomAuthPage
-      title="Log in to Exclusive"
-      form={fieldData}
-      initialValues={initialValues}
-      isLogin={true}
-    />
+    <>
+      <CustomAuthPage
+        title="Log in to Exclusive"
+        form={fieldData}
+        initialValues={initialValues}
+        isLogin={true}
+      />
+      <Toastify />
+    </>
   );
 };
 

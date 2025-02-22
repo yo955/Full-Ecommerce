@@ -19,7 +19,7 @@ export interface formDataProp {
 export type formDataArray = {
   fieldData: formDataProp[];
   initialValues: initialValuesProps;
-  islogin:boolean;
+  isLogin:boolean;
   // authFunc: () =>  UseMutationResult<productType, Error, RegisterParams, unknown>;
 
 };

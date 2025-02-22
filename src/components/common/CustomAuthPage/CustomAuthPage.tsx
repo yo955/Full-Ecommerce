@@ -41,7 +41,7 @@ export const CustomAuthPage = ({
           <p className="text-base font-light">Enter your details below</p>
         </div>
         <div>
-          <CustomForm fieldData={form} initialValues={initialValues} islogin={isLogin} />
+          <CustomForm fieldData={form} initialValues={initialValues} isLogin={isLogin} />
         </div>
         {isLogin ? (
           <div className="flex gap-2 items-center justify-center mt-3">

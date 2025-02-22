@@ -1,115 +1,43 @@
 "use client";
-import Image from "next/image";
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import CustomButton from "@/components/common/ui/Button";
-import { FcGoogle } from "react-icons/fc";
-import useGetRegisterUser from "@/hooks/useGetRegisterUser";
-import { RegisterParams } from "@/types/RegisterParams";
-import { Link } from "@/i18n/routing";
-import { validationSchema } from "@/validation/SignUpValidation";
+import { CustomAuthPage } from "@/components/common/CustomAuthPage/CustomAuthPage";
+
+import { formDataProp } from "@/types/formData";
+
+const fieldData: formDataProp[] = [
+  {
+    className: "inputs",
+    type: "text",
+    name: "name",
+    placeholder: "Name",
+  },
+  {
+    className: "inputs",
+    type: "email",
+    name: "email",
+    placeholder: "Email",
+  },
+  {
+    className: "inputs",
+    type: "password",
+    name: "password",
+    placeholder: "Password",
+  },
+];
+
+const initialValues = {
+  name: "",
+  email: "",
+  password: "",
+};
+
 const SignUpPage = () => {
-  const { mutate, isPending } = useGetRegisterUser();
-
-  const initialValues = {
-    name: "",
-    email: "",
-    password: "",
-  };
-
-  function submit(values: RegisterParams) {
-    mutate(values);
-  }
-
   return (
-    <div className="flex justify-between items-center pt-10 pb-24 pr-24 ">
-      <div className="flex items-center ">
-        <Image
-          src="/images/login.png"
-          alt="login img"
-          width={1000}
-          height={420}
-          className="w-[800px] h-[780px]"
-        />
-      </div>
-      <div className="h-[780px] py-24 flex flex-col justify-center gap-4 w-1/3 mx-auto">
-        <div className="flex flex-col gap-6 mb-3">
-          <h1 className="text-4xl font-medium">Create an account</h1>
-          <p className="text-base font-light">Enter your details below</p>
-        </div>
-        <div>
-          <Formik
-            onSubmit={submit}
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-          >
-            {({ isSubmitting }) => (
-              <Form>
-                <div className="relative w-[100%]">
-                  <Field
-                    className="inputs"
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                  />
-                  <ErrorMessage
-                    className="absolute bottom-0 left-0 text-red-600"
-                    name="name"
-                    component="div"
-                  />
-                </div>
-                <div className="relative w-[100%]">
-                  <Field
-                    className="inputs"
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                  />
-                  <ErrorMessage
-                    className="absolute bottom-0 left-0 text-red-600"
-                    name="email"
-                    component="div"
-                  />
-                </div>
-                <div className="relative w-[100%]">
-                  <Field
-                    className="inputs"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                  />
-                  <ErrorMessage
-                    className="absolute bottom-0 left-0 text-red-600"
-                    name="password"
-                    component="div"
-                  />
-                </div>
-                <div>
-                  <CustomButton
-                    type="submit"
-                    className="w-full h-14 mt-5"
-                    disabled={isPending || isSubmitting}
-                  >
-                    {isPending || isSubmitting ? "Creating..." : "Create"}
-                  </CustomButton>
-                </div>
-                <div>
-                  <button className="w-[100%] h-14  text-black border border-black rounded-md mt-5 flex gap-2 items-center justify-center">
-                    <FcGoogle className="text-3xl " />
-                    Sign Up with Google
-                  </button>
-                </div>
-              </Form>
-            )}
-          </Formik>
-        </div>
-        <div className="flex gap-2 items-center justify-center mt-3">
-          <p className="text-[14px] ">Already have an account ? </p>
-          <Link className="text-[14px] border-b border-black " href="/login">
-            Login
-          </Link>
-        </div>
-      </div>
-    </div>
+    <CustomAuthPage
+      title="Create an account"
+      form={fieldData}
+      initialValues={initialValues}
+      isLogin={false}
+    />
   );
 };
 

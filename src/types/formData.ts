@@ -3,7 +3,7 @@
 // import { RegisterParams } from "./RegisterParams";
 
 interface initialValuesProps {
-  name: string;
+  name?: string;
   email: string;
   password: string;
 }

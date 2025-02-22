@@ -7,13 +7,29 @@ import { validationSchema } from "@/validation/SignUpValidation";
 import CustomField from "./CustomField";
 import CustomErrorMsg from "./CustomErrorMsg";
 import { formDataArray } from "@/types/formData";
+import useGetLoginUser from "@/hooks/useGetLoginUser";
 
 const CustomForm = ({ fieldData, initialValues, islogin }: formDataArray) => {
-  // const { mutate, isPending } =useGetRegisterUser() ;
-  const h = islogin ? useGetRegisterUser : useGetRegisterUser;
-  const { mutate, isPending } = h();
+  console.log(fieldData);
+  console.log(initialValues);
+  console.log(islogin);
+  const CheckLogin = islogin ? useGetLoginUser : useGetRegisterUser;
+  const { mutate, isPending } = CheckLogin();
+  // const { mutate: loginMutate, isPending: isLoginPending } = useGetLoginUser();
+  // const { mutate: registerMutate, isPending: isRegisterPending } =
+  //   useGetRegisterUser();
+
+  // const mutate = islogin ? loginMutate : registerMutate;
+  // const isPending = islogin ? isLoginPending : isRegisterPending;
   function submit(values: RegisterParams) {
-    mutate(values);
+    // console.log(values);
+    // mutate(values);
+    const filteredValues = islogin
+      ? { email: values.email, password: values.password } // Remove `name` for login
+      : values;
+
+    console.log("Submitting Values:", filteredValues);
+    mutate(filteredValues);
   }
 
   return (
@@ -43,13 +59,23 @@ const CustomForm = ({ fieldData, initialValues, islogin }: formDataArray) => {
             </div>
 
             <div>
-              <CustomButton
-                type="submit"
-                className="w-full h-14 mt-5"
-                disabled={isPending || isSubmitting}
-              >
-                {isPending || isSubmitting ? "Creating..." : "Create"}
-              </CustomButton>
+              {islogin ? (
+                <CustomButton
+                  type="submit"
+                  className="w-full h-14 mt-5"
+                  disabled={isPending || isSubmitting}
+                >
+                  {isPending || isSubmitting ? "Logining..." : "Login"}
+                </CustomButton>
+              ) : (
+                <CustomButton
+                  type="submit"
+                  className="w-full h-14 mt-5"
+                  disabled={isPending || isSubmitting}
+                >
+                  {isPending || isSubmitting ? "Creating..." : "Create"}
+                </CustomButton>
+              )}
             </div>
             <div>
               <button className="w-[100%] h-14  text-black border border-black rounded-md mt-5 flex gap-2 items-center justify-center">

@@ -20,6 +20,9 @@ export default function CustomButton({
       className={`!bg-button-danger-red   ${className}`}
       type={type}
       disabled={disabled}
+      onClick={() => {
+        return console.log("clicked");
+      }}
     >
       {children}
     </Button>

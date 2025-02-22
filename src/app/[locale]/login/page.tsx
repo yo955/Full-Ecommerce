@@ -1,5 +1,6 @@
 import { CustomAuthPage } from "@/components/common/CustomAuthPage/CustomAuthPage";
 
+// import CustomAuthPage from "@/components/common/CustomAuthPage/CustomAuthPage";
 import { formDataProp } from "@/types/formData";
 import React from "react";
 
@@ -20,20 +21,19 @@ const LoginPage = () => {
   ];
 
   const initialValues = {
-    name: "",
     email: "",
     password: "",
   };
 
   return (
-    <div>
+
       <CustomAuthPage
         title="Log in to Exclusive"
         form={fieldData}
         initialValues={initialValues}
         isLogin={true}
       />
-    </div>
+
   );
 };
 

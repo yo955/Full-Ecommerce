@@ -13,12 +13,12 @@ import { LoginValidation } from "@/validation/LoginValidation";
 
 const CustomForm = ({ fieldData, initialValues, isLogin }: formDataArray) => {
   const CheckAuthFN = isLogin ? useGetLoginUser : useGetRegisterUser;
-  const { mutate, isPending } = CheckAuthFN();
+  const { mutate, isPending ,hasError } = CheckAuthFN();
 
   const handleSubmit = (values: RegisterParams | LoginParams) => {
     mutate(values);
   };
-  
+
   return (
     <div>
       <Formik
@@ -48,9 +48,9 @@ const CustomForm = ({ fieldData, initialValues, isLogin }: formDataArray) => {
                 className={`${
                   isLogin ? "login-btn" : "register-btn"
                 } w-full h-14 mt-5`}
-                disabled={isPending || isSubmitting}
+                disabled={isPending || isSubmitting && !hasError }
               >
-                {isPending || isSubmitting
+                {isPending || isSubmitting && !hasError
                   ? isLogin
                     ? "Logging in..."
                     : "Creating..."

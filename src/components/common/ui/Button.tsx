@@ -5,6 +5,7 @@ interface ButtonProps {
   className?: string;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
+
 }
 
 export default function CustomButton({
@@ -12,6 +13,7 @@ export default function CustomButton({
   className,
   type = "button",
   disabled = false,
+
 }: ButtonProps) {
   return (
     <Button
@@ -20,6 +22,7 @@ export default function CustomButton({
       className={`!bg-button-danger-red   ${className}`}
       type={type}
       disabled={disabled}
+ 
       onClick={() => {
         return console.log("clicked");
       }}

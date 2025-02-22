@@ -1,4 +1,5 @@
 "use client";
+// import CustomAuthPage from "@/components/common/CustomAuthPage/CustomAuthPage";
 import { CustomAuthPage } from "@/components/common/CustomAuthPage/CustomAuthPage";
 
 import { formDataProp } from "@/types/formData";

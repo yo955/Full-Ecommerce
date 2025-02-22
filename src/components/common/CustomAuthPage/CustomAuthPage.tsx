@@ -3,20 +3,16 @@ import CustomForm from "@/components/common/Formik/CustomForm";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { formDataProp } from "@/types/formData";
-// import { RegisterParams } from "@/types/RegisterParams";
-// import { UseMutationResult } from "@tanstack/react-query";
-// import { productType } from "@/types/Product";
-
 
 interface CustomAuthPageProps {
   title: string;
   isLogin: boolean;
   form: formDataProp[];
   initialValues: initialValuesProps;
-//   authFunc: () =>  UseMutationResult<productType, Error, RegisterParams, unknown>
+
 }
 interface initialValuesProps {
-  name: string;
+  name?: string;
   email: string;
   password: string;
 }
@@ -66,3 +62,5 @@ export const CustomAuthPage = ({
     </div>
   );
 };
+
+

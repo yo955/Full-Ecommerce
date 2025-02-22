@@ -1,8 +1,5 @@
 import * as Yup from "yup";
-export const RegisterValidation = Yup.object({
-  name: Yup.string()
-    .min(3, "Name must be at least 3 characters")
-    .required("Name is required"),
+export const LoginValidation = Yup.object({
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),

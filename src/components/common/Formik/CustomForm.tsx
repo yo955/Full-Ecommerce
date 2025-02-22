@@ -3,37 +3,28 @@ import CustomButton from "@/components/common/ui/Button";
 import { FcGoogle } from "react-icons/fc";
 import useGetRegisterUser from "@/hooks/useGetRegisterUser";
 import useGetLoginUser from "@/hooks/useGetLoginUser";
-import { validationSchema } from "@/validation/SignUpValidation";
+import { RegisterValidation } from "@/validation/SignUpValidation";
 import CustomField from "./CustomField";
 import CustomErrorMsg from "./CustomErrorMsg";
 import { formDataArray } from "@/types/formData";
 import { RegisterParams } from "@/types/RegisterParams";
 import { LoginParams } from "@/types/LoginParams";
+import { LoginValidation } from "@/validation/LoginValidation";
 
-const CustomForm = ({
-  fieldData,
-  initialValues,
-  isLogin,
-}: formDataArray) => {
-  const loginMutation = useGetLoginUser();
-  const registerMutation = useGetRegisterUser();
-
-  const { mutate, isPending } = isLogin ? loginMutation : registerMutation;
+const CustomForm = ({ fieldData, initialValues, isLogin }: formDataArray) => {
+  const CheckAuthFN = isLogin ? useGetLoginUser : useGetRegisterUser;
+  const { mutate, isPending } = CheckAuthFN();
 
   const handleSubmit = (values: RegisterParams | LoginParams) => {
-    console.log("login");
-    const filteredValues = isLogin
-      ? { email: values.email, password: values.password }
-      : values;
-    mutate(filteredValues);
+    mutate(values);
   };
-
+  
   return (
     <div>
       <Formik
         onSubmit={handleSubmit}
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        validationSchema={isLogin ? LoginValidation : RegisterValidation}
       >
         {({ isSubmitting }) => (
           <Form>

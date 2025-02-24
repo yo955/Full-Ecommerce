@@ -7,11 +7,11 @@ import CustomSwiper from "@/components/common/Swiper/Swiper";
 import CategoryCard from "@/components/common/Category/CategoryCard";
 import useGetCategory from "@/hooks/useGetCategories";
 import BestSellingProducts from "@/components/common/BestSelling/BestSellingProducts";
-import Music from "@/components/Home/HeadSection/musicAdvertise/Music";
 import Features from "./Features/Features";
 import Services from "./Services/Services";
-import UpBtn from "@/components/common/upBtn/UpBtn";
 import Loading from "@/loading/Loading";
+import UpBtn from "../common/ui/UpBtn";
+import Music from "./musicAdvertise/Music";
 
 const HomeSection = () => {
   const { data: Categories, isLoading } = useGetCategory();

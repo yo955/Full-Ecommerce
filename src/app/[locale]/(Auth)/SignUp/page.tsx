@@ -1,6 +1,7 @@
 "use client";
-// import CustomAuthPage from "@/components/common/CustomAuthPage/CustomAuthPage";
+
 import { CustomAuthPage } from "@/components/common/CustomAuthPage/CustomAuthPage";
+import Toastify from "@/components/common/toastify/Toastify";
 
 import { formDataProp } from "@/types/formData";
 
@@ -33,12 +34,15 @@ const initialValues = {
 
 const SignUpPage = () => {
   return (
-    <CustomAuthPage
-      title="Create an account"
-      form={fieldData}
-      initialValues={initialValues}
-      isLogin={false}
-    />
+    <>
+      <CustomAuthPage
+        title="Create an account"
+        form={fieldData}
+        initialValues={initialValues}
+        isLogin={false}
+      />
+      <Toastify />
+    </>
   );
 };
 

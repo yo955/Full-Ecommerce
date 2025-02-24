@@ -21,7 +21,7 @@ const CategoryCard = ({ categoryName, icon }: Category) => {
       }}
     >
       <div className="flex flex-col justify-center items-center ">
-        <Image src={icon} alt="icon" width={50} height={43} />
+        <Image src={icon} alt="icon" width={50} height={43}  className="object-contain" />
         <p className="mt-2">{categoryName}</p>
       </div>
     </Card>

@@ -30,9 +30,9 @@ export const CustomAuthPage = ({
         <Image
           src="/images/login.png"
           alt="login img"
-          width={1000}
-          height={420}
-          className="w-[800px] h-[780px]"
+          width={800}
+          height={780}
+          className="object-contain"
         />
       </div>
       <div className="h-[780px] py-24 flex flex-col justify-center gap-4 w-1/3 mx-auto">

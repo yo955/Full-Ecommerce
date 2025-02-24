@@ -22,6 +22,7 @@ const CustomImg: React.FC<ImageProps> = ({
         width={width}
         height={height}
         className={className}
+        priority
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import axiosClient from "@/api/axiosInstance";
+import axiosClient from "@/utils/api/axiosInstance";
 import { productType } from "@/types/Product";
 
 const fetchProducts = async ({

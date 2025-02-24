@@ -17,6 +17,7 @@ const ProductCard = (Product: Product) => {
             strokeWidth="1.5"
             stroke="currentColor"
             className="size-4"
+            
           >
             <path
               strokeLinecap="round"
@@ -32,6 +33,7 @@ const ProductCard = (Product: Product) => {
             alt="product-img"
             fill
             className={styles.image}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
         <form>

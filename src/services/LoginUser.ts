@@ -1,4 +1,4 @@
-import axiosClient from "@/api/axiosInstance";
+import axiosClient from "@/utils/api/axiosInstance";
 import { LoginParams } from "@/types/LoginParams";
 
 export default async function LoginUser(userData: LoginParams) {

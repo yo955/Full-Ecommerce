@@ -9,9 +9,9 @@ const Features = () => {
           <Image
             src="/images/features/playstation.png"
             alt="playstaion"
-            width={1000}
-            height={1000}
-            className="w-[510px] h-[510px] "
+            width={510}
+            height={510}
+             className="object-contain"
           />
         </div>
         <div className="text-white w-[242px] h-[82px] z-30 absolute bottom-14 left-8">
@@ -30,9 +30,9 @@ const Features = () => {
             <Image
               src="/images/features/woman.png"
               alt="woman"
-              width={1000}
-              height={1000}
-              className=" w-[432px] h-[280px]"
+              width={432}
+              height={280}
+              className="object-contain"
             />
           </div>
           <div className="text-white w-[262px] h-[82px] z-30 absolute bottom-16 left-8">
@@ -51,9 +51,9 @@ const Features = () => {
               <Image
                 src="/images/features/sub.png"
                 alt="playstaion"
-                width={1000}
-                height={1000}
-                className="w-[210px] h-[222px]"
+                width={210}
+                height={222}
+                className="object-contain"
               />
             </div>
             <div className="text-white w-[242px] h-[82px] z-30 absolute bottom-11 left-8">
@@ -71,9 +71,9 @@ const Features = () => {
               <Image
                 src="/images/features/perfum.png"
                 alt="playstaion"
-                width={1000}
-                height={1000}
-                className="w-[210px] h-[222px]"
+                width={210}
+                height={222}
+                 className="object-contain"
               />
             </div>
             <div className="text-white w-[242px] h-[82px] z-30 absolute bottom-11 left-8">

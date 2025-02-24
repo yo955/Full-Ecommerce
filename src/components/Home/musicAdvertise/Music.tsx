@@ -30,6 +30,7 @@ const Music = () => {
           alt="Music category"
           width={1000}
           height={420}
+          className="object-contain"
         />
       </div>
     </div>

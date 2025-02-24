@@ -173,24 +173,24 @@ const Footer = () => {
                     <Image
                       src="/images/Qrcode 1.png"
                       alt="playstaion"
-                      width={1000}
-                      height={1000}
-                      className="w-[80px] h-[70px]"
+                      width={80}
+                      height={70}
+                      className="object-contain"
                     />
                     <div className="flex flex-col gap-4">
                       <Image
                         src="/images/download-appstore.png"
                         alt="playstaion"
-                        width={1000}
-                        height={1000}
-                        className="w-[110px] h-[30px]"
+                        width={110}
+                        height={30}
+                         className="object-contain"
                       />
                       <Image
                         src="/images/png-transparent-google-play-store-logo-google-play-app-store-android-wallets-text-label-logo.png"
                         alt="playstaion"
-                        width={1000}
-                        height={1000}
-                        className="w-[110px] h-[30px]"
+                        width={110}
+                        height={30}
+                         className="object-contain"
                       />
                     </div>
                   </div>

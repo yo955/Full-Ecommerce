@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from "axios";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
 

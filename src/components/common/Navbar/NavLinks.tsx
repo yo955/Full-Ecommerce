@@ -11,7 +11,7 @@ const navItems = [
 ];
 
 const NavLinks = () => {
-  const { user, logout } = useAuthStore();
+  const { user } = useAuthStore();
   return user ? (
     `hello ${user.name}`
   ) : (

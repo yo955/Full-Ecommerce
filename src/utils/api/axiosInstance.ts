@@ -10,14 +10,16 @@ const axiosInstance: AxiosInstance = axios.create({
     Accept: "application/json",
   },
 });
-//  أي طلب هيستخدم التوكن تلقائيًا من الكوكيز Interceptor،
-axiosInstance.interceptors.request.use((config) => {
-  const token = Cookies.get("token");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
+// الباك اند تولى المسئولية دى
 
-  return config;
-});
+//  أي طلب هيستخدم التوكن تلقائيًا من الكوكيز Interceptor،
+// axiosInstance.interceptors.request.use((config) => {
+//   const token = Cookies.get("token");
+//   if (token) {
+//     config.headers.Authorization = `Bearer ${token}`;
+//   }
+
+//   return config;
+// });
 
 export default axiosInstance;

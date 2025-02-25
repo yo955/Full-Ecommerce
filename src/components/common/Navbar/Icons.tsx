@@ -6,6 +6,7 @@ const Icons = () => {
     <div className="flex justify-around w-full items-center">
       <CiHeart className="text-2xl" />
       <RiShoppingCart2Line className="text-2xl" />
+      <h1></h1>
     </div>
   );
 };

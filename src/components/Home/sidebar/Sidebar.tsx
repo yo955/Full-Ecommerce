@@ -1,4 +1,4 @@
-import CustomList from "@/components/common/ui/CustomList";
+import { Link } from "@/i18n/routing";
 import React from "react";
 
 const Items = [
@@ -15,7 +15,11 @@ const Items = [
 const Sidebar = () => {
   return (
     <ul className="flex flex-col w-[217px] h-[344px] gap-4 pr-20 border-r border-black">
-      <CustomList items={Items} />
+      {Items.map((item) => (
+        <li key={item.title} className="list-none">
+          <Link href={item.href}>{item.title}</Link>
+        </li>
+      ))}
     </ul>
   );
 };

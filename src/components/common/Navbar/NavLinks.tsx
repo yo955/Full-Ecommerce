@@ -1,16 +1,20 @@
-import React from "react";
-// import { CustomLink } from "../ui";
+"use client";
 import CustomList from "../ui/CustomList";
+import { PageLinks } from "@/constant/enum";
+import { useAuthStore } from "@/store/useAuthStore";
 
 const navItems = [
-  { href: "/", title: "Home" },
-  { href: "/contact", title: "Contact" },
-  { href: "/about", title: "About" },
-  { href: "/SignUp", title: "Sign Up" },
+  { href: PageLinks.HOME, title: "Home" },
+  { href: PageLinks.CONTACT, title: "Contact" },
+  { href: PageLinks.ABOUT, title: "About" },
+  { href: PageLinks.SIGN_UP, title: "Sign Up" },
 ];
 
 const NavLinks = () => {
-  return (
+  const { user, logout } = useAuthStore();
+  return user ? (
+    `hello ${user.name}`
+  ) : (
     <ul className="inline relative lg:flex gap-10">
       <CustomList items={navItems} />
     </ul>

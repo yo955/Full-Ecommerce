@@ -1,18 +1,16 @@
-import axiosClient from "@/utils/api/axiosInstance";
+import axiosInstance from "@/utils/api/axiosInstance";
 import { LoginParams } from "@/types/LoginParams";
 
 export default async function LoginUser(userData: LoginParams) {
-  const response = await axiosClient
-    .post("/users/login", userData )
+  const response = await axiosInstance
+    .post("/users/login", userData)
     .then((res) => {
-      console.log(res.data);
-      return res.data;
+      const userData = res.data;
+      console.log(userData);
+      return userData;
     })
     .catch((err) => {
       throw err;
     });
-
   return response;
 }
-
-

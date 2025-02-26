@@ -3,13 +3,13 @@ import CustomButton from "@/components/common/ui/Button";
 import { FcGoogle } from "react-icons/fc";
 import useGetRegisterUser from "@/hooks/useGetRegisterUser";
 import useGetLoginUser from "@/hooks/useGetLoginUser";
-import { RegisterValidation } from "@/validation/SignUpValidation";
+import { RegisterValidation } from "@/utils/validation/SignUpValidation";
 import CustomField from "./CustomField";
 import CustomErrorMsg from "./CustomErrorMsg";
 import { formDataArray } from "@/types/formData";
 import { RegisterParams } from "@/types/RegisterParams";
 import { LoginParams } from "@/types/LoginParams";
-import { LoginValidation } from "@/validation/LoginValidation";
+import { LoginValidation } from "@/utils/validation/LoginValidation";
 
 const CustomForm = ({ fieldData, initialValues, isLogin }: formDataArray) => {
   const CheckAuthFN = isLogin ? useGetLoginUser : useGetRegisterUser;

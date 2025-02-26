@@ -36,7 +36,7 @@ export default async function RootLayout({
         <Navbar />
         <QueryProvider>
           <NextIntlClientProvider messages={messages}>
-            <ReactQueryDevtools initialIsOpen={true} />
+            <ReactQueryDevtools initialIsOpen={false} />
             <main>{children}</main>
           </NextIntlClientProvider>
         </QueryProvider>

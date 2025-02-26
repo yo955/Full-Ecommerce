@@ -1,5 +1,5 @@
 import LoginUser from "@/services/LoginUser";
-import { useAuthStore } from "@/store/useAuthStore";
+import { useAuthStore } from "@/stores/auth/useAuthStore";
 import { LoginParams } from "@/types/LoginParams";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";

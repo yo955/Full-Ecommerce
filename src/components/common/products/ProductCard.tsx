@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import Rate from "./Rate";
-import { Product } from "@/types/Product";
 import styles from "@/styles/ProductItem/ProductItem.module.scss"; // Import the SCSS module
+import { useCartStore } from "@/stores/cart/cartStore";
+import { CartItem } from "@/types/CartTypes";
 
-const ProductCard = (Product: Product) => {
+const ProductCard = (Product: CartItem) => {
+  const addToCart = useCartStore((state) => state.addToCart);
   return (
     <div className={styles.productItem}>
       <Link href="#">
@@ -17,7 +19,6 @@ const ProductCard = (Product: Product) => {
             strokeWidth="1.5"
             stroke="currentColor"
             className="size-4"
-            
           >
             <path
               strokeLinecap="round"
@@ -37,7 +38,12 @@ const ProductCard = (Product: Product) => {
           />
         </div>
         <form>
-          <button className={styles.addToCartButton}>Add to Cart</button>
+          <button
+            onClick={() => addToCart(Product)}
+            className={styles.addToCartButton}
+          >
+            Add to Cart
+          </button>
         </form>
         <div className={styles.productDetails}>
           <h3>{Product.Name}</h3>

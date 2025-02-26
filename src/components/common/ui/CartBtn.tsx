@@ -3,6 +3,7 @@ import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import Badge, { badgeClasses } from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { Link } from "@/i18n/routing";
 
 const CartBadge = styled(Badge)`
   & .${badgeClasses.badge} {
@@ -14,11 +15,14 @@ const CartBadge = styled(Badge)`
 export function CartBtn({
   count = 1,
   icon = <ShoppingCartIcon fontSize="small" />,
+  href = "/",
 }) {
   return (
-    <IconButton>
-      {icon}
-      <CartBadge badgeContent={count} color="error" overlap="circular" />
-    </IconButton>
+    <Link href={href}>
+      <IconButton>
+        {icon}
+        <CartBadge badgeContent={count} color="error" overlap="circular" />
+      </IconButton>
+    </Link>
   );
 }

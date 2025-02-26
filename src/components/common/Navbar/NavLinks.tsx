@@ -1,7 +1,7 @@
 "use client";
 import { PageLinks } from "@/constant/enum";
 import { Link } from "@/i18n/routing";
-import { useAuthStore } from "@/store/useAuthStore";
+import { useAuthStore } from "@/stores/auth/useAuthStore";
 
 const NavLinks = () => {
   const { user, logout } = useAuthStore();

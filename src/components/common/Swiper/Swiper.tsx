@@ -69,7 +69,7 @@ const CustomSwiper = <T,>({
         spaceBetween={50}
         slidesPerView={3}
         pagination={ShowPagination ? { clickable: true } : false}
-        autoplay={{ delay: 1500, disableOnInteraction: false }}
+        // autoplay={{ delay: 1500, disableOnInteraction: false }}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,

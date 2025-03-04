@@ -11,6 +11,8 @@ const Items = [
   { title: "Baby’s & Toys", href: "/babies-toys" },
   { title: "Groceries & Pets", href: "/groceries-pets" },
   { title: "Health & Beauty", href: "/health-beauty" },
+  //fake link
+  { title: "My Account", href: "/account" },
 ];
 const Sidebar = () => {
   return (

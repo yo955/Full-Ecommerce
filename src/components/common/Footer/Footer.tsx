@@ -100,8 +100,11 @@ const Footer = () => {
 
                 <ul className="mt-6 space-y-4 text-sm">
                   <li>
-                    <Link href="#" className=" transition hover:opacity-75">
-                      My Accoun
+                    <Link
+                      href="/account"
+                      className=" transition hover:opacity-75"
+                    >
+                      My Account
                     </Link>
                   </li>
 
@@ -183,14 +186,14 @@ const Footer = () => {
                         alt="playstaion"
                         width={110}
                         height={30}
-                         className="object-contain"
+                        className="object-contain"
                       />
                       <Image
                         src="/images/png-transparent-google-play-store-logo-google-play-app-store-android-wallets-text-label-logo.png"
                         alt="playstaion"
                         width={110}
                         height={30}
-                         className="object-contain"
+                        className="object-contain"
                       />
                     </div>
                   </div>

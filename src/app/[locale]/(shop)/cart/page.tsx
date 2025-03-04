@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import styles from "@/styles/cart/Cart.module.scss";
 import CartRow from "./CartRow";
 import CartHeadRow from "./CartHeadRow";
@@ -7,6 +6,8 @@ import CartBtns from "./CartBtns";
 import { Field, Form, Formik } from "formik";
 import CustomButton from "@/components/common/ui/Button";
 import CartTotal from "./CartTotal";
+import PathLinks from "@/components/common/ui/PathLinks";
+
 
 const CartPage = () => {
   const initialValues = {
@@ -18,11 +19,7 @@ const CartPage = () => {
   return (
     <div className="my-28 mx-auto w-[80%] ">
       <div className="flex gap-2 m-0 pb-10 text-slate-400">
-        <Link href="/">Home</Link>
-        <p>/</p>
-        <Link className="text-black font-medium" href="/cart">
-          Cart
-        </Link>
+        <PathLinks titles={["Cart"]} />
       </div>
       <div>
         <table className={styles.catTable}>

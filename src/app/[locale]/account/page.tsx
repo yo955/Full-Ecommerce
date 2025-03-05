@@ -2,6 +2,7 @@ import PathLinks from "@/components/common/ui/PathLinks";
 // import Link from "next/link";
 import React from "react";
 import SideBarUl from "./SideBarUl";
+import AccountBody from "./AccountBody";
 
 interface MenuItem {
   title: string;
@@ -19,12 +20,11 @@ const uls: MenuItem[] = [
   },
   {
     title: "My WishList",
-    
   },
 ];
 const Accountpage = () => {
   return (
-    <div className="my-28 mx-auto w-[80%]">
+    <div className="my-28 mx-auto w-[90%]">
       <div className=" flex justify-between ">
         <PathLinks titles={["My Account"]} />
         <h5 className="text-xs font-extralight">
@@ -37,8 +37,8 @@ const Accountpage = () => {
             <SideBarUl key={index} title={i.title} theLink={i.lis} />
           ))}
         </div>
-        <div>
-          <h1>section</h1>
+        <div className="w-[60%] mx-auto">
+          <AccountBody />
         </div>
       </div>
     </div>

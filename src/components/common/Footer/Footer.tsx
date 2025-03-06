@@ -1,20 +1,12 @@
-// import { Input, Button } from "@mui/material";
+"use client";
 import { Input, Button } from "@mui/joy";
-import Link from "next/link";
-import * as React from "react";
 import { IoMdSend } from "react-icons/io";
 import Image from "next/image";
+import { Link } from "@/i18n/routing";
 
 const Footer = () => {
   return (
     <div>
-      {/*
-    Heads up! 👋
-  
-    Plugins:
-      - @tailwindcss/forms
-  */}
-
       <footer className="bg-black text-white">
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="lg:flex lg:items-start lg:gap-8">

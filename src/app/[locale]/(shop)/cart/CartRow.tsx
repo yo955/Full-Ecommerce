@@ -1,78 +1,82 @@
 import { useState } from "react";
-import Image from "next/image";
 import styles from "@/styles/cart/Cart.module.scss";
-// interface cartColumnProp {
-//   children: React.ReactNode;
-//   className?: string;
-// }
-interface tableDataTypes {
+import { IoIosArrowUp,IoIosArrowDown } from "react-icons/io";
+
+interface TableDataTypes {
   title: string;
   price: number;
-  quantity: string;
-  subbtotal: number;
+  quantity: number;
+  subtotal: number;
 }
-const tableData: tableDataTypes[] = [
+
+const initialTableData: TableDataTypes[] = [
   {
     title: "product1",
     price: 600,
-    quantity: "counter",
-    subbtotal: 1200,
+    quantity: 1,
+    subtotal: 1200,
   },
   {
     title: "product2",
     price: 600,
-    quantity: "counter",
-    subbtotal: 1200,
+    quantity: 1,
+    subtotal: 1200,
   },
 ];
+
 const CartColumn = () => {
-  const [quantity, setQuantity] = useState(1);
-  function increaseQuantity() {
-    setQuantity(quantity + 1);
+  const [tableData, setTableData] = useState<TableDataTypes[]>(initialTableData);
+
+  function increaseQuantity(index: number) {
+    setTableData((prevData) => {
+      const updatedData = [...prevData];
+      const newItem = {...updatedData[index] };
+
+      newItem.quantity += 1;
+      newItem.subtotal = newItem.price * newItem.quantity;
+
+      updatedData[index] = newItem;
+
+      return updatedData;
+    });
   }
-  function decreaseQuantity() {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-    } else {
-      setQuantity(0);
-    }
+
+  function decreaseQuantity(index: number) {
+    setTableData((prevData) => {
+      const updatedData = [...prevData];
+      const newItem = {...updatedData[index]};
+
+      if (newItem.quantity > 0) {
+        newItem.quantity -= 1;
+        newItem.subtotal = newItem.price * newItem.quantity;
+      }
+      updatedData[index] = newItem;
+      return updatedData;
+    });
   }
+
   return (
     <>
-      {tableData.map((i, index) => {
-        return (
-          <tr key={index} className={styles.tableRow}>
-            <td className={styles.columns}>{i.title}</td>
-            <td className={styles.columns}>${i.price}</td>
-            <td className={styles.columns}>
-              <div className="flex gap-x-2 justify-between items-center mt-1  px-3 py-4 text-base border w-[60px] h-11 border-gray-800   focus:border-black sm:text-sm rounded-md">
-                <p className="">{quantity}</p>
-                <div className="flex flex-col justify-center gap-3 ">
-                  <button onClick={increaseQuantity}>
-                    <Image
-                      src="/images/up.png"
-                      alt="icon"
-                      width={1000}
-                      height={43}
-                      className="object-contain w-2"
-                    />
-                  </button>
-                  <button onClick={decreaseQuantity}>
-                    <Image
-                      src="/images/down.png"
-                      alt="icon"
-                      width={1000}
-                      height={43}
-                      className="object-contain w-2"
-                    />
-                  </button>
-                </div>
+      {tableData.map((item, index) => (
+        <tr key={index} className={styles.tableRow}>
+          <td className={styles.columns}>{item.title}</td>
+          <td className={styles.columns}>${item.price}</td>
+          <td className={styles.columns}>
+            <div className="flex gap-x-2 justify-between items-center mt-1 px-3 py-4 text-base border w-[60px] h-11 border-gray-800 focus:border-black sm:text-sm rounded-md">
+              <p className="">{item.quantity}</p>
+              <div className="flex flex-col justify-center gap-1">
+                <button onClick={() => increaseQuantity(index)}>
+                  <IoIosArrowUp/>
+                </button>
+                <button onClick={() => decreaseQuantity(index)}>
+                  <IoIosArrowDown />
+                </button>
               </div>
-            </td>
-            <td className={styles.columns}>${i.subbtotal}</td>
-          </tr>
-        );
-      })}
+            </div>
+          </td>
+          <td className={styles.columns}>${item.subtotal}</td>
+        </tr>
+      ))}
     </>
   );
 };

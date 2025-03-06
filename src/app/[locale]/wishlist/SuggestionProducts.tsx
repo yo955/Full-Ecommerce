@@ -1,0 +1,32 @@
+import ProductCard from "@/components/common/products/ProductCard";
+import useGetProducts from "@/hooks/useGetProducts";
+import Loading from "@/loading/Loading";
+import styles from "@/styles/cart/Cart.module.scss";
+
+const SuggestionProducts = () => {
+  const { data: products, isLoading } = useGetProducts();
+  if (isLoading) {
+    return <Loading />;
+  }
+  return (
+    <div className="mt-10 ">
+      <div className="flex justify-between">
+        <div className="title-head w-[115px] h-10 grid grid-cols-3 items-center">
+          <div className="color bg-red-700 span-1 w-5 h-10 rounded "></div>
+          <p className="text-base leading-5 span-2 w-24  text-black font-semibold">
+            Just for you
+          </p>
+        </div>
+        <button className={styles.cartBtn}>See ALL</button>
+      </div>
+      <div className="flex gap-4 mt-2">
+        {products &&
+          products.slice(0, 4).map((product, index) => {
+            return <ProductCard key={index} {...product} />;
+          })}
+      </div>
+    </div>
+  );
+};
+
+export default SuggestionProducts;

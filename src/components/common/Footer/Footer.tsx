@@ -112,7 +112,10 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="#" className=" transition hover:opacity-75">
+                    <Link
+                      href="/wishlist"
+                      className=" transition hover:opacity-75"
+                    >
                       Wishlist
                     </Link>
                   </li>

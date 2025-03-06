@@ -1,6 +1,5 @@
+"use client";
 import PathLinks from "@/components/common/ui/PathLinks";
-// import Link from "next/link";
-import React from "react";
 import SideBarUl from "./SideBarUl";
 import AccountBody from "./AccountBody";
 

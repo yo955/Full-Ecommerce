@@ -3,9 +3,9 @@ import Link from "next/link";
 import Rate from "./Rate";
 import styles from "@/styles/ProductItem/ProductItem.module.scss"; // Import the SCSS module
 import { useCartStore } from "@/stores/cart/cartStore";
-import { CartItem } from "@/types/CartTypes";
+import { Product } from "@/types/Product";
 
-const ProductCard = (Product: CartItem) => {
+const ProductCard = (Product: Product) => {
   const addToCart = useCartStore((state) => state.addToCart);
   return (
     <div className={styles.productItem}>
@@ -39,7 +39,7 @@ const ProductCard = (Product: CartItem) => {
         </div>
         <form>
           <button
-            onClick={() => addToCart(Product)}
+            onClick={() => addToCart({product:Product,quantity: 1})}
             className={styles.addToCartButton}
           >
             Add to Cart

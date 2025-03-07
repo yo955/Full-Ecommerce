@@ -11,7 +11,6 @@ const BestSellingProducts = () => {
     error,
     isError,
   } = useGetProducts({ pageSize: 4 });
-
   if (isLoading) {
     return <Loading />;
   }

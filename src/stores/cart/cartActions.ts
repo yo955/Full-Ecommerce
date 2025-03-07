@@ -14,7 +14,6 @@ export const addToCart = (cart: CartItem[], cartItem: CartItem) => {
     ...updatedCart[index],
     quantity: (updatedCart[index].quantity ?? 0) + 1,
   };
-
   return updatedCart;
 };
 

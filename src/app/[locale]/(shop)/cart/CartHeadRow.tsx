@@ -1,5 +1,5 @@
 import styles from "@/styles/cart/Cart.module.scss";
-const headTitles = ["product", "price", "Quantity", "subbtotal"];
+const headTitles = ["image","product", "price", "Quantity", "subbtotal"];
 const CartHeadRow = () => {
   return (
     <>

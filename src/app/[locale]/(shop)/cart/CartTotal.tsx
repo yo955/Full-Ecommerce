@@ -1,19 +1,22 @@
 import React from "react";
 
-const CartTotal = () => {
+type CartTotalProps = {
+  total: number;
+}
+const CartTotal = ({total}: CartTotalProps) => {
   return (
     <>
       <div className="flex justify-between pb-2 mt-3 border-b-2">
         <p>subTotal:</p>
-        <p> $1750</p>
+        <p> ${total.toFixed(2)}</p>
       </div>
       <div className="flex justify-between pb-2 mt-3 border-b-2">
-        <p>Shoping:</p>
+        <p>Shipping:</p>
         <p> free</p>
       </div>
       <div className="flex justify-between pb-2 mt-3 border-b-2">
-        <p>Totol:</p>
-        <p> $2000</p>
+        <p>Total:</p>
+        <p> ${total.toFixed(2)}</p>
       </div>
     </>
   );

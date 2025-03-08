@@ -1,8 +1,7 @@
 import axiosInstance from "@/utils/api/axiosInstance";
-import { productType } from "@/types/Product";
 import { RegisterParams } from "@/types/RegisterParams";
 
-const RegisterUser = async (body: RegisterParams): Promise<productType> => {
+const RegisterUser = async (body: RegisterParams) => {
   try {
     const response = await axiosInstance.post(`/users/register`, body);
     return response.data;

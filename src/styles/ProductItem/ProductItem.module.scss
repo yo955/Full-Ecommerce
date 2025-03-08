@@ -11,8 +11,23 @@
 
   .wishlistButton {
     position: absolute;
-    right: 16px;
+    right: 25px;
     top: 16px;
+    z-index: 10;
+    border-radius: 9999px;
+    background-color: white;
+    padding: 6px;
+    color: #1a1a1a;
+    transition: color 0.7s ease;
+
+    &:hover {
+      color: rgba(26, 26, 26, 0.75);
+    }
+  }
+  .EyeButton {
+    position: absolute;
+    right: 25px;
+    top: 60px;
     z-index: 10;
     border-radius: 9999px;
     background-color: white;

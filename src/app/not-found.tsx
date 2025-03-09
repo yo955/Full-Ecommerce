@@ -1,6 +1,4 @@
 
-
-// import { usePathname, useRouter } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import NotFoundUI from "./[locale]/NotFoundUI";
@@ -9,8 +7,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer/Footer";
 import "@/styles/main.scss";
-// import { routing } from "@/i18n/routing";
-// import { notFound } from "next/navigation";
 
 export default async function NotFound() {
   // const pathname = usePathname();

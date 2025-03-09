@@ -23,8 +23,9 @@ export default async function RootLayout({
 }>) {
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as "en" | "ar")) {
-    notFound();
+    return notFound();
   }
+
 
   // Providing all messages to the client
   // side is the easiest way to get started

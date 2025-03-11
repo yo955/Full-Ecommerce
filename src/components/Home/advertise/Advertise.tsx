@@ -1,22 +1,16 @@
-import ProductItem from "@/components/common/products/ProductCard";
-import CustomSwiper from "@/components/common/Swiper/Swiper";
-import useGetProducts from "@/hooks/useGetProducts";
 import Loading from "@/loading/Loading";
+import Swipper from "@/components/Home/advertise/swipper/Swipper";
 
 const Advertise = () => {
-  const { data: products, isLoading } = useGetProducts();
+  const mainbath = "/images/banners"; // لا داعي لكتابة /images لأن public مباشرة
+  const bannerImages = [`${mainbath}/01.jpg`, `${mainbath}/02.jpg`, `${mainbath}/03.jpg`];
+
   return (
-    <div className="w-4/5">
-      {isLoading ? (
-        <Loading />
+    <div className="w-full">
+      {bannerImages.length === 0 ? (
+        <Loading/>
       ) : (
-        products && (
-          <CustomSwiper
-            data={products}
-            Card={ProductItem}
-            ShowPagination={true}
-          />
-        )
+        <Swipper images={bannerImages}/>
       )}
     </div>
   );

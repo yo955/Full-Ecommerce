@@ -5,7 +5,7 @@
 }
 @mixin container {
   margin: auto;
-  width: calc(100% - padding-inline);
+  width: 100%;
   @include for-small-phone {
     padding-inline: 2rem;
   }
@@ -13,13 +13,13 @@
     padding-inline: 4rem;
   }
   @include for-large-phone {
-    padding-inline: 6rem;
+    padding-inline: 5rem;
   }
   @include for-tablet {
-    padding-inline: 8rem;
+    padding-inline: 6rem;
   }
   @include for-desktop {
-    padding-inline: 10rem;
+    padding-inline: 7rem;
   }
 }
 

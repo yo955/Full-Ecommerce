@@ -6,19 +6,20 @@ import Icons from "./Icons";
 import Sidebar from "@/components/Home/sidebar/Sidebar";
 
 
-
 const Navbar = () => {
   return (
     <>
-      <TopHeader />
+      <TopHeader/>
       <nav className="navbar border-b-[0.5px] border-black h-24">
-        <Logo />
-        <NavLinks />
-        <div className="right-nav flex gap-1.5 ">
-          <SearchInput />
+        <div className='flex items-center gap-2'>
+          <Logo/>
           <Sidebar/>
-          <Icons />
-          
+        </div>
+        <NavLinks/>
+        <div className="right-nav flex gap-1.5 ">
+          <SearchInput/>
+          <Icons/>
+
         </div>
       </nav>
     </>

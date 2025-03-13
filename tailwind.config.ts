@@ -23,7 +23,7 @@ export default {
         "accent-green": "#00FF00",
 
         // Text Colors
-        "primary": "#fafafa",
+        primary: "#fafafa",
         "dark-gray": "#333333",
         "medium-gray": "#666666",
         "light-gray": "#999999",
@@ -36,6 +36,10 @@ export default {
         "button-primary-blue": "#007BFF",
         "button-success-green": "#28A745",
         "button-danger-red": "#DC3545",
+      },
+      screens: {
+        "custom-large": { min: "1024px", max: "1180px" },
+        "custom-mid": { min: "769px", max: "910px" },
       },
     },
   },

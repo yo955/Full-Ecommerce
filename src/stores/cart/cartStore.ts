@@ -1,5 +1,5 @@
 import {create} from "zustand";
-import {addToCart, removeFromCart, updateQuantity} from "./cartActions";
+import {useAddToCartHandler, removeFromCart, updateQuantity} from "./cartActions";
 import {CartItem, CartState} from "@/types/CartTypes";
 
 const getCartFromLocalStorage = () => {
@@ -15,7 +15,8 @@ export const useCartStore = create<CartState>((set) => ({
     cart: getCartFromLocalStorage(),
     addToCart: (product) =>
       set((state) => {
-        const updatedCart = addToCart(state.cart, product);
+        const AddToCart = useAddToCartHandler();
+        const updatedCart = AddToCart(state.cart, product);
         saveCartToLocalStorage(updatedCart);
         return {cart: updatedCart};
       }),
@@ -39,5 +40,6 @@ export const useCartStore = create<CartState>((set) => ({
         saveCartToLocalStorage([]);
         return {cart: []};
       }),
+
   }))
 ;

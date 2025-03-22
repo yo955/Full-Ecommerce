@@ -1,5 +1,6 @@
+"use client"
 import {useMutation} from "@tanstack/react-query";
-import AddToCart from "@/services/addtocart";
+import AsyncAddToCart from "@/services/AsyncAddToCart";
 import {toast} from "react-toastify";
 
 export interface addToCartProps {
@@ -10,7 +11,7 @@ export interface addToCartProps {
 const useAddToCart = () => {
   return useMutation({
     mutationFn: (data: addToCartProps) =>
-      AddToCart(data),
+      AsyncAddToCart(data),
     onSuccess: () => toast.success("Added to cart successfully!"),
     onError: () => toast.error("Failed to add to cart"),
   });

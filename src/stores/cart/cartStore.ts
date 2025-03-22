@@ -1,6 +1,7 @@
 import {create} from "zustand";
-import {useAddToCartHandler, removeFromCart, updateQuantity} from "./cartActions";
+import {UseAddToCartHandler, removeFromCart, updateQuantity} from "./cartActions";
 import {CartItem, CartState} from "@/types/CartTypes";
+// import useAddToCart from "@/hooks/useAddToCart";
 
 const getCartFromLocalStorage = () => {
   if (typeof window !== "undefined") {
@@ -11,15 +12,15 @@ const getCartFromLocalStorage = () => {
 const saveCartToLocalStorage = (cart: CartItem[]) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
-export const useCartStore = create<CartState>((set) => ({
+export const useCartStore = create<CartState>((set, get) => ({
     cart: getCartFromLocalStorage(),
-    addToCart: (product) =>
-      set((state) => {
-        const AddToCart = useAddToCartHandler();
-        const updatedCart = AddToCart(state.cart, product);
-        saveCartToLocalStorage(updatedCart);
+    addToCart: async (product) => {
+      const updatedCart = await UseAddToCartHandler(get().cart, product);
+      saveCartToLocalStorage(updatedCart);
+      set(() => {
         return {cart: updatedCart};
-      }),
+      })
+    },
     removeFromCart: (id) =>
       set((state) => {
         const updatedCart = removeFromCart(state.cart, id);
@@ -40,6 +41,7 @@ export const useCartStore = create<CartState>((set) => ({
         saveCartToLocalStorage([]);
         return {cart: []};
       }),
+
 
   }))
 ;

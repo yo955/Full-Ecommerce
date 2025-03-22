@@ -9,9 +9,11 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import {useWishListStore} from "@/stores/wishlist/WishListStore";
 
+
 const ProductCard = (Product: Product) => {
   const addToCart = useCartStore((state) => state.addToCart);
-  const addToWishList = useWishListStore((state) => state.addToWishList)
+  const addToWishList = useWishListStore((state) => state.addToWishList);
+
   return (
     <div className={styles.productItem}>
       <Link href="#">
@@ -25,7 +27,7 @@ const ProductCard = (Product: Product) => {
         <span className={styles.newBadge}>New</span>
         <div className={styles.imageContainer}>
           <Image
-            src={Product.MainImageUrl}
+            src={Product.mainImageUrl}
             alt="product-img"
             fill
             className={styles.image}
@@ -41,13 +43,14 @@ const ProductCard = (Product: Product) => {
           </button>
         </form>
         <div className={styles.productDetails}>
-          <h3>{Product.Name}</h3>
-          <p>{Product.Price}</p>
+          <h3>{Product.name}</h3>
+          <p>{Product.price}</p>
           <Rate/>
         </div>
       </Link>
     </div>
-  );
+  )
+    ;
 };
 
 export default ProductCard;

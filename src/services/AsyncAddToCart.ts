@@ -8,7 +8,7 @@ export interface Cart {
   totalPrice: number
 }
 
-const AddToCart = async ({ProductId, quantity}: addToCartProps) => {
+const AsyncAddToCart = async ({ProductId, quantity}: addToCartProps) => {
   try {
     const response = await axiosInstance.post('/cart', {ProductId, quantity})
     const data: Cart = response.data
@@ -18,4 +18,4 @@ const AddToCart = async ({ProductId, quantity}: addToCartProps) => {
     throw error;
   }
 }
-export default AddToCart;
+export default AsyncAddToCart;

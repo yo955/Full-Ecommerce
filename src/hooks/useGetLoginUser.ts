@@ -1,3 +1,4 @@
+"use client"
 import LoginUser from "@/services/LoginUser";
 import { useAuthStore } from "@/stores/auth/useAuthStore";
 import { LoginParams } from "@/types/LoginParams";
@@ -14,7 +15,6 @@ const useGetLoginUser = () => {
     mutationFn: (userData: LoginParams) => LoginUser(userData),
     onSuccess: (user) => {
       setUser(user);
-      console.log("success user", user);
       toast.success("Login Successfully! 🎉");
       setHasError(false);
       router.push("/");

@@ -3,13 +3,16 @@ import {create} from "zustand";
 import {AuthState} from "@/types/AuthState";
 import LogoutUser from "@/services/LogoutUser";
 
-
+const STORAGE_KEY = "authUser"
 
 export const useAuthStore = create<AuthState>((set) => ({
-  user: null,
-  setUser: (user) => set({user}),
+  user: typeof window !== "undefined" ? JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') : null,
+  setUser: (user) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+    set({user})
+  },
   logout: () => {
-    console.log("user removed ");
+    localStorage.removeItem(STORAGE_KEY);
     set({user: null});
     LogoutUser();
   },

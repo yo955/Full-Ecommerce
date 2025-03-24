@@ -18,7 +18,7 @@ export const useWishListStore = create<WishListState>((set) => ({
     wishList: getWishList(),
     addToWishList: (product) =>
       set((state) => {
-        if (state.wishList.find((item) => item.ProductId === product.ProductId)) {
+        if (state.wishList.find((item) => item.productId === product.productId)) {
           return state;
         }
         const SaveProduct = [...state.wishList, product]
@@ -27,7 +27,7 @@ export const useWishListStore = create<WishListState>((set) => ({
       }),
     removeFromWishList: (id) =>
       set((state) => {
-          const SaveProduct = state.wishList.filter((item) => item.ProductId !== id)
+          const SaveProduct = state.wishList.filter((item) => item.productId !== id)
           SaveToLocalStorage(SaveProduct)
           return {wishList: SaveProduct}
         }

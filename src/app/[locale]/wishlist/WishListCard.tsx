@@ -15,13 +15,13 @@ const ProductCard = (Product: Product) => {
     <div className={`${styles.productItem} `}>
       <Link href="#">
         <IconButton aria-label="fingerprint" color="error" className={styles.wishlistButton}
-                    onClick={() => removeFromWishList(Product.ProductId)}>
+                    onClick={() => removeFromWishList(Product.productId)}>
           <DeleteIcon/>
         </IconButton>
         <span className={styles.newBadge}>New</span>
         <div className={styles.imageContainer}>
           <Image
-            src={Product.MainImageUrl}
+            src={Product.mainImageUrl}
             alt="product-img"
             fill
             className={styles.image}
@@ -38,8 +38,8 @@ const ProductCard = (Product: Product) => {
           </button>
         </form>
         <div className={styles.productDetails}>
-          <h3>{Product.Name}</h3>
-          <p className='!text-red-600'>${Product.Price}</p>
+          <h3>{Product.name}</h3>
+          <p className='!text-red-600'>${Product.price}</p>
         </div>
       </Link>
     </div>

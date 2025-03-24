@@ -26,7 +26,7 @@ const BestSellingProducts = () => {
       </CustomButton>
       <div className="flex mt-10">
         {products?.slice(0, 4).map((product) => (
-          <div key={product.ProductId} className="product">
+          <div key={product.productId} className="product">
             <ProductCard {...product} />
           </div>
         ))}

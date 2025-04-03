@@ -42,8 +42,8 @@ export default {
         ...defaultTheme.screens, // تأكد من وراثة الشاشات الافتراضية
         "custom-large": { min: "1024px", max: "1180px" },
         "custom-mid": { min: "769px", max: "910px" },
-        "custom-sm" :{max:"560px"},
-        "custom-phone" :{max:"450px"}
+        "custom-sm" :{max:"590px"},
+        "custom-phone" :{max:"490px"}
       },
     },
   },

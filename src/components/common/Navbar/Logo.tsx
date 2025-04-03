@@ -8,8 +8,7 @@ const Logo = () => {
       alt="nav-logo"
       width={150}
       height={150}
-      className="min-w-48"
-      
+      className="w-[7rem] md:w-[10rem] lg:w-[12rem] custom-sm:w-20 custom-phone:w-14"
     />
   );
 };

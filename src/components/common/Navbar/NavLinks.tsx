@@ -2,6 +2,7 @@
 import { PageLinks } from "@/constant/enum";
 import { Link } from "@/i18n/routing";
 import { useAuthStore } from "@/stores/auth/useAuthStore";
+// import "@/styles/Navbar/navbar.scss";
 
 const NavLinks = () => {
   const { user, logout } = useAuthStore();
@@ -16,10 +17,14 @@ const NavLinks = () => {
 
   return (
     <>
-      <ul className="inline relative lg:flex gap-10">
+      <ul className="navLinks inline-flex relative  gap-2 sm:gap-5 lg:gap-10 max-[630px]:flex">
         {navItems.map((navItem, index) => (
           <li key={index} className="list-none">
-            <Link href={navItem.href} onClick={navItem.onclick}>
+            <Link
+              href={navItem.href}
+              onClick={navItem.onclick}
+              className="custom-sm:text-sm custom-phone:text-[10px]"
+            >
               {navItem.title}
             </Link>
           </li>

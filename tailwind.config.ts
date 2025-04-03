@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
   content: [
@@ -38,8 +39,11 @@ export default {
         "button-danger-red": "#DC3545",
       },
       screens: {
+        ...defaultTheme.screens, // تأكد من وراثة الشاشات الافتراضية
         "custom-large": { min: "1024px", max: "1180px" },
         "custom-mid": { min: "769px", max: "910px" },
+        "custom-sm" :{max:"560px"},
+        "custom-phone" :{max:"450px"}
       },
     },
   },

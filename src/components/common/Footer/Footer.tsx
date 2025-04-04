@@ -130,7 +130,7 @@ const Footer = () => {
                 <path d={social.iconPath} />
               </svg>
             </Link>
-            // fefffdddfdfd
+            // fefffdddfdfdgjhgjh
           ))}
         </div>
       </div>

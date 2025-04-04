@@ -41,11 +41,11 @@ export default {
       screens: {
         ...defaultTheme.screens, // تأكد من وراثة الشاشات الافتراضية
         "custom-large": { min: "1024px", max: "1180px" },
-        "tab-large-screen":{ max:"1180px"},
-        "custom-mid": { min: "669px", max: "910px" },
-        "custom-handling":{min: "600px", max: "668px" },
-        "custom-sm" :{max:"590px"},
-        "custom-phone" :{max:"490px"}
+        "tab-large-screen": { max: "1180px" },
+        "custom-mid": { max: "970px" },
+        "custom-handling": { max: "669px" },
+        "custom-sm": { max: "590px" },
+        "custom-phone": { max: "490px" },
       },
     },
   },

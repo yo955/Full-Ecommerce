@@ -12,8 +12,8 @@ const ServiceCard = ({ head, para, icon: Icon }: prarTypes) => {
           {Icon && <Icon />}
         </div>
       </div>
-      <h4 className="font-semibold">{head}</h4>
-      <p className="text-xs mt-1">{para}</p>
+      <h4 className="font-semibold custom-mid:font-normal">{head}</h4>
+      <p className="text-xs mt-1 ">{para}</p>
     </div>
   );
 };

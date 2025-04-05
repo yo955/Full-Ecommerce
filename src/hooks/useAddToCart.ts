@@ -10,8 +10,8 @@ export interface addToCartProps {
 
 const useAddToCart = () => {
   return useMutation({
-    mutationFn: (data: addToCartProps) =>
-      AsyncAddToCart(data),
+    mutationFn: (ProductData: addToCartProps) =>
+      AsyncAddToCart(ProductData),
     onSuccess: () => toast.success("Added to cart successfully!"),
     onError: () => toast.error("Failed to add to cart"),
   });

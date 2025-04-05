@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from "axios";
+import axios, {AxiosInstance} from "axios";
 // import Cookies from "js-cookie";
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
@@ -9,6 +9,7 @@ const axiosInstance: AxiosInstance = axios.create({
   headers: {
     Accept: "application/json",
   },
+
 });
 // الباك اند تولى المسئولية دى
 

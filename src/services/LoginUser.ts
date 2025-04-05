@@ -1,5 +1,6 @@
 import axiosInstance from "@/utils/api/axiosInstance";
-import { LoginParams } from "@/types/LoginParams";
+import {LoginParams} from "@/types/LoginParams";
+import axios from "axios";
 
 export default async function LoginUser(userData: LoginParams) {
   const response = await axiosInstance
@@ -9,8 +10,11 @@ export default async function LoginUser(userData: LoginParams) {
       console.log(userData);
       return userData;
     })
-    .catch((err) => {
-      throw err;
+    .catch((error) => {
+      if (axios.isAxiosError(error)) {
+        throw error.response?.data.detail;
+      }
+      throw error;
     });
   return response;
 }

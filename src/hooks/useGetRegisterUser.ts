@@ -6,23 +6,27 @@ import {useRouter} from "next/navigation";
 import {toast} from "react-toastify";
 import {useState} from "react";
 import {useAuthStore} from "@/stores/auth/useAuthStore";
+import UseSyncCart from "@/hooks/useSyncCart";
+
 
 const useGetRegisterUser = () => {
   const [hasError, setHasError] = useState(false);
   const router = useRouter();
   const {setUser} = useAuthStore();
+  const SyncCart = UseSyncCart();
+
   const mutation = useMutation({
     mutationFn: (userData: RegisterParams) => RegisterUser(userData),
     onSuccess: (user) => {
-      toast.success("SignUp Successfully! 🎉");
       setUser(user)
+      toast.success("SignUp Successfully! 🎉");
+      SyncCart();
       setHasError(false);
       router.push("/");
     },
     onError: (error) => {
-      console.error("Registration failed:", error);
       setHasError(true);
-      toast.error("SignUp Failed! ❌ Please check your Sign data.");
+      toast.error(`SignUp Failed! ❌ ${error}`);
     },
   });
   return {...mutation, hasError};

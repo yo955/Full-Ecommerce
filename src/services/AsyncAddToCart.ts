@@ -12,7 +12,6 @@ const AsyncAddToCart = async ({ProductId, quantity}: addToCartProps) => {
   try {
     const response = await axiosInstance.post('/cart', {ProductId, quantity})
     const data: Cart = response.data
-    console.log(data)
     return data
   } catch (error) {
     throw error;

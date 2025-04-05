@@ -1,14 +1,19 @@
 import axiosInstance from "@/utils/api/axiosInstance";
-import { RegisterParams } from "@/types/RegisterParams";
+import {RegisterParams} from "@/types/RegisterParams";
+import axios from "axios";
+
 
 const RegisterUser = async (body: RegisterParams) => {
   try {
     const response = await axiosInstance.post(`/users/register`, body);
     return response.data;
   } catch (error) {
-    console.error("Error Authentication Field:", error);
+    if (axios.isAxiosError(error)) {
+      throw error.response?.data.detail;
+    }
     throw error;
   }
 };
 
 export default RegisterUser;
+

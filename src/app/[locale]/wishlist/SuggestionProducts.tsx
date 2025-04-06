@@ -19,7 +19,7 @@ const SuggestionProducts = () => {
         </div>
         <button className={styles.cartBtn}>See ALL</button>
       </div>
-      <div className="flex gap-4 mt-2">
+      <div className="flex gap-4 mt-2 custom-mid:grid custom-mid:grid-cols-2 custom-handling:grid-cols-1 custom-handling:place-items-center ">
         {products &&
           products.slice(0, 4).map((product, index) => {
             return <ProductCard key={index} {...product} />;

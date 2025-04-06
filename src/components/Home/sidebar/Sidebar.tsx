@@ -82,7 +82,7 @@ const Sidebar = () => {
       <Button onClick={toggleDrawer(true)} className=" custom-sm:!min-w-2">
         <VscLayoutSidebarLeft
           className={
-            "text-3xl text-black custom-sm:text-[15px] custom-phone:text-[10px]"
+            "text-3xl text-black custom-sm:text-[20px] "
           }
         />
       </Button>

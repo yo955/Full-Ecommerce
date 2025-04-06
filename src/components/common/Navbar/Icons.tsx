@@ -9,12 +9,12 @@ const Icons = () => {
   const cart = useCartStore((state) => state.cart);
   const wishList = useWishListStore((state) => state.wishList);
   return (
-    <div className="flex justify-around w-full items-center gap-1 custom-sm:!gap-0">
+    <div className="flex justify-around w-full items-center gap-1 ">
       <CartBtn
         count={wishList.length}
         href="/wishlist"
         icon={
-          <FavoriteBorderIcon className="text-[24px]  custom-sm:!text-[18px]  custom-phone:!text-sm"/>
+          <FavoriteBorderIcon className="text-[24px]"  />
         }
       />
       <CartBtn
@@ -23,7 +23,7 @@ const Icons = () => {
         icon={
           <ShoppingCartIcon
             fontSize="small"
-            className="text-[24px]  custom-sm:!text-[18px]  custom-phone:!text-sm"
+            className="text-[24px]  "
           />
         }
       />

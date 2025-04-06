@@ -1,7 +1,7 @@
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import TopHeader from "../top-header/TopHeader";
-// import SearchInput from "./SearchInput";
+import SearchInput from "./SearchInput";
 import Icons from "./Icons";
 import Sidebar from "@/components/Home/sidebar/Sidebar";
 
@@ -17,7 +17,7 @@ const Navbar = () => {
         </div>
         <NavLinks/>
         <div className="right-nav flex gap-1.5 ">
-          {/* <SearchInput/> */}
+          <SearchInput/>
           <Icons/>
 
         </div>

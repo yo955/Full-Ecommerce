@@ -1,6 +1,5 @@
 import axiosInstance from "@/utils/api/axiosInstance";
 import {CartItem} from "@/types/CartTypes";
-import {addToCartProps} from "@/hooks/useAddToCart";
 
 
 export interface Cart {
@@ -9,9 +8,9 @@ export interface Cart {
   totalPrice: number
 }
 
-const AsyncRemoveFromCart = async ({ProductId, quantity}: addToCartProps) => {
+const AsyncRemoveFromCart = async (ProductId: string) => {
   try {
-    const response = await axiosInstance.delete('/cart', {data: {ProductId, quantity}})
+    const response = await axiosInstance.delete(`/cart?productId=${ProductId}`)
     const data: Cart = response.data;
     return data;
   } catch (error) {

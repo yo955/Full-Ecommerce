@@ -14,6 +14,7 @@ const saveCartToLocalStorage = (cart: CartItem[]) => {
 };
 export const useCartStore = create<CartState>((set, get) => ({
     cart: getCartFromLocalStorage(),
+
     addToCart: async (product) => {
       const updatedCart = await UseAddToCartHandler(get().cart, product);
       saveCartToLocalStorage(updatedCart);
@@ -21,12 +22,14 @@ export const useCartStore = create<CartState>((set, get) => ({
         return {cart: updatedCart};
       })
     },
-    removeFromCart: (id) =>
-      set((state) => {
-        const updatedCart = removeFromCart(state.cart, id);
-        saveCartToLocalStorage(updatedCart);
-        return {cart: updatedCart};
-      }),
+    removeFromCart: async (id) => {
+      const updatedCart = await removeFromCart(get().cart, id);
+      saveCartToLocalStorage(updatedCart);
+      set(() => {
+          return {cart: updatedCart};
+        }
+      )
+    },
 
     updateQuantity:
       (id, quantity) =>
@@ -36,11 +39,12 @@ export const useCartStore = create<CartState>((set, get) => ({
           return {cart: updatedCart};
         }),
 
-    clearCart: () =>
-      set(() => {
-        saveCartToLocalStorage([]);
-        return {cart: []};
-      }),
+    clearCart:
+      () =>
+        set(() => {
+          saveCartToLocalStorage([]);
+          return {cart: []};
+        }),
 
 
   }))

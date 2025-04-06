@@ -11,6 +11,7 @@ import {useWishListStore} from "@/stores/wishlist/WishListStore";
 
 
 const ProductCard = (Product: Product) => {
+
   const addToCart = useCartStore((state) => state.addToCart);
   const addToWishList = useWishListStore((state) => state.addToWishList);
 

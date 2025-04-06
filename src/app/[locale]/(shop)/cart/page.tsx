@@ -6,6 +6,7 @@ import CustomButton from "@/components/common/ui/Button";
 import CartTotal from "./CartTotal";
 import PathLinks from "@/components/common/ui/PathLinks";
 import {useCartStore} from "@/stores/cart/cartStore";
+import AsyncAddToCart from "@/services/AsyncAddToCart";
 
 
 const CartPage = () => {
@@ -13,6 +14,11 @@ const CartPage = () => {
   const cartItems = useCartStore((state) => state.cart)
   const total = cartItems.reduce((acc, cartItem) => acc + (cartItem.subtotal || 0), 0);
 
+  const handleUpdateCart = () => {
+    cartItems.map((cartItem) => {
+      AsyncAddToCart({ProductId: cartItem.product.productId, quantity: cartItem.quantity ?? 1});
+    })
+  }
 
   return (
     <div className="my-28 mx-auto w-[80%] ">
@@ -30,7 +36,7 @@ const CartPage = () => {
         </table>
         <div className=" flex justify-between">
           <button className={styles.cartBtn}>Return To Shop</button>
-          <button className={styles.cartBtn}>Update Cart</button>
+          <button className={styles.cartBtn} onClick={handleUpdateCart}>Update Cart</button>
         </div>
       </div>
       <div className="mt-16 flex justify-between">

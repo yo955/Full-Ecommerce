@@ -9,6 +9,7 @@ import {useWishListStore} from "@/stores/wishlist/WishListStore";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 const ProductCard = (Product: Product) => {
+  console.log('product' + Product)
   const addToCart = useCartStore((state) => state.addToCart);
   const removeFromWishList = useWishListStore((state) => state.removeFromWishList)
   return (

@@ -16,7 +16,7 @@ const WishListPage = () => {
   }
   const visibleProducts = showAll ? products : products.slice(0, 4);
 
-
+  console.log('vs' + products)
   return (
     <div className=" flex flex-col gap-16 my-14 mx-auto w-[80%]">
       <div className="flex justify-between">

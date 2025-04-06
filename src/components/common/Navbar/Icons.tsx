@@ -1,9 +1,9 @@
 "use client";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCartOutlined";
-import { CartBtn } from "../ui/CartBtn";
-import { useCartStore } from "@/stores/cart/cartStore";
-import { useWishListStore } from "@/stores/wishlist/WishListStore";
+import {CartBtn} from "../ui/CartBtn";
+import {useCartStore} from "@/stores/cart/cartStore";
+import {useWishListStore} from "@/stores/wishlist/WishListStore";
 
 const Icons = () => {
   const cart = useCartStore((state) => state.cart);
@@ -14,7 +14,7 @@ const Icons = () => {
         count={wishList.length}
         href="/wishlist"
         icon={
-          <FavoriteBorderIcon className="text-[24px]  custom-sm:!text-[18px]  custom-phone:!text-sm" />
+          <FavoriteBorderIcon className="text-[24px]  custom-sm:!text-[18px]  custom-phone:!text-sm"/>
         }
       />
       <CartBtn

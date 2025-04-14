@@ -20,7 +20,7 @@ const BestSellingProducts = () => {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <CustomButton className="!flex !ml-auto w-[159px] h-[56px]">
         View All
       </CustomButton>

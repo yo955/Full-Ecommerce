@@ -9,7 +9,7 @@ const Icons = () => {
   const cart = useCartStore((state) => state.cart);
   const wishList = useWishListStore((state) => state.wishList);
   return (
-    <div className="flex justify-around w-full items-center gap-1 ">
+    <div className="flex justify-around md:w-full items-center gap-1 ">
       <CartBtn
         count={wishList.length}
         href="/wishlist"

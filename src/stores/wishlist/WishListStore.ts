@@ -51,7 +51,7 @@ export const useWishListStore = create<WishListState>((set) => ({
       }
       const data = await AsyncRemoveFromWishlist([id]);
       // SaveToLocalStorage(data)
-      console.log(data)
+      console.log(data);
       // set(() => {
       //   return {wishList: data}
       // })

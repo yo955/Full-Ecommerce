@@ -10,7 +10,7 @@ const PathLinks: React.FC<pathLinksProps> = ({
 }: pathLinksProps) => {
   return (
     <>
-      <div className="flex gap-2 m-0 pb-10 text-slate-400">
+      <div className="flex ml-10 md:ml-0 gap-2 m-0 pb-10 text-slate-400">
         <Link href="/">Home</Link>
         {titles.map((title, index) => {
           return (

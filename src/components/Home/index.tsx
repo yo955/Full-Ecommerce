@@ -29,9 +29,9 @@ const HomeSection = () => {
           Categories && <CustomSwiper data={Categories} Card={CategoryCard}/>
         )}
       </SectionLayout>
-      <SectionLayout title="Best Selling Products" para="This Month">
-        <BestSellingProducts/>
-      </SectionLayout>
+      {/*<SectionLayout title="Best Selling Products" para="This Month">*/}
+      {/*  <BestSellingProducts/>*/}
+      {/*</SectionLayout>*/}
       <Music/>
       <SectionLayout title="Featured" para="New Arrival">
         <Features/>

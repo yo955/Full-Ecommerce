@@ -28,7 +28,7 @@ const Music = () => {
       </div>
 
 
-      <div className="flex justify-center w-full custom-mid:w-auto">
+      <div className=" hidden md:flex justify-center w-full custom-mid:w-auto">
         <Image
           src="/images/music sec.png"
           alt="Music category"

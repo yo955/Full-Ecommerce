@@ -4,7 +4,7 @@ import React from "react";
 import Statistics from "./Statistics/Statistics";
 import TeamSwiper from "./Swiper/TeamSwiper";
 import Services from "@/components/Home/Services/Services";
-const Aboutpage = () => {
+const AboutPage = () => {
   return (
     <div className="my-24 mx-auto w-[80%] flex flex-col gap-5">
       <PathLinks titles={["About"]} />
@@ -48,4 +48,4 @@ const Aboutpage = () => {
   );
 };
 
-export default Aboutpage;
+export default AboutPage;

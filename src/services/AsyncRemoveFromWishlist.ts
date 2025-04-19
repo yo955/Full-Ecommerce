@@ -1,5 +1,4 @@
 import axiosInstance from "@/utils/api/axiosInstance";
-import {Product} from "@/types/Product";
 import {WishlistItem} from "@/services/AsyncAddToWishList";
 
 export interface Wishlist {

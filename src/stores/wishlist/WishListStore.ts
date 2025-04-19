@@ -1,11 +1,10 @@
 import {create} from 'zustand';
 import {WishListState} from "@/types/wishListTypes";
-import {Product} from "@/types/Product";
 import {useAuthStore} from "@/stores/auth/useAuthStore";
-import AsyncAddToWishList from "@/services/AsyncAddToWishList";
+import AsyncAddToWishList, {WishlistItem} from "@/services/AsyncAddToWishList";
 import AsyncRemoveFromWishlist from "@/services/AsyncRemoveFromWishlist";
 
-const SaveToLocalStorage = (Products: Product[]) => {
+const SaveToLocalStorage = (Products: WishlistItem[]) => {
 
   if (typeof window !== 'undefined') {
     localStorage.setItem('wishList', JSON.stringify(Products));
@@ -22,19 +21,19 @@ export const useWishListStore = create<WishListState>((set) => ({
       const user = useAuthStore.getState().user;
       if (!user) {
         set((state) => {
-          if (state.wishList.find((item) => item.productId === product.productId)) {
+          if (state.wishList.find((item) => item.product.productId === product.productId)) {
             return state;
           }
-          const SaveProduct = [...state.wishList, product]
+          const SaveProduct = [...state.wishList, {product}]
           SaveToLocalStorage(SaveProduct)
           return {wishList: SaveProduct};
         })
         return;
       }
-      const data = await AsyncAddToWishList([product.productId])
-      SaveToLocalStorage(data);
+      const data = await AsyncAddToWishList(product.productId)
+      SaveToLocalStorage(data.wishlistItems);
       set(() => {
-        return {wishList: data}
+        return {wishList: data.wishlistItems}
       })
 
     },
@@ -42,19 +41,19 @@ export const useWishListStore = create<WishListState>((set) => ({
       const user = useAuthStore.getState().user;
       if (!user) {
         set((state) => {
-            const SaveProduct = state.wishList.filter((item) => item.productId !== id)
+            const SaveProduct = state.wishList.filter((item) => item.product.productId !== id)
             SaveToLocalStorage(SaveProduct)
             return {wishList: SaveProduct}
           }
         )
         return;
       }
-      const data = await AsyncRemoveFromWishlist([id]);
-      // SaveToLocalStorage(data)
-      console.log(data);
-      // set(() => {
-      //   return {wishList: data}
-      // })
+      const data = await AsyncRemoveFromWishlist(id);
+      SaveToLocalStorage(data.wishlistItems)
+      console.log(data.wishlistItems);
+      set(() => {
+        return {wishList: data.wishlistItems}
+      })
     },
 
     clearWishList: () => set({wishList: []}),

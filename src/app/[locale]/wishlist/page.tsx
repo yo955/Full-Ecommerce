@@ -32,7 +32,7 @@ const WishListPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
           {visibleProducts &&
             visibleProducts.map((product, index) => (
-              <WishListCard key={index} {...product} />
+              <WishListCard key={index} {...product.product} />
             ))}
         </div>
 

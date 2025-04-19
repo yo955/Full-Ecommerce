@@ -10,7 +10,7 @@ export interface Cart {
 
 const AsyncRemoveFromCart = async (ProductId: string) => {
   try {
-    const response = await axiosInstance.delete(`/cart?productId=${ProductId}`)
+    const response = await axiosInstance.delete(`/cart`,{data:ProductId})
     const data: Cart = response.data;
     return data;
   } catch (error) {

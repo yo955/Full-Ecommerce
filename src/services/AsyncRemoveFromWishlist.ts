@@ -1,23 +1,22 @@
 import axiosInstance from "@/utils/api/axiosInstance";
 import {Product} from "@/types/Product";
+import {WishlistItem} from "@/services/AsyncAddToWishList";
 
-interface wishlistItem {
+export interface Wishlist {
   id: string;
-  product: Product;
+  wishlistItems: WishlistItem[];
 }
 
-export interface wishlist {
-  id: string,
-  wishlistItem: wishlistItem[],
-}
-
-const AsyncRemoveFromCart = async (wishListId: string[]) => {
+const AsyncRemoveFromWishlist = async (wishListId: string): Promise<Wishlist> => {
+    console.log(wishListId)
   try {
-    const response = await axiosInstance.delete(`/wishlist`, {data: wishListId})
-    const data: wishlist = response.data;
-    return data;
+    const response = await axiosInstance.delete('/wishlist', {data: wishListId});
+    return response.data;
   } catch (error) {
+    // You might want to handle or transform the error before throwing
+    console.error('Error removing from wishlist:', error);
     throw error;
   }
-}
-export default AsyncRemoveFromCart;
+};
+
+export default AsyncRemoveFromWishlist;

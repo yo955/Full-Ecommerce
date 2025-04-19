@@ -1,22 +1,25 @@
 import axiosInstance from "@/utils/api/axiosInstance";
 import {Product} from "@/types/Product";
 
-interface wishlistItem {
-  id: string;
+
+export interface WishlistItem {
   product: Product;
 }
 
-export interface WishList {
-  id: string,
-  wishlistItems: wishlistItem[],
+interface Wishlist {
+  id: string;
+  wishlistItems: WishlistItem[];
 }
 
-const AsyncAddToCart = async (wishListData: string[]) => {
+const AsyncAddToCart = async (wishListId: string) => {
+  console.log(wishListId)
   try {
-    const response = await axiosInstance.post('/wishlist', wishListData)
-    const data: WishList = response.data
-    return data.wishlistItems.map((item) => item.product);
+    const response = await axiosInstance.post('/wishlist', JSON.stringify(wishListId))
+    console.log("jkhjkhjkh" + response.data)
+    const data: Wishlist = response.data
+    return data;
   } catch (error) {
+    console.log('error', error);
     throw error;
   }
 }

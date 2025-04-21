@@ -1,32 +1,6 @@
 import React from "react";
 import Image from "next/image";
 
-const productImgs = [
-  {
-    src: "/images/product/1.png",
-
-    className:
-      "w-[121px] h-[114px] tab-large-screen:w-[70px] tab-large-screen:h-[70px] custom-mid:w-auto custom-mid:h-auto ",
-  },
-  {
-    src: "/images/product/2.png",
-
-    className:
-      "w-[112px] h-[97px] tab-large-screen:w-[70px] tab-large-screen:h-[70px] custom-mid:w-auto custom-mid:h-auto ",
-  },
-  {
-    src: "/images/product/3.png",
-
-    className:
-      "w-[134px] h-[94px] tab-large-screen:w-[70px] tab-large-screen:h-[70px] custom-mid:w-auto custom-mid:h-auto ",
-  },
-  {
-    src: "/images/product/4.png",
-
-    className:
-      "w-[122px] h-[106px] tab-large-screen:w-[70px] tab-large-screen:h-[70px] custom-mid:w-auto custom-mid:h-auto ",
-  },
-];
 const ProductImgs = ({mainImage,images}:{mainImage:string,images:string[]}) => {
   return (
     <div className="imgs flex flex-row-reverse custom-mid:flex-col custom-mid:place-items-center justify-between gap-3 tab-large-screen:gap-1">

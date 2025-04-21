@@ -10,7 +10,6 @@ import {formDataArray} from "@/types/formData";
 import {RegisterParams} from "@/types/RegisterParams";
 import {LoginParams} from "@/types/LoginParams";
 import {LoginValidation} from "@/utils/validation/LoginValidation";
-import {useLoginWithGoogle} from "@/hooks/useLoginWithGoogle";
 import {LoginWithGoogle} from "@/services/LoginWithGoogle";
 
 const CustomForm = ({fieldData, initialValues, isLogin}: formDataArray) => {

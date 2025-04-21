@@ -10,7 +10,7 @@ import { MdAutorenew } from "react-icons/md";
 const sizes = ["Xs", "S", "M", "L", "Xl"];
 
 const ProductInfo = () => {
-  const [selectSize, setSelectSize] = useState();
+  const [selectSize, setSelectSize] = useState("");
   const [value, setValue] = useState(0);
   const [clicked, setClicked] = useState<"plus" | "minus" | null>(null);
   function increaseItem() {

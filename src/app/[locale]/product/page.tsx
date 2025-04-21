@@ -1,6 +1,7 @@
 import PathLinks from "@/components/common/ui/PathLinks";
 import ProductImgs from "./ProductImgs";
 import ProductInfo from "./ProductInfo";
+// import CustomSwiper from "@/components/common/Swiper/Swiper";
 
 const ProductPage = () => {
   return (
@@ -9,6 +10,9 @@ const ProductPage = () => {
       <div className="top-section flex  custom-mid:flex-col justify-between gap-14">
         <ProductImgs />
         <ProductInfo />
+      </div>
+      <div>
+        {/* <CustomSwiper data={["Related Item"]} Card={"symbol"}/> */}
       </div>
     </div>
   );

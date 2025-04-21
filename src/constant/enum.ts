@@ -3,6 +3,7 @@ export enum PageLinks {
   CONTACT = "/contact",
   ABOUT = "/about",
   SIGN_UP = "/SignUp",
+  LOG_IN = "/login",
   DASHBOARD = "/dashboard",
 }
 

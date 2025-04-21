@@ -12,7 +12,7 @@ const useAddToCart = () => {
   return useMutation({
     mutationFn: (ProductData: addToCartProps) =>
       AsyncAddToCart(ProductData),
-    onSuccess: () => toast.success("Added to cart successfully!"),
+    onSuccess: () =>console.log("Added to cart successfully!"),
     onError: () => toast.error("Failed to add to cart"),
   });
 };

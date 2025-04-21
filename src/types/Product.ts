@@ -6,6 +6,7 @@ export interface Product {
   stock: number;
   price: number;
   mainImageUrl: string;
+  imagesUrl:string[]
 }
 
 export type productType = Product[];

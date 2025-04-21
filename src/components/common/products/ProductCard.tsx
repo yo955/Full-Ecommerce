@@ -40,14 +40,12 @@ const ProductCard = (Product: Product) => {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
-        <form>
           <button
             onClick={() => addToCart({product: Product, quantity: 1})}
             className={styles.addToCartButton}
           >
             Add to Cart
           </button>
-        </form>
         <div className={styles.productDetails}>
           <h3>{Product.name}</h3>
           <p>{Product.price}</p>
@@ -55,6 +53,7 @@ const ProductCard = (Product: Product) => {
         </div>
       </div>
     </div>
+    
   )
     ;
 };

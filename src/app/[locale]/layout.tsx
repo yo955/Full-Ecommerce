@@ -8,6 +8,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "@/styles/main.scss";
+import Toastify from "@/components/common/toastify/Toastify";
 
 
 export const metadata: Metadata = {
@@ -40,6 +41,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <ReactQueryDevtools initialIsOpen={false} />
             <main>{children}</main>
+            <Toastify />
           </NextIntlClientProvider>
         </QueryProvider>
         <Footer />

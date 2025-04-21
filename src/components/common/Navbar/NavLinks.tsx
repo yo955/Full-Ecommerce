@@ -13,6 +13,7 @@ const NavLinks = () => {
     user
       ? { href: PageLinks.HOME, title: "Log out", onclick: logout }
       : { href: PageLinks.SIGN_UP, title: "Sign Up" },
+      user?{href:"",title:""}:{ href: PageLinks.LOG_IN, title: "Log In" }
   ];
 
   return (

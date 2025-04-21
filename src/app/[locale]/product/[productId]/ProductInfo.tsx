@@ -6,10 +6,13 @@ import CustomButton from "@/components/common/ui/Button";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdAutorenew } from "react-icons/md";
+import { Product } from "@/types/Product";
+import { useWishListStore } from "@/stores/wishlist/WishListStore";
 // 6767676
 const sizes = ["Xs", "S", "M", "L", "Xl"];
 
-const ProductInfo = () => {
+const ProductInfo = ({product}:{product:Product}) => {
+  const addToWishList = useWishListStore((state) => state.addToWishList);
   const [selectSize, setSelectSize] = useState("");
   const [value, setValue] = useState(0);
   const [clicked, setClicked] = useState<"plus" | "minus" | null>(null);
@@ -24,7 +27,7 @@ const ProductInfo = () => {
   return (
     <div className="grid h-fit sm:grid-cols-1 custom-mid:px-7">
       <div className="border-b-4 flex flex-col gap-1">
-        <h1 className="text-2xl font-semibold mb-2">product title</h1>
+        <h1 className="text-2xl font-semibold mb-2">{product.name}</h1>
         <div className="flex gap-2 ">
           <FaStar className="text-yellow-300" />
           <FaStar className="text-yellow-300" />
@@ -35,11 +38,9 @@ const ProductInfo = () => {
           <p>|</p>
           <p className="text-green-400">In Stock</p>
         </div>
-        <p className="text-2xl font-normal">$1212121</p>
+        <p className="text-2xl font-normal">${product.price}</p>
         <p className="text-sm mb-4 md:w-fit">
-          PlayStation 5 Controller Skin High quality vinyl with air channel
-          adhesive for easy bubble free install & mess free removal Pressure
-          sensitive.
+          {product.longDescription}
         </p>
       </div>
       <div className="mt-3">
@@ -86,7 +87,8 @@ const ProductInfo = () => {
             </button>
           </div>
           <CustomButton className="w-fit h-8 text-base">Buy Now</CustomButton>
-          <div className="w-8 h-8 mx-1 border-2 border-[#0000003f] rounded-md  text-center justify-items-center place-content-center text-base">
+          <div className="w-8 h-8 mx-1 border-2 border-[#0000003f] rounded-md  text-center justify-items-center place-content-center text-base"
+           onClick={()=>addToWishList(product)}>
             <IoIosHeartEmpty />
           </div>
         </div>

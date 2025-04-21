@@ -1,5 +1,4 @@
 import { CustomAuthPage } from "@/components/common/CustomAuthPage/CustomAuthPage";
-import Toastify from "@/components/common/toastify/Toastify";
 import { formDataProp } from "@/types/formData";
 
 const fieldData: formDataProp[] = [
@@ -30,7 +29,6 @@ const LoginPage = () => {
         initialValues={initialValues}
         isLogin={true}
       />
-      <Toastify />
     </>
   );
 };

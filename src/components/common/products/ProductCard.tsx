@@ -1,5 +1,5 @@
+"use client";
 import Image from "next/image";
-import Link from "next/link";
 import Rate from "./Rate";
 import styles from "@/styles/ProductItem/ProductItem.module.scss"; // Import the SCSS module
 import {useCartStore} from "@/stores/cart/cartStore";
@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import {useWishListStore} from "@/stores/wishlist/WishListStore";
+import {Link} from "@/i18n/routing";
 
 
 const ProductCard = (Product: Product) => {
@@ -15,16 +16,20 @@ const ProductCard = (Product: Product) => {
   const addToCart = useCartStore((state) => state.addToCart);
   const addToWishList = useWishListStore((state) => state.addToWishList);
 
+
   return (
     <div className={styles.productItem}>
-      <Link href="#">
+      <div>
         <IconButton aria-label="fingerprint" color="error" className={styles.wishlistButton}
                     onClick={() => addToWishList(Product)}>
           <FavoriteBorderIcon/>
         </IconButton>
-        <IconButton aria-label="fingerprint" color="error" className={styles.EyeButton}>
-          <VisibilityIcon/>
-        </IconButton>
+        <Link href={`/product/${Product.productId}`}>
+          <IconButton aria-label="fingerprint" color="error" className={styles.EyeButton}
+          >
+            <VisibilityIcon/>
+          </IconButton>
+        </Link>
         <span className={styles.newBadge}>New</span>
         <div className={styles.imageContainer}>
           <Image
@@ -48,7 +53,7 @@ const ProductCard = (Product: Product) => {
           <p>{Product.price}</p>
           <Rate/>
         </div>
-      </Link>
+      </div>
     </div>
   )
     ;

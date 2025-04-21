@@ -3,7 +3,9 @@ import ProductImgs from "./ProductImgs";
 import ProductInfo from "./ProductInfo";
 // import CustomSwiper from "@/components/common/Swiper/Swiper";
 
-const ProductPage = () => {
+const ProductDetailsPage =  ({ params }: { params: { productId: string } }) => {
+  const {productId}  =  params;
+  console.log(productId);
   return (
     <div className="my-12 mx-auto lg:w-[80%] md:w-[95%] sm:w-[100%]">
       <PathLinks titles={["product"]} />
@@ -18,4 +20,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default ProductDetailsPage;

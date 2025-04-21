@@ -6,7 +6,7 @@ import CustomButton from "@/components/common/ui/Button";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdAutorenew } from "react-icons/md";
-
+// 6767676
 const sizes = ["Xs", "S", "M", "L", "Xl"];
 
 const ProductInfo = () => {

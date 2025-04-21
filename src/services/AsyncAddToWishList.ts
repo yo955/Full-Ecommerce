@@ -15,7 +15,6 @@ const AsyncAddToCart = async (wishListId: string) => {
   console.log(wishListId)
   try {
     const response = await axiosInstance.post('/wishlist', JSON.stringify(wishListId))
-    console.log("jkhjkhjkh" + response.data)
     const data: Wishlist = response.data
     return data;
   } catch (error) {

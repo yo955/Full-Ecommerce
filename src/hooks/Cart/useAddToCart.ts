@@ -1,6 +1,6 @@
 "use client"
 import {useMutation} from "@tanstack/react-query";
-import AsyncAddToCart from "@/services/AsyncAddToCart";
+import AsyncAddToCart from "@/services/Cart/AsyncAddToCart";
 import {toast} from "react-toastify";
 
 export interface addToCartProps {

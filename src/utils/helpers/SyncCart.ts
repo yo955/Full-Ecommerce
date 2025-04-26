@@ -1,7 +1,7 @@
 import {CartItem} from "@/types/CartTypes";
 import {UseMutateFunction} from "@tanstack/react-query";
-import {addToCartProps} from "@/hooks/useAddToCart";
-import {Cart} from "@/services/AsyncAddToCart";
+import {addToCartProps} from "@/hooks/Cart/useAddToCart";
+import {Cart} from "@/services/Cart/AsyncAddToCart";
 
 type MutateType = UseMutateFunction<
   Cart,

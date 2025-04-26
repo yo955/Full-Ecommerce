@@ -1,8 +1,8 @@
 import {create} from 'zustand';
 import {WishListState} from "@/types/wishListTypes";
 import {useAuthStore} from "@/stores/auth/useAuthStore";
-import AsyncAddToWishList, {WishlistItem} from "@/services/AsyncAddToWishList";
-import AsyncRemoveFromWishlist from "@/services/AsyncRemoveFromWishlist";
+import AsyncAddToWishList, {WishlistItem} from "@/services/WishList/AsyncAddToWishList";
+import AsyncRemoveFromWishlist from "@/services/WishList/AsyncRemoveFromWishlist";
 
 const SaveToLocalStorage = (Products: WishlistItem[]) => {
 

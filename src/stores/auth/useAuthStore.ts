@@ -1,7 +1,7 @@
 // Zustand
 import {create} from "zustand";
 import {AuthState} from "@/types/AuthState";
-import LogoutUser from "@/services/LogoutUser";
+import LogoutUser from "@/services/Auth/LogoutUser";
 
 const STORAGE_KEY = "authUser"
 

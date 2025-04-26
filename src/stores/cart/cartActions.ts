@@ -1,7 +1,7 @@
 import {CartItem} from "@/types/CartTypes";
 import {useAuthStore} from "@/stores/auth/useAuthStore";
-import AsyncAddToCart from "@/services/AsyncAddToCart";
-import AsyncRemoveFromCart from "@/services/AsyncRemoveFromCart";
+import AsyncAddToCart from "@/services/Cart/AsyncAddToCart";
+import AsyncRemoveFromCart from "@/services/Cart/AsyncRemoveFromCart";
 import { toast } from "react-toastify";
 
 export const UseAddToCartHandler = async (cart: CartItem[], cartItem: CartItem) => {

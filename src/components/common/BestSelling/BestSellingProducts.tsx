@@ -1,5 +1,5 @@
 "use client";
-import useGetProducts from "@/hooks/useGetProducts";
+import useGetProducts from "@/hooks/Product/useGetProducts";
 import Loading from "@/loading/Loading";
 import ProductCard from "../products/ProductCard";
 import CustomButton from "../ui/Button";

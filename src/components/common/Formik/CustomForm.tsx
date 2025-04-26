@@ -1,8 +1,8 @@
 import {Form, Formik} from "formik";
 import CustomButton from "@/components/common/ui/Button";
 import {FcGoogle} from "react-icons/fc";
-import useGetRegisterUser from "@/hooks/useGetRegisterUser";
-import useGetLoginUser from "@/hooks/useGetLoginUser";
+import useGetRegisterUser from "@/hooks/Auth/useGetRegisterUser";
+import useGetLoginUser from "@/hooks/Auth/useGetLoginUser";
 import {RegisterValidation} from "@/utils/validation/SignUpValidation";
 import CustomField from "./CustomField";
 import CustomErrorMsg from "./CustomErrorMsg";
@@ -10,7 +10,7 @@ import {formDataArray} from "@/types/formData";
 import {RegisterParams} from "@/types/RegisterParams";
 import {LoginParams} from "@/types/LoginParams";
 import {LoginValidation} from "@/utils/validation/LoginValidation";
-import {LoginWithGoogle} from "@/services/LoginWithGoogle";
+// import {LoginWithGoogle} from "@/services/LoginWithGoogle";
 
 const CustomForm = ({fieldData, initialValues, isLogin}: formDataArray) => {
   const CheckAuthFN = isLogin ? useGetLoginUser : useGetRegisterUser;
@@ -19,7 +19,9 @@ const CustomForm = ({fieldData, initialValues, isLogin}: formDataArray) => {
   const handleSubmit = (values: RegisterParams | LoginParams) => {
     mutate(values);
   };
-
+  const handleLoginWithGoogle = () => {
+    window.location.href = process.env.NEXT_PUBLIC_API_URL + "/users/google-login";
+  }
   return (
     <div>
       <Formik
@@ -64,7 +66,7 @@ const CustomForm = ({fieldData, initialValues, isLogin}: formDataArray) => {
             <div>
               <button
                 className="w-[100%] h-14 text-black border border-black rounded-md mt-5 flex gap-2 items-center justify-center"
-                onClick={LoginWithGoogle}
+                onClick={handleLoginWithGoogle}
               >
                 <FcGoogle className="text-3xl"/>
                 Sign Up with Google

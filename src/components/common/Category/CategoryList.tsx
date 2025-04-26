@@ -1,4 +1,4 @@
-import useGetCategory from "@/hooks/useGetCategories";
+import useGetCategory from "@/hooks/Product/useGetCategories";
 import Loading from "@/loading/Loading";
 
 const CategoryList = () => {

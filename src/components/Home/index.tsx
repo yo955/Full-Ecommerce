@@ -4,7 +4,7 @@ import SectionLayout from "@/components/common/CustomSection";
 import SwiperButton from "@/components/common/Swiper/SwiperButton";
 import CustomSwiper from "@/components/common/Swiper/Swiper";
 import CategoryCard from "@/components/common/Category/CategoryCard";
-import useGetCategory from "@/hooks/useGetCategories";
+import useGetCategory from "@/hooks/Product/useGetCategories";
 // import BestSellingProducts from "@/components/common/BestSelling/BestSellingProducts";
 import Features from "./Features/Features";
 import Services from "./Services/Services";

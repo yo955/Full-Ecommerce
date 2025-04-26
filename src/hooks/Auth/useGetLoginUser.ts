@@ -1,12 +1,12 @@
 "use client"
-import LoginUser from "@/services/LoginUser";
 import {useAuthStore} from "@/stores/auth/useAuthStore";
 import {LoginParams} from "@/types/LoginParams";
 import {useMutation} from "@tanstack/react-query";
 import {useRouter} from "next/navigation";
 import {useState} from "react";
 import {toast} from "react-toastify";
-import UseSyncCart from "@/hooks/useSyncCart";
+import UseSyncCart from "@/hooks/Cart/useSyncCart";
+import LoginUser from "@/services/Auth/LoginUser";
 
 
 const useGetLoginUser = () => {

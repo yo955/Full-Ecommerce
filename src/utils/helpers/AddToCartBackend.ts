@@ -1,4 +1,4 @@
-import useAddToCart from "@/hooks/useAddToCart";
+import useAddToCart from "@/hooks/Cart/useAddToCart";
 
 interface Product {
   ProductId: string,

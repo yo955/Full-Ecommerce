@@ -1,5 +1,5 @@
 import {useMutation} from "@tanstack/react-query";
-import AsyncRemoveFromCart from "@/services/AsyncRemoveFromCart";
+import AsyncRemoveFromCart from "@/services/Cart/AsyncRemoveFromCart";
 import {toast} from "react-toastify";
 
 export const useAsyncRemoveFromCart = () => {

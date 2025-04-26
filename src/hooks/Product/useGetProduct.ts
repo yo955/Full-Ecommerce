@@ -1,5 +1,5 @@
 "use client";
-import fetchProduct from "@/services/fetchSingleProduct";
+import fetchProduct from "@/services/Product/fetchSingleProduct";
 import {Product} from "@/types/Product";
 import {useQuery} from "@tanstack/react-query";
 

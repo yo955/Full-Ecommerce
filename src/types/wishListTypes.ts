@@ -1,5 +1,5 @@
 import {Product} from "@/types/Product";
-import {WishlistItem} from "@/services/AsyncAddToWishList";
+import {WishlistItem} from "@/services/WishList/AsyncAddToWishList";
 
 export interface WishListState {
   wishList: WishlistItem[],

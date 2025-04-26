@@ -1,12 +1,12 @@
 "use client";
 import {useMutation} from "@tanstack/react-query";
-import RegisterUser from "@/services/RegisterUser";
 import {RegisterParams} from "@/types/RegisterParams";
 import {useRouter} from "next/navigation";
 import {toast} from "react-toastify";
 import {useState} from "react";
 import {useAuthStore} from "@/stores/auth/useAuthStore";
-import UseSyncCart from "@/hooks/useSyncCart";
+import UseSyncCart from "@/hooks/Cart/useSyncCart";
+import RegisterUser from "@/services/Auth/RegisterUser";
 
 
 const useGetRegisterUser = () => {

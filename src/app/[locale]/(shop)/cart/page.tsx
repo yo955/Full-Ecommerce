@@ -6,7 +6,7 @@ import CustomButton from "@/components/common/ui/Button";
 import CartTotal from "./CartTotal";
 import PathLinks from "@/components/common/ui/PathLinks";
 import { useCartStore } from "@/stores/cart/cartStore";
-import AsyncAddToCart from "@/services/AsyncAddToCart";
+import AsyncAddToCart from "@/services/Cart/AsyncAddToCart";
 
 const CartPage = () => {
   const cartItems = useCartStore((state) => state.cart);

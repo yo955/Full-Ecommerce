@@ -2,7 +2,7 @@
 import PathLinks from "@/components/common/ui/PathLinks";
 import ProductImgs from "./ProductImgs";
 import ProductInfo from "./ProductInfo";
-import useGetProduct from "@/hooks/useGetProduct";
+import useGetProduct from "@/hooks/Product/useGetProduct";
 import Loading from "@/loading/Loading";
 import * as React from "react";
 import {useParams} from "next/navigation";
@@ -10,7 +10,7 @@ import {useParams} from "next/navigation";
 
 const ProductDetailsPage = () => {
   const {productId}: { productId: string } = useParams();
-  console.log(productId);
+
   const {data: product, isLoading} = useGetProduct(productId);
   if (isLoading) {
     return <Loading/>;

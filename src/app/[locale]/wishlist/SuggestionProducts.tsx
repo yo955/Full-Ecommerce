@@ -1,5 +1,5 @@
 import ProductCard from "@/components/common/products/ProductCard";
-import useGetProducts from "@/hooks/useGetProducts";
+import useGetProducts from "@/hooks/Product/useGetProducts";
 import Loading from "@/loading/Loading";
 import styles from "@/styles/cart/Cart.module.scss";
 

@@ -3,14 +3,16 @@
 import {useEffect} from "react";
 import {useRouter} from "next/navigation";
 import useLoginWithGoogle from "@/hooks/Auth/useLoginWithGoogle";
+import {useAuthStore} from "@/stores/auth/useAuthStore";
 
 const GoogleAuthPage = () => {
   const router = useRouter();
   const {data: user, error} = useLoginWithGoogle();
-
+  const {setUser} = useAuthStore();
   useEffect(() => {
     if (user) {
       // Successful authentication - redirect to home
+      setUser(user);
       router.push("/");
     }
   }, [user, router]);
@@ -18,7 +20,7 @@ const GoogleAuthPage = () => {
   useEffect(() => {
     if (error) {
       // Failed authentication - redirect to login
-      router.push("/login");
+      router.push("login");
     }
   }, [error, router]);
 

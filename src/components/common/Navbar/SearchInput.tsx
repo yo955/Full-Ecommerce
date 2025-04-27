@@ -1,63 +1,52 @@
 "use client";
-import { styled } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
+import {Search} from "lucide-react";
+import React,{useRef, useState} from "react";
+import {useRouter} from "@/i18n/routing";
+import {useLocale} from "next-intl";
 
-const Search = styled("div")(() => ({
-  position: "relative",
-  borderRadius: 5,
-  backgroundColor: "#F5F5F5",
-  color: "black",
-  "&:hover": {
-    backgroundColor: "#F5F5F5",
-  },
-  marginLeft: 0,
-  width: "100%",
-}));
+const SearchInput = () => {
+  const [search, setSearch] = useState('');
+  const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const locale = useLocale();
+  const handleSearch = () => {
+    if (search.trim() !== '') {
+      window.location.href = (`/${locale}/products?searchQuery=${search}`);
+    } else {
+      router.push(`/products`);
+    }
+    router.refresh();
+    setSearch('');
+    inputRef.current?.focus();
+  };
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSearch();
+    }
+  };
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  width: "100%",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
-  },
-}));
-
-export default function SearchInput() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{background:"#F5F5F5",boxShadow:"none"}} >
-        <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ "aria-label": "search" }}
-          />
-        </Search>
-      </AppBar>
-    </Box>
+    <div className="relative w-full max-w-lg">
+      <button
+        type="button"
+        onClick={handleSearch}
+        className="absolute inset-y-0 left-0 flex items-center pl-3"
+      >
+        <Search className="h-5 w-5 text-gray-400"/>
+      </button>
+      <input
+        ref={inputRef}
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        onKeyDown={handleKeyDown}
+        type="text"
+        placeholder="Search..."
+        className="w-full pl-10 pr-4 py-2 bg-white text-black rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+      />
+    </div>
   );
-}
+};
+
+export default SearchInput;

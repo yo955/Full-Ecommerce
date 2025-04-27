@@ -24,7 +24,7 @@ const ProductCard = (Product: Product) => {
                     onClick={() => addToWishList(Product)}>
           <FavoriteBorderIcon/>
         </IconButton>
-        <Link href={`/product/${Product.productId}`}>
+        <Link href={`/products/${Product.productId}`}>
           <IconButton aria-label="fingerprint" color="error" className={styles.EyeButton}
           >
             <VisibilityIcon/>

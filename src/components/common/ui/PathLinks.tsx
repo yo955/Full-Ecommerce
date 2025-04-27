@@ -16,12 +16,11 @@ const PathLinks: React.FC<pathLinksProps> = ({
           return (
             <div key={index} className="flex gap-2">
               <p>{slash}</p>
-              <Link
+              <span
                 className="text-black font-medium"
-                href={`/${title.toLowerCase()}`}
               >
                 {title}
-              </Link>
+              </span>
             </div>
           );
         })}

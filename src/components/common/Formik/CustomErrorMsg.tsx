@@ -1,6 +1,6 @@
 import { ErrorMessage } from "formik";
 
-interface ErrorMsgPrpos {
+interface ErrorMsgProps {
   className?: string;
   name: string;
   component?: string;
@@ -9,7 +9,7 @@ const CustomErrorMsg = ({
   className = "absolute bottom-0 left-0 text-red-600",
   name,
   component = "div",
-}: ErrorMsgPrpos) => {
+}: ErrorMsgProps) => {
   return (
     <div>
       <ErrorMessage className={className} name={name} component={component} />

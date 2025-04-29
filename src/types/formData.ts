@@ -9,6 +9,7 @@ export interface formDataProp {
   type: string;
   name: string;
   placeholder: string;
+  label?: string;
 }
 
 

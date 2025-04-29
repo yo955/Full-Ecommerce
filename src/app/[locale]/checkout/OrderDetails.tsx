@@ -4,8 +4,8 @@ import React from "react";
 
 const OrderDetails = () => {
   return (
-    <section className=" py-5 px-7 w-fit sm:w-[500px]  ">
-      <article className="sm:w-[400px]">
+    <section className=" py-5 px-7 w-fit sm:w-[500px] custom-mid:w-[300px]  ">
+      <article className="sm:w-[400px] custom-mid:w-[280px]">
         <div>
           <p className="flex justify-between">
             product1 <span>222$</span>
@@ -26,7 +26,7 @@ const OrderDetails = () => {
           <p>Total:</p>
           <p> 2323$</p>
         </div>
-        <div className="mt-4 sm:w-[500px]">
+        <div className="mt-4 sm:w-[500px] custom-mid:w-[300px]">
           <form action="" className="flex flex-col gap-3">
             <div className="flex  items-center gap-2">
               <input
@@ -84,7 +84,7 @@ const OrderDetails = () => {
             </div>
           </form>
           <div className="mt-7">
-            <form className="flex gap-3">
+            <form className="flex gap-3 custom-mid:flex-col">
               <input
                 className="couponCode"
                 type="text"

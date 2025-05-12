@@ -4,9 +4,9 @@ import React from "react";
 
 const OrderDetails = () => {
   return (
-    <section className=" py-5 px-7 w-fit sm:w-[500px] custom-mid:w-[300px]  ">
+    <section className="py-8 px-7 w-fit sm:w-[500px] custom-mid:w-[300px]  ">
       <article className="sm:w-[400px] custom-mid:w-[280px]">
-        <div>
+        <div className={'flex flex-col gap-2'}>
           <p className="flex justify-between">
             product1 <span>222$</span>
           </p>

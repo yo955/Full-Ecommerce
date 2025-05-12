@@ -1,79 +1,72 @@
 "use client";
 import CustomField from "@/components/common/Formik/CustomField";
-import { formDataProp } from "@/types/formData";
+import {formDataProp} from "@/types/formData";
 // import { Checkbox } from "@mui/material";
-import { Field, Form, Formik } from "formik";
+import {Field, Form, Formik} from "formik";
 import React from "react";
+import {useCreateAddress} from "@/hooks/checkout/useCreateAddress";
+import {AddressType} from "@/types/AddressType";
 
 const fieldData: formDataProp[] = [
   {
+    name: "name",
     className: "inputs",
-    label: "First Name",
     type: "text",
-    name: "Fname",
-    placeholder: "First Name",
+    placeholder: "Name",
   },
   {
+    name: "state",
     className: "inputs",
-    label: "Company Name",
     type: "text",
-    name: "companyName",
-    placeholder: "Company Name",
+    placeholder: "Governorate",
   },
   {
+    name: "street",
     className: "inputs",
-    label: "Street Adress",
     type: "text",
-    name: "address",
-    placeholder: "Street Adress",
+    placeholder: "Street",
   },
   {
+    name: "country",
     className: "inputs",
-    label: "Appartment, floor, etc. (optional)",
     type: "text",
-    name: "appartment",
-    placeholder: "Appartment, floor, etc.",
+    placeholder: "Country",
   },
   {
-    className: "inputs",
-    label: "Town/City",
-    type: "text",
     name: "city",
-    placeholder: "Town/City",
+    className: "inputs",
+    type: "text",
+    placeholder: "City",
   },
   {
-    className: "inputs",
-    label: "Phone Number",
-    type: "number",
     name: "phone",
+    className: "inputs",
+    type: "number",
     placeholder: "Phone Number",
   },
   {
+    name: "zipCode",
     className: "inputs",
-    label: "Email Address",
-    type: "email",
-    name: "email",
-    placeholder: "Email Address",
+    type: "number",
+    placeholder: "Zip Code",
   },
-  //   {
-  //     className: "",
-  //     type: "checkbox",
-  //     name: "checked",
-  //     placeholder: " ",
-  //   },
 ];
 
-const initialValues = {
-  className: "",
-  label: "",
-  type: "",
+const initialValues: AddressType = {
+  id: "",
   name: "",
-  placeholder: " ",
-  checked: false,
+  phone: "",
+  street: "",
+  city: "",
+  state: "",
+  zipCode: "",
+  country: ""
 };
 const BillingForm = () => {
-  const FormSubmit = () => {
-    console.log("submitted");
+  const {mutate} = useCreateAddress()
+  const FormSubmit = (value: AddressType) => {
+    mutate(value)
+    console.log(value);
   };
   return (
     <section>

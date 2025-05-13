@@ -1,6 +1,6 @@
 "use client";
 import {useMutation} from "@tanstack/react-query";
-import {RegisterParams} from "@/types/RegisterParams";
+import {RegisterParams} from "@/types/auth/RegisterParams";
 import {useRouter} from "next/navigation";
 import {toast} from "react-toastify";
 import {useState} from "react";

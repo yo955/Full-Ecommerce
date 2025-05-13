@@ -1,12 +1,16 @@
+"use client";
 import CustomButton from "@/components/common/ui/Button";
 import Image from "next/image";
 import React from "react";
 
-const OrderDetails = () => {
+interface Props {
+  handleFormSubmit: () => void;
+}
+const OrderDetails = ({ handleFormSubmit }: Props) => {
   return (
     <section className="py-8 px-7 w-fit sm:w-[500px] custom-mid:w-[300px]  ">
       <article className="sm:w-[400px] custom-mid:w-[280px]">
-        <div className={'flex flex-col gap-2'}>
+        <div className={"flex flex-col gap-2"}>
           <p className="flex justify-between">
             product1 <span>222$</span>
           </p>
@@ -93,7 +97,7 @@ const OrderDetails = () => {
               />
               <CustomButton
                 className="w-[210px] h-[45px] custom-sm:w-[120px] custom-sm:text-sm"
-                type="submit"
+                type="button"
               >
                 Apply Coupon
               </CustomButton>
@@ -103,7 +107,8 @@ const OrderDetails = () => {
         <div className="mt-8">
           <CustomButton
             className="w-[210px] h-[55px] custom-sm:w-[120px] custom-sm:text-sm"
-            type="submit"
+            type="button"
+            onClick={handleFormSubmit}
           >
             Place Order
           </CustomButton>

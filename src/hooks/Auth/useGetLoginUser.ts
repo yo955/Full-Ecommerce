@@ -1,6 +1,6 @@
 "use client"
 import {useAuthStore} from "@/stores/auth/useAuthStore";
-import {LoginParams} from "@/types/LoginParams";
+import {LoginParams} from "@/types/auth/LoginParams";
 import {useMutation} from "@tanstack/react-query";
 import {useRouter} from "next/navigation";
 import {useState} from "react";

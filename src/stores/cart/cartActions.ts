@@ -1,4 +1,4 @@
-import {CartItem} from "@/types/CartTypes";
+import {CartItem} from "@/types/cart/CartTypes";
 import {useAuthStore} from "@/stores/auth/useAuthStore";
 import AsyncAddToCart from "@/services/Cart/AsyncAddToCart";
 import AsyncRemoveFromCart from "@/services/Cart/AsyncRemoveFromCart";

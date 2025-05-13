@@ -1,5 +1,5 @@
 import axiosInstance from "@/utils/api/axiosInstance";
-import { productType } from "@/types/Product";
+import { productType } from "@/types/cart/Product";
 
 const fetchProducts = async ({
   pageSize = 10,

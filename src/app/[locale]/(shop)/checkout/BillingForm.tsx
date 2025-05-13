@@ -1,53 +1,33 @@
 "use client";
 import CustomField from "@/components/common/Formik/CustomField";
-import {formDataProp} from "@/types/formData";
-// import { Checkbox } from "@mui/material";
-import {Field, Form, Formik} from "formik";
-import React from "react";
-import {useCreateAddress} from "@/hooks/checkout/useCreateAddress";
-import {AddressType} from "@/types/AddressType";
+import { formDataProp } from "@/types/formData";
+import { Form, Formik } from "formik";
+import { useCreateAddress } from "@/hooks/checkout/useCreateAddress";
+import { AddressType } from "@/types/AddressType";
+// import { CheckoutValidation } from "@/utils/validation/CheckoutValidation";
 
 const fieldData: formDataProp[] = [
-  {
-    name: "name",
-    className: "inputs",
-    type: "text",
-    placeholder: "Name",
-  },
+  { name: "name", type: "text", placeholder: "Name" },
   {
     name: "state",
-    className: "inputs",
     type: "text",
     placeholder: "Governorate",
   },
-  {
-    name: "street",
-    className: "inputs",
-    type: "text",
-    placeholder: "Street",
-  },
+  { name: "street", type: "text", placeholder: "Street" },
   {
     name: "country",
-    className: "inputs",
     type: "text",
     placeholder: "Country",
   },
-  {
-    name: "city",
-    className: "inputs",
-    type: "text",
-    placeholder: "City",
-  },
+  { name: "city", type: "text", placeholder: "City" },
   {
     name: "phone",
-    className: "inputs",
-    type: "number",
+    type: "string",
     placeholder: "Phone Number",
   },
   {
     name: "zipCode",
-    className: "inputs",
-    type: "number",
+    type: "string",
     placeholder: "Zip Code",
   },
 ];
@@ -60,25 +40,30 @@ const initialValues: AddressType = {
   city: "",
   state: "",
   zipCode: "",
-  country: ""
+  country: "",
 };
-const BillingForm = () => {
-  const {mutate} = useCreateAddress()
+
+interface Props {
+  formRef: React.RefObject<HTMLFormElement | null>;
+}
+
+const BillingForm = ({ formRef }: Props) => {
+  const { mutate } = useCreateAddress();
   const FormSubmit = (value: AddressType) => {
-    mutate(value)
-    console.log(value);
+    mutate(value);
+    console.log(value, " submitted");
   };
   return (
-    <section>
-      <h1 className="text-3xl font-medium mb-5">Billing Details</h1>
-      <Formik onSubmit={FormSubmit} initialValues={initialValues}>
-        <Form>
+    <section className="w-2/4 ">
+      <h1 className="text-3xl font-medium mb-5 ">Billing Details</h1>
+      <Formik onSubmit={FormSubmit} initialValues={initialValues} >
+        <Form ref={formRef}>
           {fieldData.map((input, index) => {
             return (
               <div key={index} className="flex flex-col gap-1">
-                <label className="text-[#ababab]">{input.label}</label>
+                {/*<label className="text-[#ababab]">{input.label}</label>*/}
                 <CustomField
-                  className={`${input.className} border-b-0 bg-[#e0e0e0] rounded-md`}
+                  className={`inputs border-b-0 bg-[#e0e0e0] rounded-md`}
                   type={input.type}
                   name={input.name}
                   placeholder={input.placeholder}
@@ -86,14 +71,6 @@ const BillingForm = () => {
               </div>
             );
           })}
-          <div className="flex gap-1 items-center">
-            <Field
-              type="checkbox"
-              name="checked"
-              className="w-4 bg-red-500 text-white"
-            />
-            <p>save this information for faster check-out next time.</p>
-          </div>
         </Form>
       </Formik>
     </section>

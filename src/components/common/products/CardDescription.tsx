@@ -1,6 +1,6 @@
 "use client";
 import {Link} from "@/i18n/routing";
-import {Product} from "@/types/Product";
+import {Product} from "@/types/cart/Product";
 import Image from "next/image";
 import {useCartStore} from "@/stores/cart/cartStore";
 import {useWishListStore} from "@/stores/wishlist/WishListStore";

@@ -1,4 +1,4 @@
-import {CartItem} from "@/types/CartTypes";
+import {CartItem} from "@/types/cart/CartTypes";
 import {UseMutateFunction} from "@tanstack/react-query";
 import {addToCartProps} from "@/hooks/Cart/useAddToCart";
 import {Cart} from "@/services/Cart/AsyncAddToCart";

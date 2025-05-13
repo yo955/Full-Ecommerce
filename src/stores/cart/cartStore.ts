@@ -1,6 +1,6 @@
 import {create} from "zustand";
 import {UseAddToCartHandler, removeFromCart, updateQuantity} from "./cartActions";
-import {CartItem, CartState} from "@/types/CartTypes";
+import {CartItem, CartState} from "@/types/cart/CartTypes";
 // import useAddToCart from "@/hooks/useAddToCart";
 
 const getCartFromLocalStorage = () => {

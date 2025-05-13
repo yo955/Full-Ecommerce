@@ -2,5 +2,10 @@
     "HomePage": {
       "title": "مرحبا",
       "about": "Go to the about page"
+    },
+    "NotFound": {
+      "title": "404 - الصفحة غير موجودة",
+      "message": "الصفحة التي تبحث عنها غير موجودة.",
+      "returnHome": "العودة للرئيسية"
     }
   }

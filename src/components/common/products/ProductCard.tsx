@@ -3,7 +3,7 @@ import Image from "next/image";
 import Rate from "./Rate";
 import styles from "@/styles/ProductItem/ProductItem.module.scss"; // Import the SCSS module
 import {useCartStore} from "@/stores/cart/cartStore";
-import {Product} from "@/types/Product";
+import {Product} from "@/types/cart/Product";
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import VisibilityIcon from '@mui/icons-material/Visibility';

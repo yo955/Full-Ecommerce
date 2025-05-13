@@ -1,5 +1,5 @@
 import axiosInstance from "@/utils/api/axiosInstance";
-import {Product} from "@/types/Product";
+import {Product} from "@/types/cart/Product";
 
 const SearchByQuery = async (query: string): Promise<Product[]> => {
   try {

@@ -5,7 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useCartStore } from "@/stores/cart/cartStore";
 import styles from "@/styles/cart/Cart.module.scss";
-import { CartItem } from "@/types/CartTypes";
+import { CartItem } from "@/types/cart/CartTypes";
 import { useMemo } from "react";
 
 type CartRowProps = {

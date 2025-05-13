@@ -5,7 +5,7 @@ import Loading from "@/loading/Loading";
 import {useState} from "react";
 import SuggestionProducts from "./SuggestionProducts";
 import {useWishListStore} from "@/stores/wishlist/WishListStore";
-import WishListCard from "@/app/[locale]/wishlist/WishListCard";
+import WishListCard from "@/app/[locale]/(shop)/wishlist/WishListCard";
 
 const WishListPage = () => {
   const products = useWishListStore((state) => state.wishList)

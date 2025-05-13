@@ -7,6 +7,7 @@ import CartTotal from "./CartTotal";
 import PathLinks from "@/components/common/ui/PathLinks";
 import { useCartStore } from "@/stores/cart/cartStore";
 import AsyncAddToCart from "@/services/Cart/AsyncAddToCart";
+import {Link} from "@/i18n/routing";
 
 const CartPage = () => {
   const cartItems = useCartStore((state) => state.cart);
@@ -62,9 +63,11 @@ const CartPage = () => {
         <div className="border-2 border-black py-5 px-7 w-[470px] custom-sm:w-[300px] text-center  ">
           <h2 className="my-1 text-start">Cart Total</h2>
           <CartTotal total={total} />
-          <CustomButton className="text-[12px] py-2 px-7 !mt-4 ">
-            Process to checkout
-          </CustomButton>
+          <Link href="/checkout">
+            <CustomButton className="text-[12px] py-2 px-7 !mt-4 ">
+              Process to checkout
+            </CustomButton>
+          </Link>
         </div>
       </div>
     </div>

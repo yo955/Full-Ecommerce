@@ -1,5 +1,5 @@
 import {create} from 'zustand';
-import {WishListState} from "@/types/wishListTypes";
+import {WishListState} from "@/types/cart/wishListTypes";
 import {useAuthStore} from "@/stores/auth/useAuthStore";
 import AsyncAddToWishList, {WishlistItem} from "@/services/WishList/AsyncAddToWishList";
 import AsyncRemoveFromWishlist from "@/services/WishList/AsyncRemoveFromWishlist";

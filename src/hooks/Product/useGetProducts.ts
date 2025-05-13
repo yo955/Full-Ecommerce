@@ -1,6 +1,6 @@
 "use client";
 import fetchProducts from "@/services/Product/fetchproducts";
-import {productType} from "@/types/Product";
+import {productType} from "@/types/cart/Product";
 import {useQuery} from "@tanstack/react-query";
 
 const useGetProducts = ({pageSize = 10}: { pageSize?: number } = {}) => {

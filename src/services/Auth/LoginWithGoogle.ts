@@ -1,5 +1,5 @@
 import AxiosInstance from "@/utils/api/axiosInstance";
-import {User} from "@/types/AuthState";
+import {User} from "@/types/auth/AuthState";
 
 const fetchUser = async (): Promise<User> => {
   try {

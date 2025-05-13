@@ -7,8 +7,8 @@ import {RegisterValidation} from "@/utils/validation/SignUpValidation";
 import CustomField from "./CustomField";
 import CustomErrorMsg from "./CustomErrorMsg";
 import {formDataArray} from "@/types/formData";
-import {RegisterParams} from "@/types/RegisterParams";
-import {LoginParams} from "@/types/LoginParams";
+import {RegisterParams} from "@/types/auth/RegisterParams";
+import {LoginParams} from "@/types/auth/LoginParams";
 import {LoginValidation} from "@/utils/validation/LoginValidation";
 // import {LoginWithGoogle} from "@/services/LoginWithGoogle";
 

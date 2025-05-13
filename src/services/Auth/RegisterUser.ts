@@ -1,5 +1,5 @@
 import axiosInstance from "@/utils/api/axiosInstance";
-import {RegisterParams} from "@/types/RegisterParams";
+import {RegisterParams} from "@/types/auth/RegisterParams";
 import axios from "axios";
 
 

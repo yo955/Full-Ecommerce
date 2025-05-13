@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/ProductItem/ProductItem.module.scss"; // Import the SCSS module
-import {Product} from "@/types/Product";
+import {Product} from "@/types/cart/Product";
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from "@mui/icons-material/Delete";
 import {useCartStore} from "@/stores/cart/cartStore";

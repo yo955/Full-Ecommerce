@@ -1,5 +1,5 @@
 import axiosInstance from "@/utils/api/axiosInstance";
-import {CartItem} from "@/types/CartTypes";
+import {CartItem} from "@/types/cart/CartTypes";
 import {addToCartProps} from "@/hooks/Cart/useAddToCart";
 
 export interface Cart {

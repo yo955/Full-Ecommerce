@@ -1,5 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import {User} from "@/types/AuthState";
+import {User} from "@/types/auth/AuthState";
 import fetchUser from "@/services/Auth/LoginWithGoogle";
 
 const useHandlePage = () => {

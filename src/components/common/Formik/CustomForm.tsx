@@ -1,27 +1,29 @@
-import {Form, Formik} from "formik";
+import { Form, Formik } from "formik";
 import CustomButton from "@/components/common/ui/Button";
-import {FcGoogle} from "react-icons/fc";
+import { FcGoogle } from "react-icons/fc";
 import useGetRegisterUser from "@/hooks/Auth/useGetRegisterUser";
 import useGetLoginUser from "@/hooks/Auth/useGetLoginUser";
-import {RegisterValidation} from "@/utils/validation/SignUpValidation";
+import { RegisterValidation } from "@/utils/validation/SignUpValidation";
 import CustomField from "./CustomField";
 import CustomErrorMsg from "./CustomErrorMsg";
-import {formDataArray} from "@/types/formData";
-import {RegisterParams} from "@/types/auth/RegisterParams";
-import {LoginParams} from "@/types/auth/LoginParams";
-import {LoginValidation} from "@/utils/validation/LoginValidation";
+import { formDataArray } from "@/types/formData";
+import { RegisterParams } from "@/types/auth/RegisterParams";
+import { LoginParams } from "@/types/auth/LoginParams";
+import { LoginValidation } from "@/utils/validation/LoginValidation";
 // import {LoginWithGoogle} from "@/services/LoginWithGoogle";
 
-const CustomForm = ({fieldData, initialValues, isLogin}: formDataArray) => {
+const CustomForm = ({ fieldData, initialValues, isLogin }: formDataArray) => {
   const CheckAuthFN = isLogin ? useGetLoginUser : useGetRegisterUser;
-  const {mutate, isPending, hasError} = CheckAuthFN();
+  const { mutate, isPending, hasError } = CheckAuthFN();
 
   const handleSubmit = (values: RegisterParams | LoginParams) => {
     mutate(values);
   };
   const handleLoginWithGoogle = () => {
-    window.location.href = process.env.NEXT_PUBLIC_API_URL + "/users/google-login";
-  }
+    window.location.href =
+      process.env.NEXT_PUBLIC_API_URL +
+      "/users/google-login?redirectUrl=http://localhost:3000/en/googleAuth";
+  };
   return (
     <div>
       <Formik
@@ -29,7 +31,7 @@ const CustomForm = ({fieldData, initialValues, isLogin}: formDataArray) => {
         initialValues={initialValues}
         validationSchema={isLogin ? LoginValidation : RegisterValidation}
       >
-        {({isSubmitting}) => (
+        {({ isSubmitting }) => (
           <Form>
             <div className="relative w-[100%]">
               {fieldData.map((item, index) => (
@@ -40,7 +42,7 @@ const CustomForm = ({fieldData, initialValues, isLogin}: formDataArray) => {
                     name={item.name}
                     placeholder={item.placeholder}
                   />
-                  <CustomErrorMsg name={item.name}/>
+                  <CustomErrorMsg name={item.name} />
                 </div>
               ))}
             </div>
@@ -51,15 +53,15 @@ const CustomForm = ({fieldData, initialValues, isLogin}: formDataArray) => {
                 className={`${
                   isLogin ? "login-btn" : "register-btn"
                 } w-full h-14 mt-5`}
-                disabled={isPending || isSubmitting && !hasError}
+                disabled={isPending || (isSubmitting && !hasError)}
               >
-                {isPending || isSubmitting && !hasError
+                {isPending || (isSubmitting && !hasError)
                   ? isLogin
                     ? "Logging in..."
                     : "Creating..."
                   : isLogin
-                    ? "Login"
-                    : "Create"}
+                  ? "Login"
+                  : "Create"}
               </CustomButton>
             </div>
 
@@ -68,7 +70,7 @@ const CustomForm = ({fieldData, initialValues, isLogin}: formDataArray) => {
                 className="w-[100%] h-14 text-black border border-black rounded-md mt-5 flex gap-2 items-center justify-center"
                 onClick={handleLoginWithGoogle}
               >
-                <FcGoogle className="text-3xl"/>
+                <FcGoogle className="text-3xl" />
                 Sign Up with Google
               </button>
             </div>

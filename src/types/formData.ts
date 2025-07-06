@@ -5,6 +5,7 @@ interface initialValuesProps {
 }
 
 export interface formDataProp {
+  className?: string;
   type: string;
   name: string;
   placeholder: string;

@@ -4,7 +4,6 @@ import { formDataProp } from "@/types/formData";
 import { Form, Formik } from "formik";
 import { useCreateAddress } from "@/hooks/checkout/useCreateAddress";
 import { AddressType } from "@/types/AddressType";
-// import { CheckoutValidation } from "@/utils/validation/CheckoutValidation";
 
 const fieldData: formDataProp[] = [
   { name: "name", type: "text", placeholder: "Name" },
@@ -48,15 +47,15 @@ interface Props {
 }
 
 const BillingForm = ({ formRef }: Props) => {
-  const { mutate } = useCreateAddress();
+  const { mutate: addressMutate } = useCreateAddress();
   const FormSubmit = (value: AddressType) => {
-    mutate(value);
+    addressMutate(value);
     console.log(value, " submitted");
   };
   return (
     <section className="w-2/4 ">
       <h1 className="text-3xl font-medium mb-5 ">Billing Details</h1>
-      <Formik onSubmit={FormSubmit} initialValues={initialValues} >
+      <Formik onSubmit={FormSubmit} initialValues={initialValues}>
         <Form ref={formRef}>
           {fieldData.map((input, index) => {
             return (

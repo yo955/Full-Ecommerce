@@ -1,15 +1,12 @@
-import React from "react";
-import CustomImg from "../ui/CustomImg";
+import Link from "next/link";
+import StoreLogo from "./svg/StoreLogo";
 
 const Logo = () => {
   return (
-    <CustomImg
-      src="/images/nav-logo.png"
-      alt="nav-logo"
-      width={150}
-      height={150}
-      className="w-[7rem] md:w-[10rem] lg:w-[12rem] "
-    />
+    <Link href="/" className="flex items-center gap-2">
+      <StoreLogo className="w-10 h-10" />
+      <span className="font-bold text-xl text-primary">متجري</span>
+    </Link>
   );
 };
 

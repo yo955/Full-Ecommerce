@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Toastify() {
   return (
     <>
-      <ToastContainer position="bottom-left" autoClose={3000} />
+      <ToastContainer position="top-right" autoClose={3000} />
     </>
   );
 }

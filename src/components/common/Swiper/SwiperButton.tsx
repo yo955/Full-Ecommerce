@@ -5,7 +5,6 @@ import ProductItem from "@/components/common/products/ProductCard";
 import Loading from "@/loading/Loading";
 import {Link} from "@/i18n/routing";
 
-// import Products from "./products/page";
 
 const SwiperButton = () => {
   const {data: products, isLoading} = useGetProducts();

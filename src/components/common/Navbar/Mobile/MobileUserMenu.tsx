@@ -1,13 +1,15 @@
 "use client";
+
+import { Link } from "@/i18n/routing";
 import { useCartStore } from "@/stores/cart/cartStore";
 import { useWishListStore } from "@/stores/wishlist/WishListStore";
-import { Link } from "@/i18n/routing";
 
-const Icons = () => {
+const MobileUserLinksMenu = () => {
   const cart = useCartStore((state) => state.cart);
-  const wishList = useWishListStore((state) => state.wishList || []);
+  const wishList = useWishListStore((state) => state.wishList);
+
   return (
-    <div className="flex  items-center gap-3 ">
+    <div className="flex flex-col gap-4 border-t pt-4">
       {/* WishList */}
       <Link
         href="/wishlist"
@@ -39,8 +41,24 @@ const Icons = () => {
         </span>
         <span>السلة</span>
       </Link>
+
+      {/* Login  */}
+      <Link
+        href="/login"
+        className="flex items-center gap-2 border-b pb-2"
+      >
+        🔐 <span>تسجيل الدخول</span>
+      </Link>
+
+      {/*  Register */}
+      <Link
+        href="/register"
+        className="flex items-center gap-2"
+      >
+        ✍️ <span>إنشاء حساب</span>
+      </Link>
     </div>
   );
 };
 
-export default Icons;
+export default MobileUserLinksMenu;

@@ -21,7 +21,7 @@
     "axios": "^1.7.9",
     "formik": "^2.4.6",
     "js-cookie": "^3.0.5",
-    "lucide-react": "^0.475.0",
+    "lucide-react": "^0.526.0",
     "mui": "^0.0.1",
     "next": "^15.1.7",
     "next-auth": "^4.24.11",

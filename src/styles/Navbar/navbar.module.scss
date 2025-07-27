@@ -1,0 +1,73 @@
+@use "../variables" as vars;
+@use "../mediaquery" as *;
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid white;
+  background-color: white;
+  z-index: 100;
+
+  // responsive padding
+  @include for-small-phone {
+    padding: 0.5rem;
+  }
+  @include for-medium-phone {
+    padding: 1rem;
+  }
+  @include for-large-phone {
+    padding: 1.5rem;
+  }
+  @include for-tablet {
+    padding: 2rem;
+  }
+  @include for-desktop {
+    padding: 2.5rem;
+  }
+  @include for-xl-screen {
+    padding: 3rem;
+  }
+  @include for-lg-screen {
+    padding: 3.5rem;
+  }
+}
+
+.logo {
+  display: flex;
+  flex: 1;
+  @include for-lg-screen {
+    flex: none;
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+.navLinks {
+  display: flex;
+  @include for-lg-screen {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+  }
+}
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: medium;
+  @include for-lg-screen {
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+  }
+}

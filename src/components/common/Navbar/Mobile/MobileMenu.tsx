@@ -68,7 +68,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
 
       <div className="p-4 flex flex-col gap-6 h-full justify-start">
         <SearchInput />
-        <NavLinks onLinkClick={handleLinkClick} />
+        <NavLinks  onLinkClick={handleLinkClick} />
+        
         <MobileUserMenu />
       </div>
     </div>

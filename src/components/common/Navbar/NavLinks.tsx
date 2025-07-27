@@ -4,7 +4,7 @@ import { Link } from "@/i18n/routing";
 import { Home, Mail, Info, ShoppingBasket } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-
+import styles from "@/styles/Navbar/navbar.module.scss";
 const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => {
   const pathname = usePathname();
   const locale = useLocale();
@@ -39,9 +39,9 @@ const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => {
   ];
 
   return (
-    <nav>
+    <nav className={styles.navLinks}>
       <ul
-        className="flex flex-col lg:flex-row gap-4 lg:gap-6 items-start lg:items-center text-base font-medium"
+        className={styles.navList}
         dir={locale === "ar" ? "rtl" : "ltr"}
       >
         {navItems.map((navItem, index) => (

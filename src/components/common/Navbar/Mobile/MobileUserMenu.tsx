@@ -1,12 +1,15 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
+import { useAuthStore } from "@/stores/auth/useAuthStore";
 import { useCartStore } from "@/stores/cart/cartStore";
 import { useWishListStore } from "@/stores/wishlist/WishListStore";
+import Logout from "../svg/Logout";
 
 const MobileUserLinksMenu = () => {
-  const cart = useCartStore((state) => state.cart);
-  const wishList = useWishListStore((state) => state.wishList);
+  const cart = useCartStore((state) => state.cart || []);
+  const wishList = useWishListStore((state) => state.wishList || []);
+  const { user, logout } = useAuthStore((state) => state);
 
   return (
     <div className="flex flex-col gap-4 border-t pt-4">
@@ -42,21 +45,28 @@ const MobileUserLinksMenu = () => {
         <span>السلة</span>
       </Link>
 
-      {/* Login  */}
-      <Link
-        href="/login"
-        className="flex items-center gap-2 border-b pb-2"
-      >
-        🔐 <span>تسجيل الدخول</span>
-      </Link>
+      {!user && (
+        <>
+          {/* Login  */}
+          <Link href="/login" className="flex items-center gap-2 border-b pb-2">
+            🔐 <span>تسجيل الدخول</span>
+          </Link>
 
-      {/*  Register */}
-      <Link
-        href="/register"
-        className="flex items-center gap-2"
-      >
-        ✍️ <span>إنشاء حساب</span>
-      </Link>
+          {/*  SignUp */}
+          <Link href="/SignUp" className="flex items-center gap-2">
+            ✍️ <span>إنشاء حساب</span>
+          </Link>
+        </>
+      )}
+      {user && (
+        <button
+          onClick={logout}
+          className="flex p-2 rounded bg-red-500 items-center gap-2 text-white border-b pb-2"
+        >
+         <Logout/>
+          <span>تسجيل الخروج</span>
+        </button>
+      )}
     </div>
   );
 };

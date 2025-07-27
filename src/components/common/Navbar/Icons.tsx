@@ -4,7 +4,7 @@ import { useWishListStore } from "@/stores/wishlist/WishListStore";
 import { Link } from "@/i18n/routing";
 
 const Icons = () => {
-  const cart = useCartStore((state) => state.cart);
+  const cart = useCartStore((state) => state.cart || []);
   const wishList = useWishListStore((state) => state.wishList || []);
   return (
     <div className="flex  items-center gap-3 ">
@@ -15,7 +15,7 @@ const Icons = () => {
       >
         <span className="relative">
           🧡
-          {wishList.length > 0 && (
+          {wishList && wishList.length > 0 && (
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
               {wishList.length}
             </span>
@@ -31,7 +31,7 @@ const Icons = () => {
       >
         <span className="relative">
           🛒
-          {cart.length > 0 && (
+          {cart && cart.length > 0 && (
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
               {cart.length}
             </span>

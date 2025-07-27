@@ -1,6 +1,6 @@
 "use client";
 import {Search} from "lucide-react";
-import React,{useRef, useState} from "react";
+import {useRef, useState} from "react";
 import {useRouter} from "@/i18n/routing";
 import {useLocale} from "next-intl";
 

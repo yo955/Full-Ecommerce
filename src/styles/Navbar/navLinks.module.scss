@@ -1,0 +1,61 @@
+@use "../variables" as *;
+@use "../mediaquery" as *;
+
+.navLinks {
+  display: flex;
+
+  @include for-lg-screen {
+    justify-content: center;
+    flex: 1;
+  }
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: medium;
+
+  @include for-lg-screen {
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  position: relative;
+  transition: color 0.2s ease-in-out;
+  color: #000000;
+  text-decoration: none;
+
+  &:hover {
+    color: #b91c1c;
+  }
+}
+
+.active {
+  color: #b91c1c;
+}
+
+.underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  background-color: #b91c1c;
+  width: 0;
+  transition: width 0.3s ease-in-out;
+}
+
+.navLink:hover .underline {
+  width: 100%;
+}
+
+.underlineActive {
+  width: 100%;
+}

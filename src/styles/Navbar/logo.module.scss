@@ -1,0 +1,19 @@
+@use "../variables" as *;
+@use "../mediaquery" as *;
+
+.logo {
+  display: flex;
+  flex: 1;
+  @include for-lg-screen {
+    flex: none;
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}

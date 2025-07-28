@@ -1,6 +1,6 @@
 import Link from "next/link";
 import StoreLogo from "./svg/StoreLogo";
-import styles from "@/styles/Navbar/navbar.module.scss";
+import styles from "@/styles/Navbar/logo.module.scss";
 const Logo = () => {
   return (
     <div className={styles.logo}>

@@ -1,0 +1,42 @@
+@use "../mediaquery" as *;
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; 
+
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; 
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__icon {
+    position: relative;
+    font-size: 1.2rem;
+  }
+
+  &__text {
+    font-size: 1rem;
+  }
+
+  &__badge {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: #ef4444; 
+    color: white;
+    font-size: 0.75rem; 
+    width: 1.25rem;
+    height: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+  }
+}

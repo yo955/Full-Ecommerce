@@ -9,8 +9,8 @@ import MobileMenu from "./Mobile/MobileMenu";
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import AuthBtn from "./AuthBtn";
-import styles from "@/styles/Navbar/navbar.module.scss";
 import useDeviceType from "@/hooks/getDeviceType/useDeviceType";
+import styles from "@/styles/Navbar/navbar.module.scss";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { isXL } = useDeviceType();
@@ -27,7 +27,7 @@ const Navbar = () => {
 
         {/*Desktop Right: Icons + LanguageSwitcher */}
         {isXL && (
-          <div className="flex justify-end items-center gap-4">
+          <div className={styles.flex_gap}>
             <Icons />
             <AuthBtn />
             <LanguageSwitcherBtn />
@@ -36,7 +36,7 @@ const Navbar = () => {
 
         {/* Mobile: Menu Icon + LanguageSwitcher */}
         {!isXL && (
-          <div className="flex items-center gap-2">
+          <div className={styles.flex_gap}>
             <LanguageSwitcherBtn />
             <button onClick={() => setMenuOpen(true)} className="text-black">
               <Menu size={40} />

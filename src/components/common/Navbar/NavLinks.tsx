@@ -4,7 +4,7 @@ import { Link } from "@/i18n/routing";
 import { Home, Mail, Info, ShoppingBasket } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import styles from "@/styles/Navbar/navbar.module.scss";
+import styles from "@/styles/Navbar/navLinks.module.scss";
 const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => {
   const pathname = usePathname();
   const locale = useLocale();
@@ -40,26 +40,21 @@ const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => {
 
   return (
     <nav className={styles.navLinks}>
-      <ul
-        className={styles.navList}
-        dir={locale === "ar" ? "rtl" : "ltr"}
-      >
+      <ul className={styles.navList} dir={locale === "ar" ? "rtl" : "ltr"}>
         {navItems.map((navItem, index) => (
           <li key={index}>
             <Link
               href={navItem.href}
               onClick={onLinkClick}
-              className={`group flex items-center gap-1 relative transition-colors duration-200 ${
-                navItem.isActive
-                  ? "text-[#b91c1c]"
-                  : "text-foreground hover:text-[#b91c1c]"
+              className={`${styles.navLink} ${
+                navItem.isActive ? styles.active : ""
               }`}
             >
               {navItem.icon}
               <span>{navItem.title}</span>
               <span
-                className={`absolute -bottom-0.5 left-0 h-0.5 bg-[#b91c1c] transition-all duration-300 ${
-                  navItem.isActive ? "w-full" : "w-0 group-hover:w-full"
+                className={`${styles.underline} ${
+                  navItem.isActive ? styles.underlineActive : ""
                 }`}
               ></span>
             </Link>

@@ -5,41 +5,31 @@ import { useAuthStore } from "@/stores/auth/useAuthStore";
 import { useCartStore } from "@/stores/cart/cartStore";
 import { useWishListStore } from "@/stores/wishlist/WishListStore";
 import Logout from "../svg/Logout";
-
+import styles from "@/styles/Navbar/mobileUserMenu.module.scss";
 const MobileUserLinksMenu = () => {
   const cart = useCartStore((state) => state.cart || []);
   const wishList = useWishListStore((state) => state.wishList || []);
   const { user, logout } = useAuthStore((state) => state);
 
   return (
-    <div className="flex flex-col gap-4 border-t pt-4">
+    <div className={styles.menuContainer}>
       {/* WishList */}
-      <Link
-        href="/wishlist"
-        className="relative flex items-center gap-2 border-b pb-2"
-      >
+      <Link href="/wishlist" className={styles.menuLink}>
         <span className="relative">
           🧡
           {wishList.length > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-              {wishList.length}
-            </span>
+            <span className={styles.badge}>{wishList.length}</span>
           )}
         </span>
         <span>المفضلة</span>
       </Link>
 
       {/* Cart */}
-      <Link
-        href="/cart"
-        className="relative flex items-center gap-2 border-b pb-2"
-      >
+      <Link href="/cart" className={styles.menuLink}>
         <span className="relative">
           🛒
           {cart.length > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-              {cart.length}
-            </span>
+            <span className={styles.badge}>{cart.length}</span>
           )}
         </span>
         <span>السلة</span>
@@ -47,23 +37,18 @@ const MobileUserLinksMenu = () => {
 
       {!user && (
         <>
-          {/* Login  */}
-          <Link href="/login" className="flex items-center gap-2 border-b pb-2">
+          <Link href="/login" className={styles.menuLink}>
             🔐 <span>تسجيل الدخول</span>
           </Link>
-
-          {/*  SignUp */}
-          <Link href="/SignUp" className="flex items-center gap-2">
+          <Link href="/SignUp" className={styles.menuLink}>
             ✍️ <span>إنشاء حساب</span>
           </Link>
         </>
       )}
+
       {user && (
-        <button
-          onClick={logout}
-          className="flex p-2 rounded bg-red-500 items-center gap-2 text-white border-b pb-2"
-        >
-         <Logout/>
+        <button onClick={logout} className={styles.logoutBtn}>
+          <Logout />
           <span>تسجيل الخروج</span>
         </button>
       )}

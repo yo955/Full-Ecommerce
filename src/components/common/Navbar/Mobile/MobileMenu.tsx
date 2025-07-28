@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 import NavLinks from "../NavLinks";
 import SearchInput from "../SearchInput";
 import MobileUserMenu from "./MobileUserMenu";
-
+import styles from "@/styles/Navbar/navbar.module.scss";
 interface MobileMenuProps {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
@@ -13,7 +13,7 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // إغلاق عند الضغط خارج المكون
+  // Handle click outside to close the menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -32,22 +32,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
     };
   }, [isOpen, setIsOpen]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setIsOpen(false);
-      }
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [setIsOpen]);
-
   const handleLinkClick = () => {
     setIsOpen(false);
   };
@@ -55,21 +39,18 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
   return (
     <div
       ref={menuRef}
-      className={`fixed top-0 right-0 h-full w-72 sm:w-80 bg-white shadow-lg z-[9999] transform transition-transform duration-300 ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      }`}
+      className={`${styles.mobileMenu} ${isOpen ? styles.open : styles.closed}`}
     >
-      <div className="flex justify-between items-center px-4 py-3 border-b">
-        <h2 className="text-lg font-semibold">القائمة</h2>
-        <button onClick={() => setIsOpen(false)}>
+      <div className={styles.header}>
+        <h2 className={styles.title}>القائمة</h2>
+        <button onClick={() => setIsOpen(false)} className={styles.closeBtn}>
           <X size={24} />
         </button>
       </div>
 
-      <div className="p-4 flex flex-col gap-6 h-full justify-start">
+      <div className={styles.content}>
         <SearchInput />
-        <NavLinks  onLinkClick={handleLinkClick} />
-        
+        <NavLinks onLinkClick={handleLinkClick} />
         <MobileUserMenu />
       </div>
     </div>

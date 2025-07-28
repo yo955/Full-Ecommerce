@@ -1,0 +1,77 @@
+@use "../mediaquery" as *;
+
+.topHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background-color: #000000;
+  color: #ffffff;
+  height: 3rem;
+  text-align: center;
+  @include for-small-phone {
+    height: 2.5rem;
+  }
+  @include for-medium-phone {
+    height: 2.75rem;
+  }
+  @include for-large-phone {
+    height: 3rem;
+  }
+  @include for-tablet {
+    height: 3.5rem;
+  }
+  @include for-desktop {
+    height: 4rem;
+  }
+  @include for-xl-screen {
+    height: 4.5rem;
+  }
+  @include for-lg-screen {
+    height: 5rem;
+  }
+}
+
+.text {
+  color: #d3d3d3;
+}
+
+.link {
+  text-decoration: underline;
+  @include for-small-phone {
+    display: none;
+  }
+}
+
+.message {
+  font-size: 1rem;
+
+  @include for-small-phone {
+    font-size: 0.5rem;
+  }
+
+  @include for-medium-phone {
+     font-size: 0.5rem;
+  }
+
+  @include for-large-phone {
+    font-size: 0.6rem;
+  }
+
+  @include for-tablet {
+    font-size: 0.7rem;
+  }
+
+  @include for-desktop {
+    font-size: 0.8rem;
+  }
+
+  @include for-xl-screen {
+    font-size: 1rem;
+  }
+
+  @include for-lg-screen {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,42 @@
+.menuContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid #e5e7eb; // نفس gray-200 في tailwind
+  padding-top: 1rem;
+}
+
+.menuLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background-color: #ef4444; // red-500
+  color: white;
+  font-size: 0.75rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #ef4444;
+  color: white;
+  padding: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  border-radius: 0.25rem;
+}

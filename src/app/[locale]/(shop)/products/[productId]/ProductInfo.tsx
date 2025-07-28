@@ -8,109 +8,110 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { MdAutorenew } from "react-icons/md";
 import { Product } from "@/types/cart/Product";
 import { useWishListStore } from "@/stores/wishlist/WishListStore";
-// 6767676
-const sizes = ["Xs", "S", "M", "L", "Xl"];
 
-const ProductInfo = ({product}:{product:Product}) => {
+const sizes = ["XS", "S", "M", "L", "XL"];
+
+const ProductInfo = ({ product }: { product: Product }) => {
   const addToWishList = useWishListStore((state) => state.addToWishList);
   const [selectSize, setSelectSize] = useState("");
-  const [value, setValue] = useState(0);
-  const [clicked, setClicked] = useState<"plus" | "minus" | null>(null);
-  function increaseItem() {
-    setClicked("plus");
-    setValue(value + 1);
-  }
-  function decreaseItem() {
-    setClicked("minus");
-    setValue(value > 0 ? value - 1 : 0);
-  }
+  const [quantity, setQuantity] = useState(1);
+
+  const increaseItem = () => setQuantity((prev) => prev + 1);
+  const decreaseItem = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+
   return (
-    <div className="grid h-fit sm:grid-cols-1 custom-mid:px-7">
-      <div className="border-b-4 flex flex-col gap-1">
-        <h1 className="text-2xl font-semibold mb-2">{product.name}</h1>
-        <div className="flex gap-2 ">
-          <FaStar className="text-yellow-300" />
-          <FaStar className="text-yellow-300" />
-          <FaStar className="text-yellow-300" />
-          <FaStar className="text-yellow-300" />
+    <div className="grid gap-6 sm:px-4">
+      {/* Title + Rating */}
+      <div className="border-b pb-4">
+        <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
+        <div className="flex items-center gap-2 text-sm text-gray-600">
+          {[...Array(4)].map((_, i) => (
+            <FaStar key={i} className="text-yellow-400" />
+          ))}
           <CiStar className="text-gray-300" />
-          <p>(150 Reviews)</p>
-          <p>|</p>
-          <p className="text-green-400">In Stock</p>
+          <span>(150 Reviews)</span>
+          <span>|</span>
+          <span className="text-green-500">متوفر</span>
         </div>
-        <p className="text-2xl font-normal">${product.price}</p>
-        <p className="text-sm mb-4 md:w-fit">
-          {product.longDescription}
-        </p>
+        <p className="text-2xl font-semibold mt-3 text-black">${product.price}</p>
+        <p className="text-sm text-gray-700 mt-2 leading-relaxed">{product.longDescription}</p>
       </div>
-      <div className="mt-3">
-        <div className="flex items-center mb-2">
-          Colors:
-          <span className=" rounded-full border-4 bg-blue-600 w-5 h-5 ml-4"></span>{" "}
-          <span className=" rounded-full border-4 bg-green-600 w-5 h-5 "></span>
+
+      {/* Colors */}
+      <div>
+        <p className="mb-1 font-medium">الألوان:</p>
+        <div className="flex gap-3">
+          <span className="w-6 h-6 rounded-full bg-blue-600 border-2 border-gray-300 cursor-pointer" />
+          <span className="w-6 h-6 rounded-full bg-green-600 border-2 border-gray-300 cursor-pointer" />
         </div>
-        <div>
-          <p className="inline">Size :</p>
-          {sizes &&
-            sizes.map((size: string, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectSize(size)}
-                className={` w-8 h-8 mx-1 border-2 ${
-                  selectSize === size ? "bg-[#DB4444]" : "bg-white"
-                } `}
-              >
-                {size}
-              </button>
-            ))}
-        </div>
-        <div className="mt-6  flex flex-wrap gap-4">
-          <div className="border   w-fit h-8 flex items-center">
+      </div>
+
+      {/* Sizes */}
+      <div>
+        <p className="mb-1 font-medium">المقاس:</p>
+        <div className="flex gap-2">
+          {sizes.map((size) => (
             <button
-              className={`w-8 h-8  border-2  ${
-                clicked === "minus" ? "bg-[#DB4444]" : "bg-white"
-              }`}
-              onClick={decreaseItem}
+              key={size}
+              onClick={() => setSelectSize(size)}
+              className={`w-10 h-10 border rounded ${
+                selectSize === size
+                  ? "bg-red-600 text-white border-red-600"
+                  : "bg-white text-black"
+              } hover:border-gray-500`}
             >
-              -
+              {size}
             </button>
-            <p className="w-10 h-8 text-lg text-center place-content-center">
-              {value}
-            </p>
-            <button
-              className={`w-8 h-8  border-2    ${
-                clicked === "plus" ? "bg-[#DB4444]" : "bg-white"
-              }`}
-              onClick={increaseItem}
-            >
-              +
-            </button>
-          </div>
-          <CustomButton className="w-fit h-8 text-base">Buy Now</CustomButton>
-          <div className="w-8 h-8 mx-1 border-2 border-[#0000003f] rounded-md  text-center justify-items-center place-content-center text-base"
-           onClick={()=>addToWishList(product)}>
-            <IoIosHeartEmpty />
+          ))}
+        </div>
+      </div>
+
+      {/* Quantity + Buy/Add */}
+      <div className="flex flex-wrap gap-4 items-center">
+        <div className="flex border rounded">
+          <button
+            onClick={decreaseItem}
+            className="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200"
+          >
+            -
+          </button>
+          <div className="w-10 h-8 flex items-center justify-center">{quantity}</div>
+          <button
+            onClick={increaseItem}
+            className="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200"
+          >
+            +
+          </button>
+        </div>
+
+        <CustomButton className="h-10 px-6 text-base bg-red-600 text-white hover:bg-red-700">
+          اشتري الآن
+        </CustomButton>
+
+        <button
+          onClick={() => addToWishList(product)}
+          className="w-10 h-10 border rounded flex items-center justify-center hover:bg-gray-100"
+          title="إضافة إلى المفضلة"
+        >
+          <IoIosHeartEmpty size={22} />
+        </button>
+      </div>
+
+      {/* Delivery Info */}
+      <div className="border p-4 rounded-md text-sm text-gray-700 space-y-3">
+        <div className="flex gap-3 items-start">
+          <TbTruckDelivery size={28} />
+          <div>
+            <p className="font-medium">توصيل مجاني</p>
+            <p>أدخل الرمز البريدي لتأكيد التوصيل</p>
           </div>
         </div>
-        <div className="mt-5 px-4 py-6 border border-[#00000075] rounded-sm max-w-full custom-sm:px-2 md:w-fit  overflow-hidden">
-          <div className="flex gap-2   ">
-            <TbTruckDelivery className="w-10 h-10" />
-            <div className="flex flex-col">
-              <p className="text-base font-medium">Free Delivery</p>
-              <p className="text-xs font-medium">
-                Enter your postal code for Delivery Availability
-              </p>
-            </div>
-          </div>
-          <p className="-mx-4 h-[1px] bg-[#00000075] my-3 "></p>
-          <div className="flex gap-2">
-            <MdAutorenew className="w-10 h-10" />
-            <div className="flex flex-col">
-              <p className="text-base font-medium">Return Delivery</p>
-              <p className="text-xs font-medium">
-                Free 30 Days Delivery Returns. Details
-              </p>
-            </div>
+        <hr />
+        <div className="flex gap-3 items-start">
+          <MdAutorenew size={28} />
+          <div>
+            <p className="font-medium">إرجاع خلال 30 يوم</p>
+            <p>تفاصيل سياسة الإرجاع لدينا</p>
           </div>
         </div>
       </div>

@@ -13,20 +13,20 @@ import useDeviceType from "@/hooks/getDeviceType/useDeviceType";
 import styles from "@/styles/Navbar/navbar.module.scss";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { isXL } = useDeviceType();
+  const { isDesktop } = useDeviceType();
   return (
     <>
       <TopHeader />
 
-      <div className={styles.container}>
+      <div className={styles.navbar__container}>
         {/* Left: Logo */}
         <Logo />
 
         {/* Center: NavLinks */}
-        {isXL && <NavLinks />}
+        {isDesktop && <NavLinks />}
 
         {/*Desktop Right: Icons + LanguageSwitcher */}
-        {isXL && (
+        {isDesktop && (
           <div className={styles.flex_gap}>
             <Icons />
             <AuthBtn />
@@ -35,7 +35,7 @@ const Navbar = () => {
         )}
 
         {/* Mobile: Menu Icon + LanguageSwitcher */}
-        {!isXL && (
+        {!isDesktop && (
           <div className={styles.flex_gap}>
             <LanguageSwitcherBtn />
             <button onClick={() => setMenuOpen(true)} className="text-black">

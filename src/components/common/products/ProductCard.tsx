@@ -1,61 +1,91 @@
 "use client";
 import Image from "next/image";
 import Rate from "./Rate";
-import styles from "@/styles/ProductItem/ProductItem.module.scss"; // Import the SCSS module
-import {useCartStore} from "@/stores/cart/cartStore";
-import {Product} from "@/types/cart/Product";
-import IconButton from '@mui/material/IconButton';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import {useWishListStore} from "@/stores/wishlist/WishListStore";
-import {Link} from "@/i18n/routing";
+import styles from "@/styles/ProductItem/ProductItem.module.scss";
+import { useCartStore } from "@/stores/cart/cartStore";
+import { useWishListStore } from "@/stores/wishlist/WishListStore";
+import { Product } from "@/types/cart/Product";
+import { ShoppingCart, Heart, Eye, Check } from "lucide-react";
+import { Link } from "@/i18n/routing";
+import { useMemo } from "react";
 
-
-const ProductCard = (Product: Product) => {
-
+const ProductCard = (product: Product) => {
   const addToCart = useCartStore((state) => state.addToCart);
+  const cartItems = useCartStore((state) => state.cart);
   const addToWishList = useWishListStore((state) => state.addToWishList);
+  const wishList = useWishListStore((state) => state.wishList);
 
+  const isInCart = useMemo(() => {
+    return cartItems.some(
+      (item) => item.product.productId === product.productId
+    );
+  }, [cartItems]);
+
+  const isInWishList = useMemo(() => {
+    return wishList.some(
+      (item) => item.product.productId === product.productId
+    );
+  }, [wishList]);
 
   return (
-    <div className={styles.productItem}>
-      <div>
-        <IconButton aria-label="fingerprint" color="error" className={styles.wishlistButton}
-                    onClick={() => addToWishList(Product)}>
-          <FavoriteBorderIcon/>
-        </IconButton>
-        <Link href={`/products/${Product.productId}`}>
-          <IconButton aria-label="fingerprint" color="error" className={styles.EyeButton}
-          >
-            <VisibilityIcon/>
-          </IconButton>
-        </Link>
-        <span className={styles.newBadge}>New</span>
-        <div className={styles.imageContainer}>
-          <Image
-            src={Product.mainImageUrl}
-            alt="product-img"
-            fill
-            className={styles.image}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        </div>
+    <div className={styles.card}>
+      <div className={styles.imageWrapper}>
+        <Image
+          src={product.mainImageUrl}
+          alt={product.name}
+          fill
+          className={styles.image}
+        />
+        <span className={styles.badge}>New</span>
+        <div className={styles.actions}>
           <button
-            onClick={() => addToCart({product: Product, quantity: 1})}
-            className={styles.addToCartButton}
+            onClick={() => {
+              if (!isInWishList) {
+                addToWishList(product);
+              }
+            }}
+            className={`${styles.iconButton} ${
+              isInWishList ? styles.active : ""
+            }`}
+            disabled={isInWishList}
           >
-            Add to Cart
+            <Heart size={18} />
           </button>
-        <div className={styles.productDetails}>
-          <h3>{Product.name}</h3>
-          <p>{Product.price}</p>
-          <Rate/>
+
+          <Link href={`/products/${product.productId}`}>
+            <button className={styles.iconButton}>
+              <Eye size={18} />
+            </button>
+          </Link>
         </div>
       </div>
+
+      <div className={styles.details}>
+        <h3>{product.name}</h3>
+        <p>${product.price}</p>
+        <Rate />
+        <button
+          onClick={() => {
+            if (!isInCart) {
+              addToCart({ product, quantity: 1 });
+            }
+          }}
+          disabled={isInCart}
+          className={`${styles.addToCartBtn} ${isInCart ? styles.inCart : ""}`}
+        >
+          {isInCart ? (
+            <>
+              <Check size={18} /> Added
+            </>
+          ) : (
+            <>
+              <ShoppingCart size={18} /> Add to Cart
+            </>
+          )}
+        </button>
+      </div>
     </div>
-    
-  )
-    ;
+  );
 };
 
 export default ProductCard;

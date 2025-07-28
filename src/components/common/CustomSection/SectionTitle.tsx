@@ -11,7 +11,7 @@ const SectionTitle = ({ para = "", title = "" }) => {
       )}
       {title && (
         <div className="title-body h-10 w-full ">
-          <h2 className="text-4xl">{title}</h2>
+          <h2 className="text-xl md:text-3xl">{title}</h2>
         </div>
       )}
     </div>

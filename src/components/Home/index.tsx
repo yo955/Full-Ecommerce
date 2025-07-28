@@ -13,31 +13,28 @@ import UpBtn from "../common/ui/UpBtn";
 import Music from "./musicAdvertise/Music";
 
 const HomeSection = () => {
-  const {data: Categories, isLoading} = useGetCategory();
+  const { data: Categories, isLoading } = useGetCategory();
   return (
     <article>
       <div className="home-section">
-        <Advertise/>
+        <Advertise />
       </div>
       <SectionLayout>
-        <SwiperButton/>
+        <SwiperButton />
       </SectionLayout>
       <SectionLayout title="Browse By Category" para="Categories">
         {isLoading ? (
-          <Loading/>
+          <Loading />
         ) : (
-          Categories && <CustomSwiper data={Categories} Card={CategoryCard}/>
+          Categories && <CustomSwiper data={Categories} Card={CategoryCard} />
         )}
       </SectionLayout>
-      {/*<SectionLayout title="Best Selling Products" para="This Month">*/}
-      {/*  <BestSellingProducts/>*/}
-      {/*</SectionLayout>*/}
-      <Music/>
+      <Music />
       <SectionLayout title="Featured" para="New Arrival">
-        <Features/>
+        <Features />
       </SectionLayout>
-      <Services/>
-      <UpBtn/>
+      <Services />
+      <UpBtn />
     </article>
   );
 };

@@ -11,5 +11,11 @@
       "contact": " Contact Us",
       "blog": "Blog"
     }
+  },
+  "authBtn": {
+    "login": " login",
+    "signup": "signUp ",
+    "logout": " logout",
+    "profile": "profile"
   }
 }

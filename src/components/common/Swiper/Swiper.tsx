@@ -76,9 +76,10 @@ const CustomSwiper = <T,>({
         }}
         onSwiper={(swiper) => setSwiperInstance(swiper)}
         breakpoints={{
-          320: { slidesPerView: 1.5, spaceBetween: 20 },
-          480: { slidesPerView: 3.5, spaceBetween: 30 },
-          640: { slidesPerView: 4.5, spaceBetween: 50 },
+          320: { slidesPerView: 1.2, spaceBetween: 12 },
+          480: { slidesPerView: 2, spaceBetween: 20 },
+          768: { slidesPerView: 3, spaceBetween: 30 },
+          1024: { slidesPerView: 4, spaceBetween: 40 },
         }}
         className={styles.swiper}
       >

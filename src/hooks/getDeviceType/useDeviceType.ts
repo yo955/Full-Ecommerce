@@ -11,8 +11,8 @@ type DeviceFlags = {
 const getDeviceFlags = (width: number): DeviceFlags => {
   return {
     isMobile: width <= 768,
-    isTablet: width > 768 && width <= 1024,
-    isDesktop: width > 1024 && width <= 1440,
+    isTablet: width > 768 && width < 1024,
+    isDesktop: width >= 1024 ,
     isXL: width > 1440,
   };
 };

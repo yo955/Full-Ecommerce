@@ -39,8 +39,8 @@ const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => {
   ];
 
   return (
-    <nav className={styles.navLinks}>
-      <ul className={styles.navList} dir={locale === "ar" ? "rtl" : "ltr"}>
+    <nav className={styles.navLinks} dir={locale === "ar" ? "rtl" : "ltr"}>
+      <ul className={styles.navList}>
         {navItems.map((navItem, index) => (
           <li key={index}>
             <Link

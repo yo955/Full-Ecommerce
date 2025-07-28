@@ -5,7 +5,7 @@ import { useAuthStore } from "@/stores/auth/useAuthStore";
 import { useCartStore } from "@/stores/cart/cartStore";
 import { useWishListStore } from "@/stores/wishlist/WishListStore";
 import Logout from "../svg/Logout";
-import styles from "@/styles/Navbar/mobileUserMenu.module.scss";
+import styles from "@/styles/Navbar/mobile/mobileUserMenu.module.scss";
 const MobileUserLinksMenu = () => {
   const cart = useCartStore((state) => state.cart || []);
   const wishList = useWishListStore((state) => state.wishList || []);

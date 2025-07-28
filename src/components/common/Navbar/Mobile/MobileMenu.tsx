@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 import NavLinks from "../NavLinks";
 import SearchInput from "../SearchInput";
 import MobileUserMenu from "./MobileUserMenu";
-import styles from "@/styles/Navbar/navbar.module.scss";
+import styles from "@/styles/Navbar/mobile/mobileMenu.module.scss";
 interface MobileMenuProps {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;

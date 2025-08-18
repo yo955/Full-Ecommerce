@@ -1,29 +1,20 @@
 import Image from "next/image";
-import { Card } from "@mui/material";
 import { Category } from "@/types/Category";
+import { Card, CardContent } from "@/components/ui/card";
 
 const CategoryCard = ({ categoryName, icon }: Category) => {
   return (
-    <Card
-      sx={{
-        width: "170px",
-        height: "145px",
-        borderRadius: "4px",
-        border: "1px solid #0000004D",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        "&:hover": {
-          backgroundColor: "#DB4444",
-          cursor: "pointer",
-          color: "#FFFFFF",
-        },
-      }}
-    >
-      <div className="flex flex-col justify-center items-center ">
-        <Image src={icon} alt="icon" width={50} height={43}  className="object-contain" />
+    <Card className="w-[170px] h-[145px] rounded-md border border-black/30 flex justify-center items-center hover:bg-red-600 hover:text-white transition-colors cursor-pointer">
+      <CardContent className="flex flex-col justify-center items-center p-0">
+        <Image
+          src={icon}
+          alt="icon"
+          width={50}
+          height={43}
+          className="object-contain"
+        />
         <p className="mt-2">{categoryName}</p>
-      </div>
+      </CardContent>
     </Card>
   );
 };

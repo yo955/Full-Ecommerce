@@ -1,7 +1,7 @@
 "use client";
-import CustomButton from "@/components/common/ui/Button";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "@/styles/contact/contact.scss";
+import { Button } from "@/components/ui/button";
 const initialValues = {
   YourName: "",
   YourEmail: "",
@@ -74,9 +74,9 @@ const ContactField = () => {
             />
           </div>
           <div className=" place-self-end">
-            <CustomButton className="px-10 py-3 text-xs font-thin">
+            <Button className="px-10 py-3 text-xs font-thin">
               Send Message
-            </CustomButton>
+            </Button>
           </div>
         </Form>
       </Formik>

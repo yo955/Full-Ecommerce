@@ -1,8 +1,9 @@
 "use client";
-import { Input, Button } from "@mui/joy";
-import { IoMdSend } from "react-icons/io";
+import { Send } from "lucide-react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const Footer = () => {
   return (
@@ -13,36 +14,23 @@ const Footer = () => {
           {/* Column 1: Subscribe */}
           <div className="flex flex-col items-center w-full sm:w-1/2 md:w-full">
             <h3 className="font-bold mb-4">Exclusive</h3>
-            <p className="text-xs text-slate-50 mb-2">Get 10% off your first order</p>
-            <Input
-              placeholder="Enter your email"
-              sx={{
-                backgroundColor: "black",
-                border: "1px solid white",
-                color: "white",
-                fontSize: "14px",
-                maxWidth: "300px", // أقصى عرض للـ Input
-                width: "100%", // العرض 100% لكن داخل الحد الأقصى
-                "&::before": { display: "none" },
-                "&:focus-within": {
-                  outline: "2px solid var(--Input-focusedHighlight)",
-                  outlineOffset: "2px",
-                },
-              }}
-              endDecorator={
-                <Button
-                  variant="solid"
-                  sx={{
-                    backgroundColor: "white",
-                    color: "black",
-                    minWidth: "40px",
-                    "&:hover": { backgroundColor: "white" },
-                  }}
-                >
-                  <IoMdSend />
-                </Button>
-              }
-            />
+            <p className="text-xs text-slate-50 mb-2">
+              Get 10% off your first order
+            </p>
+            <div className="flex w-full max-w-[300px] items-center border border-white rounded-md overflow-hidden">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                className="bg-black text-white placeholder:text-gray-400 border-none focus-visible:ring-0 focus-visible:outline-none"
+              />
+              <Button
+                variant="secondary"
+                size="icon"
+                className="bg-white text-black hover:bg-white"
+              >
+                <Send className="w-4 h-4" />
+              </Button>
+            </div>
           </div>
 
           {/* Column 2: Support */}
@@ -81,7 +69,9 @@ const Footer = () => {
           {/* Column 5: Download App */}
           <div className="sm:w-1/2 md:w-full">
             <h3 className="font-bold mb-4">Download App</h3>
-            <p className="text-[10px] text-slate-50 mb-4">Save $3 with App New User Only</p>
+            <p className="text-[10px] text-slate-50 mb-4">
+              Save $3 with App New User Only
+            </p>
             <div className="flex items-center justify-center gap-3">
               <Image
                 src="/images/Qrcode 1.png"
@@ -126,11 +116,15 @@ const Footer = () => {
               className="text-white hover:opacity-75"
             >
               <span className="sr-only">{social.label}</span>
-              <svg className="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg
+                className="size-6"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
                 <path d={social.iconPath} />
               </svg>
             </Link>
-            // fefffdddfdfdgjhgjh
           ))}
         </div>
       </div>

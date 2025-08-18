@@ -1,10 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import SidebarItem from "@/components/Home/sidebar/SidebarItem";
 import { Item } from "@/types/Item";
 import { VscLayoutSidebarLeft } from "react-icons/vsc";
@@ -27,7 +24,7 @@ const Items: Item[] = [
     ],
   },
   { title: "Electronics", href: "/electronics" },
-  { title: "Home & Lifestyle", href: " /home-lifestyle" },
+  { title: "Home & Lifestyle", href: "/home-lifestyle" },
   { title: "Medicine", href: "/medicine" },
   { title: "Sports & Outdoor", href: "/sports-outdoor" },
   { title: "Baby’s & Toys", href: "/babies-toys" },
@@ -37,59 +34,38 @@ const Items: Item[] = [
 ];
 
 const Sidebar = () => {
-  const [open, setOpen] = useState(false);
-  const [openDropdowns, setOpenDropdowns] = useState<{
-    [key: string]: boolean;
-  }>({});
-
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        (event as React.KeyboardEvent).key === "Tab"
-      ) {
-        return;
-      }
-      setOpen(open);
-    };
+  const [openDropdowns, setOpenDropdowns] = useState<{ [key: string]: boolean }>({});
 
   const handleToggleDropdown = (title: string) => {
     setOpenDropdowns((prev) => ({ ...prev, [title]: !prev[title] }));
   };
 
-  const list = (
-    <Box
-      sx={{ width: 250 }}
-      role="presentation"
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        {Items.map((item) => (
-          <SidebarItem
-            key={item.title}
-            item={item}
-            openDropdowns={openDropdowns}
-            handleToggleDropdown={handleToggleDropdown}
-          />
-        ))}
-      </List>
-      <Divider />
-    </Box>
-  );
-
   return (
-    <div>
-      <Button onClick={toggleDrawer(true)} className=" custom-sm:!min-w-2">
-        <VscLayoutSidebarLeft
-          className={
-            "text-3xl text-black custom-sm:text-[20px] "
-          }
-        />
-      </Button>
-      <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
-        {list}
-      </Drawer>
-    </div>
+    <Sheet>
+      {/* زرار الفتح */}
+      <SheetTrigger asChild>
+        <Button variant="ghost" size="icon" className="custom-sm:min-w-[32px]">
+          <VscLayoutSidebarLeft className="text-3xl text-black custom-sm:text-[20px]" />
+        </Button>
+      </SheetTrigger>
+
+      {/* محتوى السايدبار */}
+      <SheetContent side="left" className="w-[250px] p-4">
+        <div className="flex flex-col gap-2">
+          {Items.map((item) => (
+            <SidebarItem
+              key={item.title}
+              item={item}
+              openDropdowns={openDropdowns}
+              handleToggleDropdown={handleToggleDropdown}
+            />
+          ))}
+        </div>
+        <div className="border-t mt-4 pt-2 text-sm text-muted-foreground">
+          {/* Divider بديل */}
+        </div>
+      </SheetContent>
+    </Sheet>
   );
 };
 

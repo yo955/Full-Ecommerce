@@ -1,19 +1,25 @@
+// styles/index.scss
 
-// Fonts
+/* 1. Fonts */
 @import "./fonts";
-// Variables
+
+/* 2. Variables */
 @import "./variables";
-// Media queries
-@import "./mediaquery";
-// Mixins
+
+/* 3. Mixins */
 @import "./mixin";
-@import "./Home/home-section/home-section";
-@import "./Home/home-section/main-section";
-// global styles
+
+/* 4. Media queries */
+@import "./mediaquery";
+
+/* 5. Global styles */
 @import "./globals";
-// components
-// @import "./Navbar/navbar.module.scss";
+
+/* 6. Components */
 @import "./forms/Form.scss";
-@import "./cart/Cart.module.scss";
-@import "./swiper/TeamSwiperBullets.module.scss";
 @import "./contact/contact.scss";
+/* @import "./Navbar/navbar.module.scss"; */
+
+/* 7. Sections / Pages */
+@import "./Home/home-section/home-section.scss";
+@import "./Home/home-section/main-section.scss";

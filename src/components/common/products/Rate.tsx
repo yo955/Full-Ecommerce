@@ -1,15 +1,22 @@
 "use client";
-// mui
-import Box from "@mui/material/Box";
-import Rating from "@mui/material/Rating";
-// import Typography from "@mui/material/Typography";
 
-const Rate = () => {
+import { Star } from "lucide-react";
+import { cn } from "@/lib/utils";
+import * as React from "react";
+
+const Rate = ({ value = 2, max = 5 }: { value?: number; max?: number }) => {
   return (
-    <Box sx={{ "& > legend": { mt: 2 } }}>
-      {/* <Typography component="legend">Read only</Typography> */}
-      <Rating name="read-only" value={2} readOnly />
-    </Box>
+    <div className="flex gap-1">
+      {Array.from({ length: max }).map((_, i) => (
+        <Star
+          key={i}
+          className={cn(
+            "h-5 w-5",
+            i < value ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
+          )}
+        />
+      ))}
+    </div>
   );
 };
 

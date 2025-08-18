@@ -3,21 +3,24 @@ import Link from "next/link";
 import { Product } from "@/types/cart/Product";
 import { useCartStore } from "@/stores/cart/cartStore";
 import { useWishListStore } from "@/stores/wishlist/WishListStore";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCartOutlined";
-import DeleteIcon from "@mui/icons-material/Delete";
+
+// lucide icons
+import { ShoppingCart, Trash2 } from "lucide-react";
 
 const WishListCard = (product: Product) => {
   const addToCart = useCartStore((state) => state.addToCart);
-  const removeFromWishList = useWishListStore((state) => state.removeFromWishList);
+  const removeFromWishList = useWishListStore(
+    (state) => state.removeFromWishList
+  );
 
   return (
-    <div className="bg-white  rounded-xl shadow-md overflow-hidden relative hover:shadow-lg transition-all duration-300">
+    <div className="bg-white rounded-xl shadow-md overflow-hidden relative hover:shadow-lg transition-all duration-300">
       {/* زر الحذف */}
       <button
         onClick={() => removeFromWishList(product.productId)}
         className="absolute top-3 right-3 text-red-600 hover:text-red-800 z-10"
       >
-        <DeleteIcon />
+        <Trash2 className="h-5 w-5" />
       </button>
 
       {/* العلامة الجديدة */}
@@ -40,7 +43,7 @@ const WishListCard = (product: Product) => {
 
       {/* التفاصيل */}
       <div className="p-4 flex flex-col justify-between h-[160px]">
-        <h3 className="text-lg font-semibold text-gray-800  line-clamp-1">
+        <h3 className="text-lg font-semibold text-gray-800 line-clamp-1">
           {product.name}
         </h3>
         <p className="text-red-600 font-bold mt-1">${product.price}</p>
@@ -50,7 +53,7 @@ const WishListCard = (product: Product) => {
           onClick={() => addToCart({ product, quantity: 1 })}
           className="mt-3 flex items-center justify-center gap-2 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors"
         >
-          <ShoppingCartIcon fontSize="small" />
+          <ShoppingCart className="h-4 w-4" />
           أضف للسلة
         </button>
       </div>

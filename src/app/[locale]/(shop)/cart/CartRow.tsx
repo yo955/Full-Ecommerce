@@ -1,12 +1,16 @@
 "use client";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+
 import Image from "next/image";
-import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { useCartStore } from "@/stores/cart/cartStore";
 import styles from "@/styles/cart/Cart.module.scss";
 import { CartItem } from "@/types/cart/CartTypes";
 import { useMemo } from "react";
+
+// shadcn button
+import { Button } from "@/components/ui/button";
+
+// lucide icons
+import { Trash2, ChevronUp, ChevronDown } from "lucide-react";
 
 type CartRowProps = {
   cartItems: CartItem[];
@@ -16,6 +20,7 @@ const CartRow = ({ cartItems }: CartRowProps) => {
   const store = useCartStore();
   const removeFromCart = useMemo(() => store.removeFromCart, [store]);
   const updateQuantity = useMemo(() => store.updateQuantity, [store]);
+
   return (
     <>
       {cartItems.map((item, index) => (
@@ -43,7 +48,7 @@ const CartRow = ({ cartItems }: CartRowProps) => {
                     )
                   }
                 >
-                  <IoIosArrowUp />
+                  <ChevronUp size={16} />
                 </button>
                 <button
                   onClick={() =>
@@ -55,24 +60,22 @@ const CartRow = ({ cartItems }: CartRowProps) => {
                       : null
                   }
                 >
-                  <IoIosArrowDown />
+                  <ChevronDown size={16} />
                 </button>
               </div>
             </div>
           </td>
           <td className={styles.columns}>
-            {" "}
             ${(item.product.price * (item.quantity ?? 1)).toFixed(2)}
           </td>
           <td className={styles.columns}>
-            <IconButton
+            <Button
               onClick={() => removeFromCart(item.product.productId)}
-              aria-label="delete"
-              size="large"
-              color="error"
+              variant="destructive"
+              size="icon"
             >
-              <DeleteIcon fontSize="inherit" />
-            </IconButton>
+              <Trash2 className="h-5 w-5" />
+            </Button>
           </td>
         </tr>
       ))}

@@ -1,9 +1,9 @@
-import CustomImg from "@/components/common/ui/CustomImg";
 import PathLinks from "@/components/common/ui/PathLinks";
 import React from "react";
 import Statistics from "./Statistics/Statistics";
 import TeamSwiper from "./Swiper/TeamSwiper";
 import Services from "@/components/Home/Services/Services";
+import Image from "next/image";
 const AboutPage = () => {
   return (
     <div className="my-24 mx-auto w-[80%] flex flex-col gap-5">
@@ -25,7 +25,7 @@ const AboutPage = () => {
           </p>
         </div>
         <div>
-          <CustomImg
+          <Image
             src="/images/aboutImg.png"
             alt="About img"
             width={1000}

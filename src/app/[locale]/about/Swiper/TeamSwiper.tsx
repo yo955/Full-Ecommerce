@@ -7,8 +7,7 @@ import "swiper/css/pagination";
 import { CiTwitter } from "react-icons/ci";
 import { IoLogoInstagram } from "react-icons/io";
 import { RiLinkedinLine } from "react-icons/ri";
-
-import CustomImg from "@/components/common/ui/CustomImg";
+import Image from "next/image";
 
 const teamMembers = [
   {
@@ -71,7 +70,7 @@ const TeamSwiper = () => {
         {teamMembers.map((member, index) => (
           <SwiperSlide key={index}>
             <div>
-              <CustomImg
+              <Image
                 src={member.image}
                 alt="team member img"
                 width={1000}

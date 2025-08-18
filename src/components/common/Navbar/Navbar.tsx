@@ -1,57 +1,102 @@
-"use client";
-import TopHeader from "../top-header/TopHeader";
-import Logo from "./Logo";
-import NavLinks from "./NavLinks";
-import SearchInput from "./SearchInput";
-import Icons from "./Icons";
-import LanguageSwitcherBtn from "./LanguageSwitcherBtn";
-import MobileMenu from "./Mobile/MobileMenu";
-import { useState } from "react";
-import { Menu } from "lucide-react";
-import AuthBtn from "./AuthBtn";
-import useDeviceType from "@/hooks/getDeviceType/useDeviceType";
-import styles from "@/styles/Navbar/navbar.module.scss";
-const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const { isDesktop } = useDeviceType();
+'use client'
+import { Button } from '@/components/ui/button';
+import { Logo } from './Logo';
+import DesktopNavigation from './DesktopNavigation';
+import SearchBar from './SearchBar';
+import MobileMenu from './UserActions';
+import MobileSearch from './mobile/MobileSearch';
+
+export default function Navbar() {
+
+  const language = 'ar';
+  const isRTL = language === 'ar';
+
+  const categories = [
+    { id: 1, name: { ar: 'عروض اليوم', en: "Today's Deals" }, href: '/deals' },
+    { id: 2, name: { ar: 'خدمة العملاء', en: 'Customer Service' }, href: '/support' },
+    { id: 3, name: { ar: 'سجل الطلبات', en: 'Orders' }, href: '/orders' },
+    { id: 4, name: { ar: 'بطاقات الهدايا', en: 'Gift Cards' }, href: '/gift-cards' }
+  ];
+
+
   return (
-    <>
-      <TopHeader />
+    <div className={`w-full ${isRTL ? 'rtl' : 'ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
+      {/* Main Navbar */}
+      <nav className="bg-white border-b-2 border-red-600 shadow-lg sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
 
-      <div className={styles.navbar__container}>
-        {/* Left: Logo */}
-        <Logo />
+            {/* Logo */}
+            <Logo />
 
-        {/* Center: NavLinks */}
-        {isDesktop && <NavLinks />}
+            {/* DesktopNavigation */}
+            <DesktopNavigation />
 
-        {/*Desktop Right: Icons + LanguageSwitcher */}
-        {isDesktop && (
-          <div className={styles.flex_gap}>
-            <Icons />
-            <AuthBtn />
-            <LanguageSwitcherBtn />
+            {/* SearchBar */}
+            <SearchBar />.
+
+            {/* Right Section */}
+            <MobileMenu />
           </div>
-        )}
+        </div>
 
-        {/* Mobile: Menu Icon + LanguageSwitcher */}
-        {!isDesktop && (
-          <div className={styles.flex_gap}>
-            <LanguageSwitcherBtn />
-            <button onClick={() => setMenuOpen(true)} className="text-black">
-              <Menu size={40} />
-            </button>
+        {/* MobileSearch */}
+        <MobileSearch />
+      </nav>
+
+      {/* Secondary Navigation - Desktop Only */}
+      <div className="hidden lg:block bg-gray-50 border-b border-gray-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-10">
+            <div className="flex items-center space-x-6 rtl:space-x-reverse">
+              {categories.map((category) => (
+                <Button
+                  key={category.id}
+                  variant="ghost"
+                  size="sm"
+                  className="text-gray-600 hover:text-red-600 hover:bg-red-50 transition-all duration-300 font-medium"
+                  asChild
+                >
+                  <a href={category.href}>{category.name[language]}</a>
+                </Button>
+              ))}
+            </div>
+
+            <div className="text-gray-600 text-sm font-medium">
+              {language === 'ar' ? '🚚 شحن مجاني للطلبات أكثر من 200 ريال' : '🚚 Free shipping on orders over $50'}
+            </div>
           </div>
-        )}
+        </div>
       </div>
 
-      {/* SearchInput*/}
-      <SearchInput />
-
-      {/* Mobile Sidebar */}
-      <MobileMenu isOpen={menuOpen} setIsOpen={setMenuOpen} />
-    </>
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes slideInFromLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        .animate-fade-in-scale {
+          animation: fadeInScale 0.2s ease-out;
+        }
+      `}</style>
+    </div>
   );
-};
-
-export default Navbar;
+}

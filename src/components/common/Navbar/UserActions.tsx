@@ -4,13 +4,12 @@ import AuthButtons from "./AuthButtons";
 import CartAndWishlist from "./CartAndWishlist";
 import LanguageToggle from "./LanguageToggle";
 
-const MobileMenu = () => {
-   
+const UserActions = () => {
+
 
     return (
         <div className="flex items-center space-x-2 rtl:space-x-reverse">
-            {/*  Mobile Menu */}
-            {/* <MobileMenu /> */}
+          
 
             {/* LanguageToggle */}
             <LanguageToggle />
@@ -24,4 +23,4 @@ const MobileMenu = () => {
     )
 }
 
-export default MobileMenu
+export default UserActions;

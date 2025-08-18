@@ -7,13 +7,14 @@ import {
 } from '@/components/ui/navigation-menu';
 import { PageLinks } from '@/constant/enum';
 import { Link } from '@/i18n/routing';
-import {  Home, Info, Mail, ShoppingBasket } from 'lucide-react';
-import {  useTranslations } from 'next-intl';
+import { Home, Info, Mail, ShoppingBasket } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 
 
 
 const DesktopNavigation = () => {
     const t = useTranslations("navbar");
+    const locale = useLocale();
 
     const navLinks = [
         {
@@ -62,9 +63,9 @@ const DesktopNavigation = () => {
 
     ];
     return (
-        <div className="hidden lg:flex items-center space-x-1 rtl:space-x-reverse flex-1 ml-8 rtl:ml-0 rtl:mr-8">
+        <div className="hidden lg:flex items-center space-x-1 rtl:space-x-reverse flex-1 ml-8 rtl:ml-0 rtl:mr-8" dir={locale === 'ar' ? 'rtl' : 'ltr'} >
             <NavigationMenu>
-                <NavigationMenuList className="space-x-1 rtl:space-x-reverse">
+                <NavigationMenuList dir={locale === 'ar' ? 'rtl' : 'ltr'} className="space-x-1 rtl:space-x-reverse">
                     {navLinks.map((link) => (
                         <NavigationMenuItem key={link.id}>
                             <Button

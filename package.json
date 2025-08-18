@@ -34,6 +34,7 @@
     "swiper": "^11.2.3",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
+    "yup": "^1.7.0",
     "zustand": "^5.0.3"
   },
   "devDependencies": {

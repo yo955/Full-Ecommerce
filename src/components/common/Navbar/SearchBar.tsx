@@ -6,28 +6,18 @@ import useGetProducts from '@/hooks/Product/useGetProducts';
 import useDebounce from '@/hooks/useDebounce';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
+import { useLocale } from 'next-intl';
 
 const SearchBar = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const debouncedSearchQuery = useDebounce(searchQuery, 500);
     const [showSearchResults, setShowSearchResults] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
-
     const { data: Products } = useGetProducts();
-    const language = 'ar';
+    const language = useLocale();
     const isRTL = language === 'ar';
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                setShowSearchResults(false);
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
-
+    
+    // Filter products based on search query
     const filteredProducts = debouncedSearchQuery.trim()
         ? Products?.filter(product =>
             product.name.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
@@ -41,7 +31,19 @@ const SearchBar = () => {
         setShowSearchResults(value.trim().length > 0);
     };
 
-   
+
+    // Close search results when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setShowSearchResults(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
 
     return (
         <div className="hidden md:flex flex-1 max-w-md mx-4 search-container" ref={dropdownRef}>
@@ -49,14 +51,14 @@ const SearchBar = () => {
                 <div className="relative">
                     <Input
                         type="text"
-                        placeholder={language === 'ar' ? 'ابحث عن المنتجات...' : 'Search for products...'}
+                        placeholder={isRTL ? 'ابحث عن المنتجات...' : 'Search for products...'}
                         value={searchQuery}
                         onChange={handleSearchChange}
                         className={`${isRTL ? 'pr-12' : 'pl-4 pr-12'} h-10 border-2 border-gray-200 hover:border-red-300 focus:border-red-600 rounded-full transition-all duration-300 bg-gray-50 focus:bg-white`}
                     />
                     <Button
                         size="sm"
-                        className={`absolute ${isRTL ? 'left-2' : 'right-2'} top-1/2 transform -translate-y-1/2 h-8 w-8 bg-red-600 hover:bg-red-700 rounded-full p-0 transition-all duration-300 hover:scale-110`}
+                        className={`absolute ${language === 'ar' ? 'left-2' : 'right-2'} top-1/2 transform -translate-y-1/2 h-8 w-8 bg-red-600 hover:bg-red-700 rounded-full p-0 transition-all duration-300 hover:scale-110`}
                     >
                         <Search className="h-4 w-4" />
                     </Button>

@@ -1,5 +1,4 @@
 import { Form, Formik } from "formik";
-import CustomButton from "@/components/common/ui/Button";
 import { FcGoogle } from "react-icons/fc";
 import useGetRegisterUser from "@/hooks/Auth/useGetRegisterUser";
 import useGetLoginUser from "@/hooks/Auth/useGetLoginUser";
@@ -10,6 +9,7 @@ import { formDataArray } from "@/types/formData";
 import { RegisterParams } from "@/types/auth/RegisterParams";
 import { LoginParams } from "@/types/auth/LoginParams";
 import { LoginValidation } from "@/utils/validation/LoginValidation";
+import { Button } from "@/components/ui/button";
 // import {LoginWithGoogle} from "@/services/LoginWithGoogle";
 
 const CustomForm = ({ fieldData, initialValues, isLogin }: formDataArray) => {
@@ -48,7 +48,7 @@ const CustomForm = ({ fieldData, initialValues, isLogin }: formDataArray) => {
             </div>
 
             <div>
-              <CustomButton
+              <Button
                 type="submit"
                 className={`${
                   isLogin ? "login-btn" : "register-btn"
@@ -62,7 +62,7 @@ const CustomForm = ({ fieldData, initialValues, isLogin }: formDataArray) => {
                   : isLogin
                   ? "Login"
                   : "Create"}
-              </CustomButton>
+              </Button>
             </div>
 
             <div>

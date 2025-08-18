@@ -46,7 +46,7 @@ export const CustomAuthPage = ({
         {isLogin ? (
           <div className="flex gap-2 items-center justify-center mt-3 custom-phone:!flex-col custom-phone:text-center">
             <p className="text-[14px] "> Don&apos;t Have an Account ? </p>
-            <Link className="text-[14px] border-b border-black " href="/SignUp">
+            <Link className="text-[14px] border-b border-black " href="/signup">
               SignUp
             </Link>
           </div>

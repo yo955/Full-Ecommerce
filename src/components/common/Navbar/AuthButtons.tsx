@@ -2,15 +2,16 @@
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
+import { Link } from "@/i18n/routing";
 import { useAuthStore } from "@/stores/auth/useAuthStore";
 import { ChevronDown, Heart, ShoppingCart, User } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 const AuthButtons = () => {
     const { user, logout } = useAuthStore();
     const locale = useLocale();
-    const t = useTranslations("authBtn");
-    const isLoggedIn = user
+    // const t = useTranslations("authBtn");
+    const isLoggedIn = !!user;
 
     return (
         <>
@@ -76,20 +77,24 @@ const AuthButtons = () => {
                 </DropdownMenu>
             ) : (
                 <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                    <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-gray-700 hover:text-red-600 hover:bg-red-50 transition-all duration-300 font-medium"
-                    >
-                        {locale === 'ar' ? 'تسجيل الدخول' : 'Sign In'}
-                    </Button>
-                    <Button
-                        size="sm"
+                    <Link href={"/login"} className="flex items-center">
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-gray-700 hover:text-red-600 hover:bg-red-50 transition-all duration-300 font-medium"
+                        >
+                            {locale === 'ar' ? 'تسجيل الدخول' : 'Sign In'}
+                        </Button>
+                    </Link>
+                    <Link href={"/signup"} className="flex items-center">
+                        <Button
+                            size="sm"
 
-                        className="bg-red-600 hover:bg-red-700 text-white transition-all duration-300 hover:scale-105 shadow-sm"
-                    >
-                        {locale === 'ar' ? 'إنشاء حساب' : 'Sign Up'}
-                    </Button>
+                            className="bg-red-600 hover:bg-red-700 text-white transition-all duration-300 hover:scale-105 shadow-sm"
+                        >
+                            {locale === 'ar' ? 'إنشاء حساب' : 'Sign Up'}
+                        </Button>
+                    </Link>
                 </div>
             )}
         </>

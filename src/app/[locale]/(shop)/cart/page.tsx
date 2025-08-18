@@ -2,12 +2,12 @@
 import styles from "@/styles/cart/Cart.module.scss";
 import CartRow from "./CartRow";
 import CartHeadRow from "./CartHeadRow";
-import CustomButton from "@/components/common/ui/Button";
 import CartTotal from "./CartTotal";
 import PathLinks from "@/components/common/ui/PathLinks";
 import { useCartStore } from "@/stores/cart/cartStore";
 import AsyncAddToCart from "@/services/Cart/AsyncAddToCart";
 import {Link} from "@/i18n/routing";
+import { Button } from "@/components/ui/button";
 
 const CartPage = () => {
   const cartItems = useCartStore((state) => state.cart);
@@ -55,18 +55,18 @@ const CartPage = () => {
               name="text"
               placeholder="Coupon Code"
             />
-            <CustomButton className="w-[210px] h-[55px] custom-sm:w-[120px] custom-sm:text-sm" type="submit">
+            <Button className="w-[210px] h-[55px] custom-sm:w-[120px] custom-sm:text-sm" type="submit">
               Apply Coupon
-            </CustomButton>
+            </Button>
           </form>
         </div>
         <div className="border-2 border-black py-5 px-7 w-[470px] custom-sm:w-[300px] text-center  ">
           <h2 className="my-1 text-start">Cart Total</h2>
           <CartTotal total={total} />
           <Link href="/checkout">
-            <CustomButton className="text-[12px] py-2 px-7 !mt-4 ">
+            <Button className="text-[12px] py-2 px-7 !mt-4 ">
               Process to checkout
-            </CustomButton>
+            </Button>
           </Link>
         </div>
       </div>

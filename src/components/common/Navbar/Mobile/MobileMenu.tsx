@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useAuthStore } from "@/stores/auth/useAuthStore";
+import { useCartStore } from "@/stores/cart/cartStore";
+import { useWishListStore } from "@/stores/wishlist/WishListStore";
 import { ChevronRight, Globe, Heart, Menu, Search, ShoppingCart, X } from "lucide-react";
 import { useState } from "react";
 const MobileMenu = () => {
@@ -10,9 +13,10 @@ const MobileMenu = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const language = 'ar'
     const isRTL = language === 'ar';
-    const cartCount = 5;
-    const wishlistCount = 5;
-
+    const cartCount = useCartStore((state) => state.cart?.length);
+    const wishlistCount = useWishListStore((state) => state.wishList?.length);
+    const { user } = useAuthStore((state) => state)
+    const isLoggedIn = !!user;
 
 
     const navLinks = [
@@ -92,7 +96,7 @@ const MobileMenu = () => {
         { id: 4, name: { ar: 'بطاقات الهدايا', en: 'Gift Cards' }, href: '/gift-cards' }
     ];
 
-    const toggleCategory = (categoryId: any) => {
+    const toggleCategory = (categoryId: number | any) => {
         setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
     };
 
@@ -151,11 +155,11 @@ const MobileMenu = () => {
                                 {isLoggedIn ? (
                                     <div className="flex items-center space-x-3 rtl:space-x-reverse bg-white/10 rounded-lg p-3 backdrop-blur-sm border border-white/20">
                                         <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-lg">
-                                            {user.avatar}
+                                            {/* {user.avatar} */}
                                         </div>
                                         <div className="flex-1">
-                                            <p className="font-medium text-sm">{user.name[language]}</p>
-                                            <p className="text-white/70 text-xs truncate">{user.email}</p>
+                                            <p className="font-medium text-sm">{user?.name}</p>
+                                            <p className="text-white/70 text-xs truncate">{user?.email}</p>
                                         </div>
                                     </div>
                                 ) : (
@@ -163,14 +167,14 @@ const MobileMenu = () => {
                                         <Button
                                             variant="ghost"
                                             size="sm"
-                                            onClick={handleLogin}
+                                            // onClick={handleLogin}
                                             className="flex-1 bg-white/10 text-white hover:bg-white/20 border border-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105"
                                         >
                                             {language === 'ar' ? 'تسجيل الدخول' : 'Sign In'}
                                         </Button>
                                         <Button
                                             size="sm"
-                                            onClick={handleLogin}
+                                            // onClick={handleLogin}
                                             className="flex-1 bg-white text-red-600 hover:bg-gray-100 font-medium transition-all duration-300 hover:scale-105 shadow-lg"
                                         >
                                             {language === 'ar' ? 'حساب جديد' : 'Sign Up'}
@@ -293,7 +297,7 @@ const MobileMenu = () => {
                                     <Button
                                         variant="outline"
                                         size="sm"
-                                        onClick={toggleLanguage}
+                                        // onClick={toggleLanguage}
                                         className="flex items-center space-x-2 rtl:space-x-reverse border-red-200 text-red-600 hover:bg-red-50 transition-all duration-300"
                                     >
                                         <Globe className="h-4 w-4" />
@@ -324,7 +328,7 @@ const MobileMenu = () => {
                                     <Button
                                         variant="outline"
                                         size="sm"
-                                        onClick={handleLogout}
+                                        // onClick={handleLogout}
                                         className="w-full text-red-600 border-red-200 hover:bg-red-50 transition-all duration-300"
                                     >
                                         {language === 'ar' ? 'تسجيل الخروج' : 'Sign Out'}

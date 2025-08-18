@@ -1,12 +1,12 @@
 "use client";
 
 import styles from "@/styles/wishlist/wishList.module.scss";
-import CustomButton from "@/components/common/ui/Button";
 import Loading from "@/loading/Loading";
 import { useState } from "react";
 import SuggestionProducts from "./SuggestionProducts";
 import { useWishListStore } from "@/stores/wishlist/WishListStore";
 import WishListCard from "@/app/[locale]/(shop)/wishlist/WishListCard";
+import { Button } from "@/components/ui/button";
 
 const WishListPage = () => {
   const products = useWishListStore((state) => state.wishList);
@@ -33,12 +33,12 @@ const WishListPage = () => {
 
       {!showAll && products.length > 4 && (
         <div className="flex justify-end">
-          <CustomButton
+          <Button
             onClick={() => setShowAll(true)}
             className="w-[170px] !h-14 mt-8 px-4 py-2 text-white rounded-lg shadow-md bg-primary"
           >
             عرض المزيد
-          </CustomButton>
+          </Button>
         </div>
       )}
 

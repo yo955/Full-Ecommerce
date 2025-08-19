@@ -1,6 +1,6 @@
 "use client";
 
-import PathLinks from "@/components/common/ui/PathLinks";
+import PathLinks from "@/components/common/PathLinks";
 import ProductImgs from "./ProductImgs";
 import ProductInfo from "./ProductInfo";
 import useGetProduct from "@/hooks/Product/useGetProduct";

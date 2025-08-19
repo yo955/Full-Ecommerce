@@ -1,5 +1,5 @@
 "use client";
-import PathLinks from "@/components/common/ui/PathLinks";
+import PathLinks from "@/components/common/PathLinks";
 import React, { useRef } from "react";
 import BillingForm from "./BillingForm";
 import OrderDetails from "./OrderDetails";

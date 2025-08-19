@@ -9,7 +9,7 @@ import Loading from "@/loading/Loading";
 import Music from "@/components/Home/musicAdvertise/Music";
 import Features from "@/components/Home/Features/Features";
 import Services from "@/components/Home/Services/Services";
-import UpBtn from "@/components/common/ui/UpBtn";
+import UpBtn from "@/components/common/UpBtn";
 // import BestSellingProducts from "@/components/common/BestSelling/BestSellingProducts";
 
 

@@ -2,7 +2,7 @@
 import useGetProducts from "@/hooks/Product/useGetProducts";
 import Loading from "@/loading/Loading";
 import ProductCard from "../products/ProductCard";
-import CustomButton from "../ui/Button";
+import { Button } from "@/components/ui/button";
 
 const BestSellingProducts = () => {
   const {
@@ -21,9 +21,9 @@ const BestSellingProducts = () => {
 
   return (
     <div className="w-full ">
-      <CustomButton className="!flex !ml-auto w-[159px] h-[56px]">
+      <Button className="!flex !ml-auto w-[159px] h-[56px]">
         View All
-      </CustomButton>
+      </Button>
       <div className="flex mt-10">
         {products?.slice(0, 4).map((product) => (
           <div key={product.productId} className="product">

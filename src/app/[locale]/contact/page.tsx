@@ -1,4 +1,4 @@
-import PathLinks from "@/components/common/ui/PathLinks";
+import PathLinks from "@/components/common/PathLinks";
 import React from "react";
 import ContactSidebar from "./ContactSidebar";
 import ContactField from "./ContactField";

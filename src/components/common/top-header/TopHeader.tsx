@@ -1,19 +1,19 @@
 import React from "react";
-import { CustomLink, CustomPara } from "../ui";
 import styles from "@/styles/Navbar/topHeader.module.scss";
+import { Link } from "@/i18n/routing";
 
 const TopHeader = () => {
   return (
     <div className={styles.topHeader}>
       <div className={styles.text}>
-        <CustomPara className={styles.message}>
+        <p className={styles.message}>
           Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
-        </CustomPara>
+        </p>
       </div>
       <div className={styles.link}>
-        <CustomLink href="/" className={styles.message}>
+        <Link href="/" className={styles.message}>
           shop now
-        </CustomLink>
+        </Link>
       </div>
     </div>
   );

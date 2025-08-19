@@ -1,5 +1,5 @@
 "use client";
-import PathLinks from "@/components/common/ui/PathLinks";
+import PathLinks from "@/components/common/PathLinks";
 import SideBarUl from "./SideBarUl";
 import AccountBody from "./AccountBody";
 

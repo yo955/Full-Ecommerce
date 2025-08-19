@@ -3,7 +3,7 @@ import styles from "@/styles/cart/Cart.module.scss";
 import CartRow from "./CartRow";
 import CartHeadRow from "./CartHeadRow";
 import CartTotal from "./CartTotal";
-import PathLinks from "@/components/common/ui/PathLinks";
+import PathLinks from "@/components/common/PathLinks";
 import { useCartStore } from "@/stores/cart/cartStore";
 import AsyncAddToCart from "@/services/Cart/AsyncAddToCart";
 import {Link} from "@/i18n/routing";

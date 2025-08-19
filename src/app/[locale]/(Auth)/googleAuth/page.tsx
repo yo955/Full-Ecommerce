@@ -15,7 +15,7 @@ const GoogleAuthPage = () => {
       setUser(user);
       router.push("/");
     }
-  }, [user, router]);
+  }, [user, router, setUser]);
 
   useEffect(() => {
     if (error) {

@@ -1,5 +1,5 @@
 "use client";
-import CustomButton from "@/components/common/ui/Button";
+import { Button } from "@/components/ui/button";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 const AccountBody = () => {
@@ -120,7 +120,7 @@ const AccountBody = () => {
             </div>
           </div>
           <div className="flex flex-row-reverse gap-3 ">
-            <CustomButton className="px-10 py-3 text-xs font-thin"> Save Changes</CustomButton>
+            <Button className="px-10 py-3 text-xs font-thin"> Save Changes</Button>
             <button className="border-0 ">Cancel</button>
           </div>
         </Form>

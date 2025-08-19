@@ -2,12 +2,12 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
-import CustomButton from "@/components/common/ui/Button";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdAutorenew } from "react-icons/md";
 import { Product } from "@/types/cart/Product";
 import { useWishListStore } from "@/stores/wishlist/WishListStore";
+import { Button } from "@/components/ui/button";
 
 const sizes = ["XS", "S", "M", "L", "XL"];
 
@@ -84,9 +84,9 @@ const ProductInfo = ({ product }: { product: Product }) => {
           </button>
         </div>
 
-        <CustomButton className="h-10 px-6 text-base bg-red-600 text-white hover:bg-red-700">
+        <Button className="h-10 px-6 text-base bg-red-600 text-white hover:bg-red-700">
           اشتري الآن
-        </CustomButton>
+        </Button>
 
         <button
           onClick={() => addToWishList(product)}

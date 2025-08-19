@@ -19,13 +19,13 @@ const ProductCard = (product: Product) => {
     return cartItems.some(
       (item) => item.product.productId === product.productId
     );
-  }, [cartItems]);
+  }, [cartItems, product.productId]);
 
   const isInWishList = useMemo(() => {
     return wishList.some(
       (item) => item.product.productId === product.productId
     );
-  }, [wishList]);
+  }, [wishList, product.productId]);
 
   return (
     <div className={styles.card}>

@@ -9,7 +9,7 @@ import { useWishListStore } from "@/stores/wishlist/WishListStore";
 import { ChevronRight, Globe, Heart, Menu, Search, ShoppingCart, X } from "lucide-react";
 import { useState } from "react";
 const MobileMenu = () => {
-    const [expandedCategory, setExpandedCategory] = useState(null);
+    const [expandedCategory, setExpandedCategory] = useState<number | null>(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const language = 'ar'
     const isRTL = language === 'ar';
@@ -96,7 +96,7 @@ const MobileMenu = () => {
         { id: 4, name: { ar: 'بطاقات الهدايا', en: 'Gift Cards' }, href: '/gift-cards' }
     ];
 
-    const toggleCategory = (categoryId: number | any) => {
+    const toggleCategory = (categoryId: number | null) => {
         setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
     };
 

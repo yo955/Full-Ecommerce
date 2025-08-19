@@ -16,7 +16,7 @@ const PaymentCancel = () => {
     } else {
       console.log("No session ID provided.");
     }
-  }, [searchParams]); 
+  }, [searchParams, cancelPaymentMutate]); 
 
   return <div>PaymentCancel</div>;
 };

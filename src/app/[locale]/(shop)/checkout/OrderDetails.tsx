@@ -1,5 +1,5 @@
 "use client";
-import CustomButton from "@/components/common/ui/Button";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
 
@@ -95,23 +95,23 @@ const OrderDetails = ({ handleFormSubmit }: Props) => {
                 name="text"
                 placeholder="Coupon Code"
               />
-              <CustomButton
+              <Button
                 className="w-[210px] h-[45px] custom-sm:w-[120px] custom-sm:text-sm"
                 type="button"
               >
                 Apply Coupon
-              </CustomButton>
+              </Button>
             </form>
           </div>
         </div>
         <div className="mt-8">
-          <CustomButton
+          <Button
             className="w-[210px] h-[55px] custom-sm:w-[120px] custom-sm:text-sm"
             type="button"
             onClick={handleFormSubmit}
           >
             Place Order
-          </CustomButton>
+          </Button>
         </div>
       </article>
     </section>

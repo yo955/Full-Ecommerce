@@ -1,5 +1,4 @@
 'use client'
-
 import AuthButtons from "./AuthButtons";
 import CartAndWishlist from "./CartAndWishlist";
 import LanguageToggle from "./LanguageToggle";

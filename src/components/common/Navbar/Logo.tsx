@@ -1,3 +1,4 @@
+"use client";
 import { Button } from '@/components/ui/button'
 import { Link } from '@/i18n/routing'
 import { useLocale } from 'next-intl'

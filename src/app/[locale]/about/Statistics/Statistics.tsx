@@ -1,5 +1,5 @@
 import React from "react";
-import ServiceCard from "@/components/Home/Services/ServiceCard";
+import ServiceCard from "@/components/pages/Home/Services/ServiceCard";
 import { CiShop } from "react-icons/ci";
 import { HiOutlineCurrencyDollar } from "react-icons/hi2";
 import { MdShoppingBag } from "react-icons/md";

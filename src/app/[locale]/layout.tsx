@@ -44,7 +44,9 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <Navbar />
             <ReactQueryDevtools initialIsOpen={false} />
-            <main>{children}</main>
+            <main className="container max-w-screen-sm sm:max-w-screen-md md:max-w-screen-lg lg:max-w-screen-xl mx-auto">
+              {children}
+            </main>
             <Toastify />
             <Footer />
           </NextIntlClientProvider>

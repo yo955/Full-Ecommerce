@@ -7,12 +7,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-interface CustomSwiperProps {
-  images: string[];
-}
+  const mainBath = "/images/banners";
+  const bannerImages = [`${mainBath}/01.jpg`, `${mainBath}/02.jpg`, `${mainBath}/03.jpg`];
 
-const CustomSwiper: React.FC<CustomSwiperProps> = ({images}) => {
-  if (!images || images.length === 0) return <p className="text-center">لا توجد صور متاحة</p>;
+const HomeSwiper = () => {
+  if (!bannerImages || bannerImages.length === 0) return <p className="text-center">لا توجد صور متاحة</p>;
 
   return (
     <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px]">
@@ -24,7 +23,7 @@ const CustomSwiper: React.FC<CustomSwiperProps> = ({images}) => {
         loop
         className="w-full h-full"
       >
-        {images.map((img, index) => (
+        {bannerImages.map((img, index) => (
           <SwiperSlide key={index} className="relative w-full h-full">
             <Image src={img} alt={`Slide ${index + 1}`} fill className="object-cover"/>
           </SwiperSlide>
@@ -51,4 +50,4 @@ const CustomSwiper: React.FC<CustomSwiperProps> = ({images}) => {
   );
 };
 
-export default CustomSwiper;
+export default HomeSwiper;

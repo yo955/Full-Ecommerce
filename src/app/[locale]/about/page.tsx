@@ -2,7 +2,7 @@ import PathLinks from "@/components/common/PathLinks";
 import React from "react";
 import Statistics from "./Statistics/Statistics";
 import TeamSwiper from "./Swiper/TeamSwiper";
-import Services from "@/components/Home/Services/Services";
+import Services from "@/components/pages/Home/Services/Services";
 import Image from "next/image";
 const AboutPage = () => {
   return (

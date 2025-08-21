@@ -4,7 +4,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Separator } from "@/components/ui/separator";
 import { Link } from "@/i18n/routing";
 import { useAuthStore } from "@/stores/auth/useAuthStore";
-import { ChevronDown, Heart, ShoppingCart, User } from "lucide-react";
+import { ChevronDown, ShoppingCart, User } from "lucide-react";
 import { useLocale } from "next-intl";
 
 const AuthButtons = () => {
@@ -20,7 +20,7 @@ const AuthButtons = () => {
                     <DropdownMenuTrigger asChild>
                         <Button variant="ghost" className="flex items-center space-x-2 rtl:space-x-reverse text-gray-700 hover:text-red-600 hover:bg-red-50 transition-all duration-300 px-2">
                             <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center text-red-600 font-semibold">
-                                avatar
+                                {user.name.charAt(0).toUpperCase()}
                             </div>
                             <div className="hidden lg:flex flex-col items-start rtl:items-end">
                                 <span className="text-xs text-gray-500 leading-none">
@@ -36,7 +36,7 @@ const AuthButtons = () => {
                     <DropdownMenuContent align={locale ? "end" : "start"} className="w-56">
                         <div className="flex items-center space-x-2 rtl:space-x-reverse p-2">
                             <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600 font-semibold text-lg">
-                                avatar
+                                {user.name.charAt(0).toUpperCase()}
                             </div>
                             <div className="flex-1">
                                 <p className="text-sm font-medium text-gray-900">{user.name}</p>
@@ -52,10 +52,7 @@ const AuthButtons = () => {
                             <ShoppingCart className="h-4 w-4 mr-2 rtl:mr-0 rtl:ml-2" />
                             {locale === 'ar' ? 'طلباتي' : 'My Orders'}
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="hover:bg-red-50 focus:bg-red-50 cursor-pointer">
-                            <Heart className="h-4 w-4 mr-2 rtl:mr-0 rtl:ml-2" />
-                            {locale === 'ar' ? 'المفضلة' : 'Wishlist'}
-                        </DropdownMenuItem>
+
                         <DropdownMenuItem className="hover:bg-red-50 focus:bg-red-50 cursor-pointer">
                             <svg className="h-4 w-4 mr-2 rtl:mr-0 rtl:ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />

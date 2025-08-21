@@ -6,9 +6,16 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   /* config options here */
-  images: {
-    domains: ["tahaapi.runasp.net"],
-  },
+  images:{
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "tahaapi.runasp.net",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  }
 };
 
 export default withNextIntl(nextConfig);

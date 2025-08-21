@@ -1,0 +1,60 @@
+ .custom-bullet {
+          width: 12px !important;
+          height: 12px !important;
+          background: rgba(255, 255, 255, 0.4) !important;
+          border-radius: 50% !important;
+          transition: all 0.3s ease !important;
+          cursor: pointer !important;
+          border: 2px solid transparent !important;
+        }
+
+        .custom-bullet:hover {
+          background: rgba(255, 255, 255, 0.7) !important;
+          transform: scale(1.2) !important;
+        }
+
+        .swiper-pagination-bullet-active.custom-bullet {
+          background: linear-gradient(45deg, #3b82f6, #8b5cf6) !important;
+          width: 16px !important;
+          height: 16px !important;
+          border: 2px solid rgba(255, 255, 255, 0.8) !important;
+          box-shadow: 0 0 10px rgba(59, 130, 246, 0.5) !important;
+        }
+
+        /* Smooth animations */
+        .swiper-slide {
+          transition: all 0.3s ease !important;
+        }
+
+        /* Loading animation */
+        .swiper-slide img {
+          animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+          .custom-bullet {
+            width: 10px !important;
+            height: 10px !important;
+          }
+          
+          .swiper-pagination-bullet-active.custom-bullet {
+            width: 14px !important;
+            height: 14px !important;
+          }
+        }
+
+        /* Disable default swiper buttons */
+        .swiper-button-next,
+        .swiper-button-prev {
+          display: none !important;
+        }
+
+        .swiper-pagination {
+          display: none !important;
+        }

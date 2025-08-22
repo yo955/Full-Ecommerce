@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 type ProductImgsProps = {
@@ -7,35 +7,46 @@ type ProductImgsProps = {
 };
 
 const ProductImgs = ({ mainImage, images }: ProductImgsProps) => {
+  const [selectedImage, setSelectedImage] = useState(mainImage);
+  const allImages = [mainImage, ...images];
+
+
   return (
-    <div className="flex flex-col-reverse lg:flex-row-reverse gap-4">
-      {/* الصور المصغرة */}
-      <div className="flex lg:flex-col gap-3 overflow-auto max-w-full lg:max-h-[500px] scrollbar-thin scrollbar-thumb-gray-300">
-        {images?.map((img, index) => (
+    <div className="flex gap-6">
+      {/* Images */}
+      <div className="flex flex-col gap-4">
+        {allImages.map((img, index) => (
           <div
             key={index}
-            className="min-w-[100px] min-h-[100px] max-w-[120px] max-h-[120px] flex items-center justify-center border border-gray-200 bg-[#f9f9f9] rounded-md hover:shadow-md transition-shadow duration-200"
+            onClick={() => setSelectedImage(img)}
+            className={`w-20 h-20 bg-gray-100 rounded-lg cursor-pointer flex items-center justify-center border-2 transition-colors ${selectedImage === img
+              ? "border-gray-600"
+              : "border-transparent hover:border-gray-300"
+              }`}
           >
             <Image
               src={img}
-              alt={`product-img-${index}`}
-              width={100}
-              height={100}
-              className="object-contain max-w-[100px] max-h-[100px]"
+              alt={`img ${index + 1}`}
+              width={80}
+              height={80}
+              className="w-16 h-16 object-contain"
             />
           </div>
         ))}
       </div>
 
-      {/* الصورة الرئيسية */}
-      <div className="flex-1 flex items-center justify-center bg-[#f0efef] rounded-md h-[400px] sm:h-[350px] md:h-[450px]">
-        <Image
-          src={mainImage}
-          alt="main-product-image"
-          width={500}
-          height={500}
-          className="object-contain max-w-full max-h-full"
-        />
+      {/*  Main Image */}
+      <div className="flex-1 bg-gray-100 rounded-lg flex items-center justify-center p-8" >
+        <div className="relative">
+          <Image
+            src={selectedImage}
+            alt="Product Image"
+            width={400}
+            height={400}
+            className="w-96 h-96 object-contain"
+            priority
+          />
+        </div>
       </div>
     </div>
   );

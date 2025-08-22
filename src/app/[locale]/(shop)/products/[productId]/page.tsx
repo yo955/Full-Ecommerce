@@ -1,42 +1,71 @@
 "use client";
-
-import PathLinks from "@/components/common/PathLinks";
 import ProductImgs from "./ProductImgs";
 import ProductInfo from "./ProductInfo";
 import useGetProduct from "@/hooks/Product/useGetProduct";
-import Loading from "@/loading/Loading";
 import { useParams } from "next/navigation";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+import { SectionSkeleton } from "@/components/ui/SectionSkeleton";
+import RelatedItemsSection from "./RelatedItemsSection";
 
 const ProductDetailsPage = () => {
   const { productId }: { productId: string } = useParams();
 
   const { data: product, isLoading } = useGetProduct(productId);
 
-  if (isLoading) return <Loading />;
-
-  if (!product) return null;
+  if (!product && !isLoading) return null;
 
   return (
-    <section className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <PathLinks titles={["product"]} />
-
-      <div className="mt-8 bg-white  rounded-2xl shadow-lg overflow-hidden">
-        <div className="flex flex-col md:flex-row gap-10 p-6">
-          {/* صور المنتج */}
-          <div className="w-full md:w-1/2 flex justify-center items-center">
-            <ProductImgs
-              mainImage={product.mainImageUrl || ""}
-              images={product.imagesUrl || [""]}
-            />
-          </div>
-
-          {/* معلومات المنتج */}
-          <div className="w-full md:w-1/2">
-            <ProductInfo product={product} />
-          </div>
+    <div className="bg-white min-h-screen">
+      {/* Breadcrumb */}
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="text-sm text-gray-500 mb-8">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/account">Account</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>
+                  {isLoading ? "Loading..." : product?.name}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
         </div>
+
+        {/* Main Product Section */}
+        {isLoading ? (
+          <SectionSkeleton />
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            {/* Product Images */}
+            <ProductImgs
+              mainImage={product?.mainImageUrl || ""}
+              images={product?.imagesUrl || []}
+            />
+
+            {/* Product Info */}
+            {product && <ProductInfo product={product} />}
+          </div>
+        )}
+
+        {/* Related Items Section */}
+        <RelatedItemsSection />
+
       </div>
-    </section>
+    </div>
   );
 };
 

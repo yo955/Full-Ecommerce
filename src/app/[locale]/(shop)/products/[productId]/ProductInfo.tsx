@@ -1,117 +1,184 @@
 "use client";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
-import { IoIosHeartEmpty } from "react-icons/io";
-import { TbTruckDelivery } from "react-icons/tb";
-import { MdAutorenew } from "react-icons/md";
 import { Product } from "@/types/cart/Product";
 import { useWishListStore } from "@/stores/wishlist/WishListStore";
+import { useCartStore } from "@/stores/cart/cartStore";
 import { Button } from "@/components/ui/button";
+import { Heart } from "lucide-react";
 
 const sizes = ["XS", "S", "M", "L", "XL"];
 
 const ProductInfo = ({ product }: { product: Product }) => {
-  const addToWishList = useWishListStore((state) => state.addToWishList);
-  const [selectSize, setSelectSize] = useState("");
-  const [quantity, setQuantity] = useState(1);
+  const [selectSize, setSelectSize] = useState("M");
 
-  const increaseItem = () => setQuantity((prev) => prev + 1);
-  const decreaseItem = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  // State management for quantity
+  const store = useCartStore();
+
+  const updateQuantity = useMemo(() => store.updateQuantity, [store]);
+
+  // Cart management
+  const addToCart = useCartStore((state) => state.addToCart);
+  const cartItems = useCartStore((state) => state.cart);
+  const isInCart = useMemo(
+    () => cartItems.some((item) => item.product.productId === product.productId),
+    [cartItems, product.productId]
+  );
+
+  // Wishlist management
+  const addToWishList = useWishListStore((state) => state.addToWishList);
+  const wishList = useWishListStore((state) => state.wishList);
+  const isInWishList = useMemo(
+    () => wishList.some((item) => item.product.productId === product.productId),
+    [wishList, product.productId]
+  );
 
   return (
-    <div className="grid gap-6 sm:px-4">
-      {/* Title + Rating */}
-      <div className="border-b pb-4">
-        <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
-        <div className="flex items-center gap-2 text-sm text-gray-600">
+    <div className="space-y-6">
+      {/* Title */}
+      <h1 className="text-2xl font-semibold text-black">
+        {product.name}
+      </h1>
+
+      {/* Rating and Reviews */}
+      <div className="flex items-center gap-4">
+        <div className="flex items-center gap-1">
           {[...Array(4)].map((_, i) => (
-            <FaStar key={i} className="text-yellow-400" />
+            <FaStar key={i} className="text-yellow-400 w-4 h-4" />
           ))}
-          <CiStar className="text-gray-300" />
-          <span>(150 Reviews)</span>
-          <span>|</span>
-          <span className="text-green-500">متوفر</span>
+          <CiStar className="text-gray-300 w-4 h-4" />
         </div>
-        <p className="text-2xl font-semibold mt-3 text-black">${product.price}</p>
-        <p className="text-sm text-gray-700 mt-2 leading-relaxed">{product.longDescription}</p>
+        <span className="text-gray-500 text-sm">(150 Reviews)</span>
+        <div className="w-px h-4 bg-gray-300"></div>
+        <span className="text-green-500 text-sm">{product.stock}</span>
+      </div>
+
+      {/* Price */}
+      <div className="text-2xl font-normal text-black">
+        {product.price}
+      </div>
+
+      {/* Description */}
+      <div className="text-sm text-black leading-relaxed">
+        {product.shortDescription}
       </div>
 
       {/* Colors */}
-      <div>
-        <p className="mb-1 font-medium">الألوان:</p>
-        <div className="flex gap-3">
-          <span className="w-6 h-6 rounded-full bg-blue-600 border-2 border-gray-300 cursor-pointer" />
-          <span className="w-6 h-6 rounded-full bg-green-600 border-2 border-gray-300 cursor-pointer" />
+      <div className="space-y-4">
+        <div className="flex items-center gap-4">
+          <span className="text-black text-lg">Colours:</span>
+          <div className="flex gap-2">
+            <button className="w-5 h-5 bg-blue-500 rounded-full border-2 border-gray-300 focus:border-black"></button>
+            <button className="w-5 h-5 bg-red-500 rounded-full border-2 border-black"></button>
+          </div>
         </div>
       </div>
 
-      {/* Sizes */}
-      <div>
-        <p className="mb-1 font-medium">المقاس:</p>
-        <div className="flex gap-2">
-          {sizes.map((size) => (
-            <button
-              key={size}
-              onClick={() => setSelectSize(size)}
-              className={`w-10 h-10 border rounded ${
-                selectSize === size
-                  ? "bg-red-600 text-white border-red-600"
-                  : "bg-white text-black"
-              } hover:border-gray-500`}
-            >
-              {size}
-            </button>
-          ))}
+      {/* Size */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-4">
+          <span className="text-black text-lg">Size:</span>
+          <div className="flex gap-2">
+            {sizes.map((size) => (
+              <button
+                key={size}
+                onClick={() => setSelectSize(size)}
+                className={`w-8 h-8 border text-sm font-medium ${selectSize === size
+                  ? "bg-red-500 text-white border-red-500"
+                  : "bg-white text-black border-gray-300 hover:border-gray-500"
+                  }`}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Quantity + Buy/Add */}
-      <div className="flex flex-wrap gap-4 items-center">
-        <div className="flex border rounded">
-          <button
-            onClick={decreaseItem}
-            className="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200"
-          >
-            -
-          </button>
-          <div className="w-10 h-8 flex items-center justify-center">{quantity}</div>
-          <button
-            onClick={increaseItem}
-            className="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200"
-          >
-            +
-          </button>
-        </div>
+      {/* Quantity and Buttons */}
+      <div className="flex items-center gap-4">
+        {/* Quantity */}
+        {
+          cartItems.map((item, index) => (
+            <div key={index} className="flex items-center border border-gray-300">
+              <button
+                onClick={() =>
+                  item.quantity && item.quantity > 1
+                    ? updateQuantity(
+                      item.product.productId,
+                      item.quantity - 1
+                    )
+                    : null
+                }
+                className="w-8 h-8 flex items-center justify-center text-black hover:bg-gray-100"
+              >
+                -
+              </button>
+              <span className="w-12 h-8 flex items-center justify-center text-black border-x border-gray-300">
+                {item.quantity}
+              </span>
+              <button
+                onClick={() =>
+                  updateQuantity(
+                    item.product.productId,
+                    (item.quantity ?? 1) + 1
+                  )
+                }
+                className="w-8 h-8 flex items-center justify-center text-black hover:bg-gray-100"
+              >
+                +
+              </button>
+            </div>
+          ))
+        }
 
-        <Button className="h-10 px-6 text-base bg-red-600 text-white hover:bg-red-700">
-          اشتري الآن
+        {/* Buy Now Button */}
+        <Button onClick={() => !isInCart && addToCart({ product, quantity: 1 })}
+          disabled={isInCart} variant='secondary' className="px-12 h-11">
+          {isInCart ? "Added to Cart" : "Buy Now"}
         </Button>
 
-        <button
-          onClick={() => addToWishList(product)}
-          className="w-10 h-10 border rounded flex items-center justify-center hover:bg-gray-100"
-          title="إضافة إلى المفضلة"
+        {/* Wishlist */}
+        <Button
+          size="icon"
+          variant="secondary"
+          onClick={() => !isInWishList && addToWishList(product)}
+          disabled={isInWishList}
+          className={` p-1.5 transition w-11 h-11 border border-gray-300 flex items-center justify-center hover:bg-gray-100 ${isInWishList
+            ? "bg-[#DB4444] text-white"
+            : "bg-white text-gray-700 hover:bg-gray-100"
+            }`}
         >
-          <IoIosHeartEmpty size={22} />
-        </button>
+          <Heart size={30} />
+        </Button>
       </div>
 
       {/* Delivery Info */}
-      <div className="border p-4 rounded-md text-sm text-gray-700 space-y-3">
-        <div className="flex gap-3 items-start">
-          <TbTruckDelivery size={28} />
+      <div className="border border-gray-300 space-y-0">
+        {/* Free Delivery */}
+        <div className="flex gap-4 items-center p-4 border-b border-gray-300">
+          <div className="w-10 h-10 flex items-center justify-center">
+            <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M13 16V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h1m8-1a1 1 0 0 1 1 1H9m4-1V8a1 1 0 0 1 1-1h2.586a1 1 0 0 1 .707.293l1.414 1.414a1 1 0 0 1 .293.707V16a1 1 0 0 1-1 1h-1m-6 0a1 1 0 0 1 1 1H9m0 0H5m4 0h2m4-8h2m-6-4h2.5" />
+            </svg>
+          </div>
           <div>
-            <p className="font-medium">توصيل مجاني</p>
-            <p>أدخل الرمز البريدي لتأكيد التوصيل</p>
+            <div className="font-medium text-black">Free Delivery</div>
+            <div className="text-sm text-black underline">Enter your postal code for Delivery Availability</div>
           </div>
         </div>
-        <hr />
-        <div className="flex gap-3 items-start">
-          <MdAutorenew size={28} />
+
+        {/* Return Delivery */}
+        <div className="flex gap-4 items-center p-4">
+          <div className="w-10 h-10 flex items-center justify-center">
+            <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
+            </svg>
+          </div>
           <div>
-            <p className="font-medium">إرجاع خلال 30 يوم</p>
-            <p>تفاصيل سياسة الإرجاع لدينا</p>
+            <div className="font-medium text-black">Return Delivery</div>
+            <div className="text-sm text-black">Free 30 Days Delivery Returns. <span className="underline">Details</span></div>
           </div>
         </div>
       </div>

@@ -15,9 +15,10 @@ interface UseGetProductsProps {
 
 const useGetProducts = (params: UseGetProductsProps = {}) => {
   return useQuery<productType>({
-    queryKey: ["products", params], 
+    queryKey: ["products", params],
     queryFn: () => fetchProducts(params),
-    // keepPreviousData: true, 
+    staleTime: 1000 * 60 * 2, // 5 minutes
+    refetchOnWindowFocus: false,
   });
 };
 

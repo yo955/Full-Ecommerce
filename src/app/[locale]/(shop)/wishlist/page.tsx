@@ -5,8 +5,8 @@ import Loading from "@/loading/Loading";
 import { useState } from "react";
 import SuggestionProducts from "./SuggestionProducts";
 import { useWishListStore } from "@/stores/wishlist/WishListStore";
-import WishListCard from "@/app/[locale]/(shop)/wishlist/WishListCard";
 import { Button } from "@/components/ui/button";
+import ProductCard from "@/components/common/products/ProductCard";
 
 const WishListPage = () => {
   const products = useWishListStore((state) => state.wishList);
@@ -26,8 +26,8 @@ const WishListPage = () => {
       </div>
 
       <div className={styles.productsGrid}>
-        {visibleProducts.map((item, index) => (
-          <WishListCard key={index} {...item.product}    />
+        {visibleProducts.map((wishlistItem, index) => (
+          <ProductCard key={index} product={wishlistItem.product} mode="wishlist" />
         ))}
       </div>
 

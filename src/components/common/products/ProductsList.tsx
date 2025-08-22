@@ -16,7 +16,7 @@ const ProductsList = () => {
 
   return products?.map((product) => (
     <div key={product.productId} className="product">
-      <ProductItem {...product} />
+      <ProductItem product={product} />
     </div>
   ));
 };

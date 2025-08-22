@@ -21,7 +21,7 @@ const FlashSalesProducts = () => {
         <>
             <FlashSlider spaceBetween={20}>
                 {products?.map((product) => (
-                    <ProductCard {...product} key={product.productId} />
+                    <ProductCard product={product} key={product.productId} />
                 ))}
             </FlashSlider>
 

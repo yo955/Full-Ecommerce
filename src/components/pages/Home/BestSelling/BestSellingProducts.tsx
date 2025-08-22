@@ -19,9 +19,9 @@ const BestSellingProducts = () => {
     <>
       {/* Products List */}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-3 lg:grid-cols-4">
-        {products?.slice(0,4).map((product) => (
-        <ProductCard {...product} key={product.productId} />
-      ))}
+        {products?.slice(0, 4).map((product) => (
+          <ProductCard product={product} key={product.productId} />
+        ))}
       </div>
     </>
   );

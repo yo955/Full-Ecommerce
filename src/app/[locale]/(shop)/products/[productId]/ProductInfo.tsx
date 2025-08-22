@@ -21,6 +21,7 @@ const ProductInfo = ({ product }: { product: Product }) => {
   // Cart management
   const addToCart = useCartStore((state) => state.addToCart);
   const cartItems = useCartStore((state) => state.cart);
+  const currentItem = cartItems.find((item) => item.product.productId === product.productId);
   const isInCart = useMemo(
     () => cartItems.some((item) => item.product.productId === product.productId),
     [cartItems, product.productId]
@@ -99,39 +100,37 @@ const ProductInfo = ({ product }: { product: Product }) => {
       {/* Quantity and Buttons */}
       <div className="flex items-center gap-4">
         {/* Quantity */}
-        {
-          cartItems.map((item, index) => (
-            <div key={index} className="flex items-center border border-gray-300">
-              <button
-                onClick={() =>
-                  item.quantity && item.quantity > 1
-                    ? updateQuantity(
-                      item.product.productId,
-                      item.quantity - 1
-                    )
-                    : null
-                }
-                className="w-8 h-8 flex items-center justify-center text-black hover:bg-gray-100"
-              >
-                -
-              </button>
-              <span className="w-12 h-8 flex items-center justify-center text-black border-x border-gray-300">
-                {item.quantity}
-              </span>
-              <button
-                onClick={() =>
-                  updateQuantity(
-                    item.product.productId,
-                    (item.quantity ?? 1) + 1
-                  )
-                }
-                className="w-8 h-8 flex items-center justify-center text-black hover:bg-gray-100"
-              >
-                +
-              </button>
-            </div>
-          ))
-        }
+        {currentItem && (
+        <div className="flex items-center border border-gray-300">
+          <button
+            onClick={() =>
+              currentItem.quantity && currentItem.quantity > 1
+                ? updateQuantity(
+                  currentItem.product.productId,
+                  currentItem.quantity - 1
+                )
+                : null
+            }
+            className="w-8 h-8 flex items-center justify-center text-black hover:bg-gray-100"
+          >
+            -
+          </button>
+          <span className="w-12 h-8 flex items-center justify-center text-black border-x border-gray-300">
+            {currentItem.quantity}
+          </span>
+          <button
+            onClick={() =>
+              updateQuantity(
+                currentItem.product.productId,
+                (currentItem.quantity ?? 1) + 1
+              )
+            }
+            className="w-8 h-8 flex items-center justify-center text-black hover:bg-gray-100"
+          >
+            +
+          </button>
+        </div>
+        )}
 
         {/* Buy Now Button */}
         <Button onClick={() => !isInCart && addToCart({ product, quantity: 1 })}

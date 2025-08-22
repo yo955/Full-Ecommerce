@@ -45,7 +45,7 @@ const ProductsPage = () => {
 
   return (
     <div className="container mx-auto mt-12 px-4 sm:px-6 lg:px-8">
-      {/* زرار فتح/إغلاق الفلتر في الموبايل */}
+      {/* button */}
       <Button
         className="lg:hidden mb-6 px-5 py-3 bg-gradient-to-r from-black to-gray-800 text-white rounded-lg hover:from-gray-800 hover:to-black transition-all duration-300 shadow-md"
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -60,7 +60,7 @@ const ProductsPage = () => {
           categories={categories || []}
           onCategoryChange={(catId) => {
             setSelectedCategory(catId);
-            setPageNumber(1); 
+            setPageNumber(1);
           }}
           onSortChange={(sort) => {
             setSortOrder(sort);

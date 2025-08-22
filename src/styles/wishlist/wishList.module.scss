@@ -17,7 +17,7 @@
     font-weight: 500;
 
     span {
-      color: #3EABCC; // اللون الأساسي بدل $primary
+      color: #db4444;
       font-weight: 600;
     }
   }
@@ -25,13 +25,13 @@
 
 .moveAllBtn {
   padding: 0.6rem 1.2rem;
-  background-color: #3EABCC; // اللون الأساسي بدل $primary
+  background-color: #db4444;
   color: white;
   border-radius: 0.5rem;
   transition: 0.3s;
 
   &:hover {
-    background-color: darken(#3EABCC, 10%);
+    background-color: #db4444;
   }
 }
 

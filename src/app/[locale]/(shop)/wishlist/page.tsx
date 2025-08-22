@@ -1,28 +1,42 @@
 "use client";
 
 import styles from "@/styles/wishlist/wishList.module.scss";
-import Loading from "@/loading/Loading";
 import { useState } from "react";
 import SuggestionProducts from "./SuggestionProducts";
 import { useWishListStore } from "@/stores/wishlist/WishListStore";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/common/products/ProductCard";
+import { useCartStore } from "@/stores/cart/cartStore";
+import { SectionSkeleton } from "@/components/ui/SectionSkeleton";
 
 const WishListPage = () => {
-  const products = useWishListStore((state) => state.wishList);
   const [showAll, setShowAll] = useState(false);
+  // Stores
+  const { clearWishList, wishList: wishListItems } = useWishListStore((state) => state);
+  console.log(wishListItems);
+  const { addToCart } = useCartStore((state) => state);
 
-  if (!products) return <Loading />;
+  if (!wishListItems) return <SectionSkeleton />;
 
-  const visibleProducts = showAll ? products : products.slice(0, 4);
+  const visibleProducts = showAll ? wishListItems : wishListItems.slice(0, 4);
 
+  const moveAllToCart = async () => {
+    for (const item of wishListItems) {
+      await addToCart({
+        product: item.product,
+        quantity: 1,
+      });
+    }
+
+    clearWishList();
+  };
   return (
     <section className={styles.wishlist}>
       <div className={styles.header}>
         <h3>
-          قائمة المفضلة <span>({products.length})</span>
+          قائمة المفضلة <span>({wishListItems.length})</span>
         </h3>
-        <button className={styles.moveAllBtn}>نقل الكل إلى السلة 🛒</button>
+        <button className={styles.moveAllBtn} onClick={moveAllToCart}>نقل الكل إلى السلة 🛒</button>
       </div>
 
       <div className={styles.productsGrid}>
@@ -31,7 +45,7 @@ const WishListPage = () => {
         ))}
       </div>
 
-      {!showAll && products.length > 4 && (
+      {!showAll && wishListItems.length > 4 && (
         <div className="flex justify-end">
           <Button
             onClick={() => setShowAll(true)}

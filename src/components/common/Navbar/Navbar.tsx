@@ -4,10 +4,9 @@ import { Logo } from './Logo';
 import DesktopNavigation from './DesktopNavigation';
 import SearchBar from './SearchBar';
 import UserActions from './UserActions';
-// import MobileSearch from './mobile/MobileSearch';
-// import MobileMenu from './mobile/MobileMenu';
-import { useLocale } from 'next-intl';
 import MobileSearch from './mobile/MobileSearch';
+import MobileMenu from './mobile/MobileMenu';
+import { useLocale } from 'next-intl';
 
 export default function Navbar() {
 
@@ -35,10 +34,10 @@ export default function Navbar() {
             <DesktopNavigation />
 
             {/*  Mobile Menu */}
-            {/* <MobileMenu /> */}
+            <MobileMenu />
 
             {/* SearchBar */}
-            <SearchBar />.
+            <SearchBar />
 
             {/* Right Section */}
             <UserActions />

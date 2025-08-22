@@ -18,11 +18,8 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, mode = "default" }: ProductCardProps) => {
-  const addToCart = useCartStore((state) => state.addToCart);
-  const cartItems = useCartStore((state) => state.cart);
-  const addToWishList = useWishListStore((state) => state.addToWishList);
-  const removeFromWishList = useWishListStore((state) => state.removeFromWishList);
-  const wishList = useWishListStore((state) => state.wishList);
+  const { addToCart, cart: cartItems } = useCartStore((state) => state);
+  const { addToWishList, removeFromWishList, wishList } = useWishListStore((state) => state);
 
   const isInCart = useMemo(
     () => cartItems.some((item) => item.product.productId === product.productId),
@@ -60,8 +57,8 @@ const ProductCard = ({ product, mode = "default" }: ProductCardProps) => {
               onClick={() => !isInWishList && addToWishList(product)}
               disabled={isInWishList}
               className={`rounded-full p-1.5 transition ${isInWishList
-                  ? "bg-rose-100 text-rose-600"
-                  : "bg-white text-gray-700 hover:bg-gray-100"
+                ? "bg-rose-100 text-rose-600"
+                : "bg-white text-gray-700 hover:bg-gray-100"
                 }`}
             >
               <Heart size={18} />

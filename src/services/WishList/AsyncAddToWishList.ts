@@ -4,6 +4,7 @@ import {Product} from "@/types/cart/Product";
 
 export interface WishlistItem {
   product: Product;
+  
 }
 
 interface Wishlist {

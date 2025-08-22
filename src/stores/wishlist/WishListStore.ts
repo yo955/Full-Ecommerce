@@ -64,5 +64,8 @@ export const useWishListStore = create<WishListState>((set) => ({
     });
   },
 
-  clearWishList: () => set({ wishList: [] }),
+  clearWishList: () => {
+    set({ wishList: [] });
+    SaveToLocalStorage([]);
+  },
 }));

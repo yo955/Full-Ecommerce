@@ -7,6 +7,7 @@ import UserActions from './UserActions';
 // import MobileSearch from './mobile/MobileSearch';
 // import MobileMenu from './mobile/MobileMenu';
 import { useLocale } from 'next-intl';
+import MobileSearch from './mobile/MobileSearch';
 
 export default function Navbar() {
 
@@ -45,7 +46,7 @@ export default function Navbar() {
         </div>
 
         {/* MobileSearch */}
-        {/* <MobileSearch /> */}
+        <MobileSearch />
       </nav>
 
       {/* Secondary Navigation - Desktop Only */}

@@ -89,4 +89,4 @@ const MobileSearch = () => {
     )
 }
 
-export default MobileSearch
+export default MobileSearch;
